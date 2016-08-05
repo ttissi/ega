@@ -2,18 +2,18 @@
 
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
-    <script>window.jQuery || document.write('<script src="assets/js/vendor/jquery-1.12.4.min.js"><\/script>')</script>
+    <script>window.jQuery || document.write('<script src="<?= $this->assetUrl('js/vendor/jquery-1.12.4.min.js') ?>"><\/script>')</script>
 
     <!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <script> $.fn.modal || document.write('<script src="assets/js/vendor/bootstrap-3.3.7.min.js"><\/script>')</script>
+    <script> $.fn.modal || document.write('<script src="<?= $this->assetUrl('js/vendor/bootstrap-3.3.7.min.js') ?>"><\/script>')</script>
 
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <!-- Plugins JS proposés par Boilerplate -->
-    <script src="assets/js/plugins.js"></script>
+    <script src="<?= $this->assetUrl('js/plugins.js') ?>"></script>
 
     <!-- Chargement programme principal -->
-    <script src="assets/js/main.js"></script>
+    <script src="<?= $this->assetUrl('js/main.js') ?>"></script>
 
     
     <!-- Google Analytics: changer UA-XXXXX-X par l'ID de votre site. -->
