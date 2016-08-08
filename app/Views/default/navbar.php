@@ -52,10 +52,10 @@
 		          	<li class="dropdown">
 		          		<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Espace Membres <span class="caret"></span></a>
 		          	    <ul class="dropdown-menu" role="menu">
-		                	<li><a href="#">Se connecter</a></li>
+		                	<li><a class="fancybox fancybox.iframe" href="<?= $this->url('membre_seConnecter') ?>"">Se connecter</a></li>
 		          	   		<li class="divider"></li>
-		          	   		<li><a href="#">S'inscrire</a></li>
-		          	   		<li><a href="#">Profil</a></li>
+		          	   		<li><a class="fancybox fancybox.iframe" href="<?= $this->url('membre_inscription') ?>">S'inscrire</a></li>
+		          	   		<li><a class="fancybox fancybox.iframe" href="<?= $this->url('membre_modifierProfil') ?>">Profil</a></li>
 		          	   		<li><a href="#">Se déconnecter</a></li>
 		          	 	</ul>
 		         	</li>
