@@ -15,22 +15,18 @@
 
 
 		<!-- CHargement des feuilles de style -->
-		<link rel="stylesheet" href="assets/css/vendor/normalize-3.0.3.css">
-	    <link rel="stylesheet" href="assets/css/vendor/boilerplate-5.3.0.css">
+		<link rel="stylesheet" href="<?= $this->assetUrl('css/vendor/normalize-3.0.3.css') ?>">
+	    <link rel="stylesheet" href="<?= $this->assetUrl('css/vendor/boilerplate-5.3.0.css') ?>">
 
 	    <!-- Chargement des librairies JS en en-tête-->
-	    <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
+	    <script src="<?= $this->assetUrl('js/vendor/modernizr-2.8.3.min.js') ?>"></script>
 
 		<!-- Bootstrap -->
 		<!-- Latest compiled and minified CSS -->
 		<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
-	    <link rel="stylesheet" href="assets/css/vendor/bootstrap-3.3.7.min.css">
+	    <link rel="stylesheet" href="<?= $this->assetUrl('css/vendor/bootstrap-3.3.7.min.css') ?>">
 
-		<!-- <link rel="stylesheet" href="assets/css/style.css"> -->
 		<link rel="stylesheet" href="<?= $this->assetUrl('css/style.css') ?>">
-
-
-
 
 	    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

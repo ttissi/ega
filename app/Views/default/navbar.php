@@ -1,4 +1,4 @@
-	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+	<nav class="navbar navbar-inverse navbar-fixed-top"">
 		
 		<div class="container-fluid">
 		    
@@ -17,22 +17,45 @@
 	        	
 	        	<ul class="nav navbar-nav navbar-left">
 	        		<li><a href="#"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Accueil</a></li>
-	        		<li><a href="#">Bureau</a></li>
-	            	<li><a href="#">Practice</a></li>
+	        		<li><a href="#"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Bureau</a></li>
+	            	<li class="dropdown">
+		          		<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-tent" aria-hidden="true"></span> Practice <span class="caret"></span></a>
+		          	    <ul class="dropdown-menu" role="menu">
+		                	<li><a href="#">Horaires</a></li>
+		                	<li><a href="#">Plan d'accès</a></li>
+		          	 	</ul>
+		         	</li>
 	        	</ul>
 	   
 		        <ul class="nav navbar-nav navbar-right">
-		          	<li><a href="#"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span> Actualités</</li>
-		          	<li><a href="#"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span> Compétitions</</li>
-		          	<li><a href="#"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span> Echanges</</li>		          	
-		          	<li><a href="#"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span> Admin</a></li>
+		        	<li class="dropdown">
+		          		<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span> Actualités <span class="caret"></span></a>
+		          	    <ul class="dropdown-menu" role="menu">
+		                	<li><a href="#">Last News</a></li>
+		                	<li><a href="#">Archives</a></li>
+		                	<li class="divider"></li>
+		          	   		<li><a href="#">Golfs Partenaires</a></li>
+		          	   		<li><a href="#">Autres Offres</a></li>
+		          	 	</ul>
+		         	</li>
+		          	<li><a href="#"><span class="glyphicon glyphicon-flag" aria-hidden="true"></span> Compétitions</a></li>
+		          	<li class="dropdown">
+		          		<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-tags" aria-hidden="true"></span> Echanges <span class="caret"></span></a>
+		          	    <ul class="dropdown-menu" role="menu">
+		                	<li><a href="#">Vente Matériel</a></li>
+		                	<li class="divider"></li>
+		          	   		<li><a href="#">[Locations appartements]</a></li>
+		          	   		<li><a href="#">[Album Photos]</a></li>
+		          	 	</ul>
+		         	</li>
+		          	<li><a href="#"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Admin</a></li>
 		          	<li class="dropdown">
 		          		<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Espace Membres <span class="caret"></span></a>
 		          	    <ul class="dropdown-menu" role="menu">
-		                	<li><a href="#">Se connecter</a></li>
+		                	<li><a class="fancybox fancybox.iframe" href="<?= $this->url('membre_seConnecter') ?>"">Se connecter</a></li>
 		          	   		<li class="divider"></li>
-		          	   		<li><a href="#">S'inscrire</a></li>
-		          	   		<li><a href="#">Profil</a></li>
+		          	   		<li><a class="fancybox fancybox.iframe" href="<?= $this->url('membre_inscription') ?>">S'inscrire</a></li>
+		          	   		<li><a class="fancybox fancybox.iframe" href="<?= $this->url('membre_modifierProfil') ?>">Profil</a></li>
 		          	   		<li><a href="#">Se déconnecter</a></li>
 		          	 	</ul>
 		         	</li>
