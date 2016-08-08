@@ -6,12 +6,15 @@
 
 body {
 	margin-top: 0;
-	margin-left: 50px;
-	margin-right: 50px;
+	margin-left: 0px;
+	margin-right: 0px;
 }
 
 .container {
-	margin: 50px;
+	margin-left: 0px;
+	margin-bottom: 50px;
+	margin-top:  60px;
+	border:  1px solid #0B610B;
 }
 
 .navbar {
@@ -36,20 +39,16 @@ body {
 	color: #0B610B;
 }
 
-/*
-a {
-	text-decoration: none;
-	color: #A6E22E;
+.sidebar-right {
+	position:fixed;
+	/* width:25% */
 }
 
-a:hover {
-	color: #F92672;
+.police-2em {
+	font-size: 2em;
 }
 
-h1 {
-	color: #F92672;
+#carouselButtons {
+    margin: O auto;
+    bottom: 0px;
 }
-
-h2 {
-	color: #66D9EF;
-} */

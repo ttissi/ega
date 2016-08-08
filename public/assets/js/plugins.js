@@ -1,5 +1,9 @@
-// Avoid `console` errors in browsers that lack a console.
-(function() {
+
+$(function() {
+
+    // =========================================================
+    // Evite les erreurs de la console selon les navigateurs
+    // =========================================================
     var method;
     var noop = function () {};
     var methods = [
@@ -19,18 +23,39 @@
             console[method] = noop;
         }
     }
-}());
+
 
 // Place any jQuery/helper plugins in here.
-$(document).ready(function(){
-    //Handles menu drop down
+
+    // =========================================================
+    //   Fonction permettant le lancement du Caroussel.
+    // =========================================================
+
+    $('#homeCarousel').carousel({
+        interval:3000,              // Changement de photos toutes les 3 secondes
+        pause: "false"
+    });
+    $('#playButton').click(function () {
+        $('#homeCarousel').carousel('cycle');
+    });
+    $('#pauseButton').click(function () {
+        $('#homeCarousel').carousel('pause');
+    });
+
+  
+    // =========================================================
+    //   Active les menus de type drop down
+    // =========================================================
+
     $('.dropdown-menu').find('form').click(function (e) {
         e.stopPropagation();
     });
 
-    // Fancybox (for the forms : CGU...)
-        // Activation de Fancybox
+ 
+    // =========================================================
+    //   Activation de Fancybox (for the forms : CGU...)
+    // =========================================================
+
     $('.fancybox').fancybox();
 
-    console.log('Document chargé (plugins.js).');
 });
