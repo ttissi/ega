@@ -5,16 +5,27 @@
 } */
 
 body {
-	margin-top: 0;
+	margin-top: 0px;
 	margin-left: 0px;
 	margin-right: 0px;
 }
 
 .container {
-	margin-left: 0px;
 	margin-bottom: 50px;
-	margin-top:  60px;
-	border:  1px solid #0B610B;
+	/* Bordure à désactiver après les tests d'intégration */
+	border:  1px solid #0B610B;	
+	margin: 0 auto;
+	width:  100%;
+}
+
+#logo-site {
+	/* opacity: 0.5; */
+    border-radius: 0px 20px 20px 20px;
+    box-shadow: 6px 6px 6px white;
+}
+
+h1 {
+	font-size: 1.2em;
 }
 
 .navbar {
@@ -39,9 +50,23 @@ body {
 	color: #0B610B;
 }
 
-.sidebar-right {
+/* .sidebar-right {
 	position:fixed;
-	/* width:25% */
+	width:25%
+} */
+
+#panel_left {
+	margin-top: 55px;
+	padding-top: 0px;
+	height: 100%;
+}
+
+#rechercheGolfId {
+	margin-top: 55px;
+}
+
+#sidebar_right {
+	padding: 20px;
 }
 
 .police-2em {
@@ -51,4 +76,27 @@ body {
 #carouselButtons {
     margin: O auto;
     bottom: 0px;
+}
+
+ul.nobullet {
+	list-style-type: none;
+}
+
+@media screen and (max-width:300px) {
+	.not_mobile { display:none; }
+}
+
+@media(max-width:767px) {}
+
+
+@media(min-width:768px) {}
+
+
+@media(min-width:992px) {}
+
+
+@media(min-width:1200px) {}
+
+@media print {
+  #bar-navigation, #footer { display:none; }
 }
