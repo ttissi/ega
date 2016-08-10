@@ -1,12 +1,8 @@
-<!doctype html>
-<html lang="fr">
-<head>
-	<meta charset="UTF-8">
-	<title>EGA || Profil</title>
-</head>
-<body>
+<?php $this->layout('layout', ['title' => ' || Profil']) ?>
 
-	<h1>Page profil</h1>
+<?php echo $this->start('main_content') ?>
+
+
 	<h2>Bienvenue <?php  ?> sur votre page profil.</h2>
 	
 	<form method="post" action="" id="formProfil">
@@ -76,10 +72,4 @@
 		</fieldset>
 	</form>
 
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
-	<script src="../../../public/assets/js/vendor/jquery-1.12.4.min.js"></script>
-	<script src="../../../public/assets/js/main.js"></script>
-	<script src="../../../public/assets/js/modal.js"></script>
-
-</body>
-</html>
+<?php echo $this->stop('main_content') ?>
