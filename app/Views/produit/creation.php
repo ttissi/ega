@@ -7,19 +7,19 @@
           margin: 0px;
           padding: 0px;
         }
-        fieldset {
+       /* fieldset {
           width: 45%;
           margin: 15px 0px 25px 0px;
           padding: 15px;
-        }     
-        fieldset.left {
+        }     */
+        /*fieldset.left {
           float: left;
           clear: left;
         }     
         fieldset.right {
           float: right;
           clear: right;
-        }     
+        }     */
         legend {
           font-weight: bold;
         }
@@ -47,65 +47,67 @@
           font-style: italic;
         }
         .thumb-image{float:left;width:100px;position:relative;padding:5px;}
-    </style>
+    </style> 
 
 </head>
 <body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	
 	<h1>Création d'une annonce </h1>
-	
+   
+      
+  
 <form method="post" action="" id="formInscription">
-	
-		<legend>Espace de vente pour votre matériel de golf</legend>
-		<fieldset>
-					
-				
-			<input type="text" name="" value="" id="" placeholder="Désignation Article">
+  
+    <fieldset>
+    <legend>Espace de vente pour votre matériel de golf</legend>
+          
+        
+      <input type="text" name="" value="" id="" placeholder="Désignation Article">
 
-				<select class="form-control" >
-					<option><label disabled>Etat</label></option>
-					<option value="un">Un</option>
-					<option value="deux">Deux</option>
-					<option value="trois">Trois</option>
-				</select>
+        <select class="form-control" >
+          <option><label disabled>Etat</label></option>
+          <option value="un">Un</option>
+          <option value="deux">Deux</option>
+          <option value="trois">Trois</option>
+        </select>
 
-				<select class="form-control" >
-					<option><label disabled>Catégorie</label></option>
-					<option value="un">Un</option>
-					<option value="deux">Deux</option>
-					<option value="trois">Trois</option>
-				</select>
+        <select class="form-control" >
+          <option><label disabled>Catégorie</label></option>
+          <option value="un">Un</option>
+          <option value="deux">Deux</option>
+          <option value="trois">Trois</option>
+        </select>
 
-				<select class="form-control" >
-					<option ><label disabled>Dextérité</label></option>
-					<option value="un">Un</option>
-					<option value="deux">Deux</option>
-					<option value="trois">Trois</option>
-				</select>
+        <select class="form-control" >
+          <option ><label disabled>Dextérité</label></option>
+          <option value="un">Un</option>
+          <option value="deux">Deux</option>
+          <option value="trois">Trois</option>
+        </select>
 
-				<select class="form-control" >
-					<option ><label disabled>Sexe</label></option>
-					<option value="un">Un</option>
-					<option value="deux">Deux</option>
-					<option value="trois">Trois</option>
-				</select>
+        <select class="form-control" >
+          <option ><label disabled>Sexe</label></option>
+          <option value="un">Un</option>
+          <option value="deux">Deux</option>
+          <option value="trois">Trois</option>
+        </select>
 
-				<input type="number" placeholder="Prix"></input>
+        <input type="number" placeholder="Prix"></input>
 
-				<label>Description</label>
-				<textarea placeholder="Description de votre matériel => limitez-vous à 5 lignes maximum SVP"></textarea>
-		</fieldset>
-	
+        <label>Description</label>
+        <textarea placeholder="Description de votre matériel => limitez-vous à 5 lignes maximum SVP"></textarea>
+    </fieldset>
+  
 </form>
 
     <fieldset class="left">
-        <legend>Multiple upload</legend>
+        <legend>Téléchargement des photos</legend>
         
         <form name="my_form" enctype="multipart/form-data" method="post" action="upload.php">
-            <p><input id="fileUpload" type="file" size="64" name="my_field[]" value="" /></p>
-            <p><input id="fileUpload2" type="file" size="64" name="my_field[]" value="" /></p>
-            <p><input id="fileUpload3" type="file" size="64" name="my_field[]" value="" /></p>
+            <p><input id="fileUpload" type="file" size="32" name="my_field[]" value="" /></p>
+            <p><input id="fileUpload2" type="file" size="32" name="my_field[]" value="" /></p>
+            <p><input id="fileUpload3" type="file" size="32" name="my_field[]" value="" /></p>
             <p class="button"><input type="hidden" name="action" value="multiple" />
             <input type="submit" name="Submit" value="upload" /></p>
         </form>
@@ -116,6 +118,7 @@
       <div id="image-holder3"></div>
     </div>
     </fieldset>
+    
     <script>
 $(document).ready(function() {
         $("#fileUpload").on('change', function() {
@@ -213,7 +216,32 @@ $(document).ready(function() {
 </script>
 
 
-			
+<fieldset >
+        <legend>Contact Membre</legend>
+        <p>N° Membre : </p>
+        <p>Votre nom complet (NOM Prenom)</p>
+        <input placeholder="Telephone modifiable"></input>
+        <input placeholder="Email modifiable"></input>
+</fieldset>
+      
+  <fieldset>
+<h3>Informations sur la vente</h3>
+      <div>
+        <ul>
+          <li>Seuls les matériels et accessoires de golf des membres EGA sont permis à la vente.</li>
+          <li>EGA ne permet que la relation entre 2 membres souhaitant faire affaire.</li>
+          <li>Ega ne gére en aucune maniére la vente et décline toute responsabilité en cas de problème lors de la transaction.</li>
+        </ul>
+      </div>
+  </fieldset>
+
+<fieldset>
+  <input type="submit" value="Supprimer l'annonce">
+  <input type="submit" value="Visualiser l'annonce">
+  <input type="submit" value="Annuler vos modifications l'annonce">
+  <input type="submit" value="Valider l'annonce">
+</fieldset>
+  
 
 
 </body>
