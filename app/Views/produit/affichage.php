@@ -99,7 +99,7 @@
 			</fieldset>
 
 			<fieldset>
-				<legend>Les dernières annonnces / Résultat de votre recherche</legend>
+				<legend>Les dernières annonces / Résultat de votre recherche</legend>
 				
 				<span>
 				<h4>date_publication</h4>

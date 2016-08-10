@@ -8,4 +8,5 @@
 		['GET|POST', '/profil', 'Membre#modifierProfil', 'membre_modifierProfil'],
 		['GET', '/produit/affichage', 'Produit#affichage', 'produit_affichage'],
 		['GET|POST', '/produit/creation', 'ProduitCreation#creation', 'produitCreation_creation'],
+		['GET|POST', '/produit/visualisation', 'ProduitVisualisation#visualisation', 'produit_visualisation'],
 	);
