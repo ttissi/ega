@@ -1,6 +1,6 @@
-	<nav class="navbar navbar-inverse navbar-fixed-top"">
+	<nav id="bar-navigation" class="navbar navbar-inverse navbar-static-top"">
 		
-		<div class="container-fluid">
+		<div class="container">
 		    
 		    <!-- Brand and toggle get grouped for better mobile display -->
 		    <div class="navbar-header">
@@ -10,7 +10,7 @@
 		           <span class="icon-bar"></span>
 		           <span class="icon-bar"></span>
 		        </button>
-		        <a class="navbar-brand" href="#"><img src="assets/img/logo_EGA.png" alt="Logo site EGA" height="100px"></a>
+		        <a class="navbar-brand" href="#"><img id="logo-site" src="assets/img/logo_EGA.png" alt="Logo site EGA" height="100px"></a>
 	        </div>	<!-- Fin DIV navbar-header -->
 
 			<div id="navbar-menu" class="navbar-collapse collapse">
@@ -34,7 +34,7 @@
 		                	<li><a href="#">Last News</a></li>
 		                	<li><a href="#">Archives</a></li>
 		                	<li class="divider"></li>
-		          	   		<li><a href="#">Golfs Partenaires</a></li>
+		          	   		<li><a href="<?= $this->url('golf_initialiseCarte') ?>">Golfs Partenaires</a></li>
 		          	   		<li><a href="#">Autres Offres</a></li>
 		          	 	</ul>
 		         	</li>
@@ -52,10 +52,10 @@
 		          	<li class="dropdown">
 		          		<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Espace Membres <span class="caret"></span></a>
 		          	    <ul class="dropdown-menu" role="menu">
-		                	<li><a href="#">Se connecter</a></li>
+		                	<li><a class="fancybox fancybox.iframe" href="<?= $this->url('membre_seConnecter') ?>">Se connecter</a></li>
 		          	   		<li class="divider"></li>
-		          	   		<li><a href="#">S'inscrire</a></li>
-		          	   		<li><a href="#">Profil</a></li>
+		          	   		<li><a class="fancybox fancybox.iframe" href="<?= $this->url('membre_inscription') ?>">S'inscrire</a></li>
+		          	   		<li><a class="fancybox fancybox.iframe" href="<?= $this->url('membre_modifierProfil') ?>">Profil</a></li>
 		          	   		<li><a href="#">Se déconnecter</a></li>
 		          	 	</ul>
 		         	</li>
@@ -66,3 +66,5 @@
 		</div>   	<!-- /.container-fluid -->
 
 	</nav>       	<!-- /.nav -->
+
+<div class="container">
