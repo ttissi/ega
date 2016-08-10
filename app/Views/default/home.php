@@ -4,7 +4,7 @@
 	
 	<div class="row">
   
-	  	<div class="col-md-9 col-md-offset-1">
+	  	<div class="col-md-8 col-md-offset-1">
 	      	<?php include('caroussel.php') ?>
 	  	</div>  <!-- /.col-md-9 -->
 	  

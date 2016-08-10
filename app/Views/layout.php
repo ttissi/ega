@@ -18,11 +18,11 @@
 		<?= $this->section('sidebar_right') ?>
 	</section>	
 
-<?php // include_once("default/footer.php"); ?>
 	<section>
         <?= $this->section('footer_content') ?>
 	</section>
 
+<?php include_once("default/footer.php"); ?>
 <?php include_once("default/bas-page.php"); ?>
 
 
