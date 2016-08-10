@@ -70,26 +70,48 @@ class MembreController extends Controller
 				// -- Vérification qu'il s'agit de la premiere connexion
 
 				// -- D'abord je récupère le membre avec l'ID EGA passer en parametre.
-				$Membre 			= $MembreModel->find($login);
-				$PremiereConnexion 	= $Membre['premiere_connexion'];
+				$Membre            = $MembreModel->find($login);
+				$PremiereConnexion = $Membre['premiere_connexion'];
+				$numEgaMembre      = $Membre['num_ega'];
 
-				//if(!$PremiereConnexion) :
-					//Ici il s'agit de la premiere connexion du membre
 
+				if($PremiereConnexion) //Ici il s'agit de la premiere connexion du membre
+				{
 					//On vérifie le mot de passe en clair
 					if($pwd == $Membre['password'])
 					{
-						// on update la bdd pour premire connexion = 0
-						$premiereConnexion = array();
-						$this->update();
-					}
 
-				//else :
+						// On update la BDD pour premire connexion = 0
+						//$premiereConnexion = array('premiere_connexion' => 0);
+						//$this->update($premiereConnexion, $numEgaMembre);
+						
+						$this->redirect('nouveau_password');
+					
+						$MembreAuthentificationModel = new MembreAuthentificationModel;
 
-					//ici, ce n'est pâs la prmeire fois, connexion normal...
+						// Mon controlleur récupere les mots de passe pour les comparer
+						$pwdNew     = $_POST['pwdNew'];
+						$pwdConfirm = $_POST['pwdConfirm'];
 
-				//endif;
-			}
+						if(null!==$pwdNew && null!==$pwdConfirm)
+						{
+							if ( $pwdNew == $pwdConfirm) // Même saisie pwd ok
+							{
+								// UPDATE POUR INSÉRER LE NOUVEAU PWD
+								$updateNewPwd = ['password'=>$pwdNew];
+
+								$this->update($updateNewPwd, $numEgaMembre, $stripTags = true);
+
+							} // End if($pwdNew == $pwdConfirm) 
+
+						} // End if(null!==$pwdNew && null!==$pwdConfirm)
+					
+					} // End if($pwd == $Membre['password'])
+
+				} // End if($PremiereConnexion)
+
+			} // End if(null!==$login && null!==$pwd)
+
 
 			// Si je n'ai aucun retour de la BDD le membre avec cette id ega n'existe pas
 
@@ -115,14 +137,13 @@ class MembreController extends Controller
 				// Puis je passe en session via loginUserIn()
 				$db->logUserIn($Membre->find($id_membre));
 				// Si tout est ok, je connecte
-		
-				// Je redirige comme c'est ok
-				//$this->redirectToRoute('default_home');
+	
+				//$this->redirectToRoute('default_home'); // Je redirige comme c'est ok
+
 			} // End if ($id_membre > 0)
 		} // if ($_POST)
-
-		// Envoi à la vue connexion
-		$this->show('membre/connexion');
+		
+		$this->show('membre/connexion'); // Envoi à la vue connexion
 	} // End function
 
 
