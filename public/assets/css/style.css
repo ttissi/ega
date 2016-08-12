@@ -24,6 +24,12 @@ body {
     box-shadow: 6px 6px 6px white;
 }
 
+#map {
+	margin: 0;
+	height: 75vh;
+	width: 60vw;
+}
+
 h1 {
 	font-size: 1.2em;
 }
@@ -54,6 +60,29 @@ h1 {
 	position:fixed;
 	width:25%
 } */
+
+.bkg-vert-clair {
+	background-color: #CCFFCC;
+}
+
+.txt-vert {
+	color: #006600;
+}
+
+.txt-rouge {
+	color: #FF0000;
+}
+
+.font-courrier {
+	font-family: Comic Sans MS, sans-serif;
+}
+
+ p.lettrine::first-letter {
+  font-family: 'Lemonada', cursive;
+  font-size: 3.5em;
+  padding-right: 0.2em;
+  color: #FF0000;
+}
 
 #panel_left {
 	margin-top: 55px;

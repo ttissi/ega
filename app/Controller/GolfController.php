@@ -24,7 +24,7 @@ class GolfController extends Controller
 		// -- Récupération de la liste de tous les golfs
 		$ListeDeMesGolfs = $dbgolf -> findAll();
 
-		$this -> show('golf/carte', ['golfParDefaut' => $MonObjetGolf, 'golfs' => $ListeDeMesGolfs]);
+		$this -> show('golf/carte2', ['golfParDefaut' => $MonObjetGolf, 'golfs' => $ListeDeMesGolfs]);
 	}
 
 	// Permet de créer un nouveau golf partenaire
