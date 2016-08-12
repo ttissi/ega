@@ -16,8 +16,8 @@
 			<div id="navbar-menu" class="navbar-collapse collapse">
 	        	
 	        	<ul class="nav navbar-nav navbar-left">
-	        		<li><a href="#"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Accueil</a></li>
-	        		<li><a href="#"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Bureau</a></li>
+	        		<li><a href="<?= $this->url('default_accueil') ?>"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Accueil</a></li>
+	        		<li><a href="<?= $this->url('bureau_compositionBureau') ?>"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Bureau</a></li>
 	            	<li class="dropdown">
 		          		<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-tent" aria-hidden="true"></span> Practice <span class="caret"></span></a>
 		          	    <ul class="dropdown-menu" role="menu">

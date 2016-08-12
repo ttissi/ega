@@ -8,9 +8,6 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script> $.fn.modal || document.write('<script src="<?= $this->assetUrl('js/vendor/bootstrap-3.3.7.min.js') ?>"><\/script>')</script>
 
-    <!-- Chargement de la libraire API de Google Maps -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBr-cf3_M5VIE2G1Z6cPkxaJMKR6DZ2k5w" type="text/javascript"></script>
-
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <!-- Plugins JS proposés par Boilerplate -->
     <script src="<?= $this->assetUrl('js/plugins.js') ?>"></script>

@@ -18,13 +18,20 @@
 		<link rel="stylesheet" href="<?= $this->assetUrl('css/vendor/normalize-3.0.3.css') ?>">
 	    <link rel="stylesheet" href="<?= $this->assetUrl('css/vendor/boilerplate-5.3.0.css') ?>">
 
-	    <!-- Chargement des librairies JS en en-tête-->
+	    <!-- Chargement de certaines librairies JS en en-tête-->
 	    <script src="<?= $this->assetUrl('js/vendor/modernizr-2.8.3.min.js') ?>"></script>
+
+	    <!-- API de Google Maps -->
+    	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBr-cf3_M5VIE2G1Z6cPkxaJMKR6DZ2k5w" type="text/javascript"></script>
 
 		<!-- Bootstrap -->
 		<!-- Latest compiled and minified CSS -->
 		<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
 	    <link rel="stylesheet" href="<?= $this->assetUrl('css/vendor/bootstrap-3.3.7.min.css') ?>">
+
+		<!-- Chargement des polices Google Fonts sélectionnées -->
+		<!-- A copier en local -->
+		<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Lemonada:700' type='text/css'>
 
 		<!-- Chargement de la bibiothèque d'icônes Font Awesome -->
 		<link rel="stylesheet" href="<?= $this->assetUrl('css/vendor/font-awesome-4.6.3.min.css') ?>">

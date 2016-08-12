@@ -1,6 +1,9 @@
 <?php $this->layout('layout', ['title' => 'EGA | Cartographie']) ?>
 
 <!-- Affichage des modules de sélection de golf sur le panel gauche -->
+
+<div class="row">
+
 <?php $this->start('panel_left') ?>
 
     <button id="rechercheGolfId" type="button" class="btn btn-primary" data-toggle="collapse" data-target="#panel_left">
@@ -28,9 +31,25 @@
 <!-- Affichage de la carte Google Map sur la partie centrale -->
 <?php $this->start('main_content') ?>
     
-    
+
+    <div id="map" class="col_md-6 col-md-offset-2 well"></div>
+
+        <!-- Initialise la Map de Google -->
+        <script>
+            function initialisation(){
+                var optionsCarte = {
+                    zoom: 8,
+                    center: new google.maps.LatLng(48.98546, 2.24043)
+                }
+                var maCarte = new google.maps.Map(document.getElementById('map'), optionsCarte);
+            }
+            google.maps.event.addDomListener(window, 'load', initialisation);
+ 
+        </script>
+
     <div id="afffichage_erreurs"></div>
 
-<?php $this->stop('main_content') ?>
+</div>
 
-<!--  ['golfParDefaut' => $MonObjetGolf, 'golfs' => $ListeDeMesGolfs]);   -->
+
+<?php $this->stop('main_content') ?>
