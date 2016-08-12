@@ -32,7 +32,7 @@ $(function() {
     // =========================================================
 
     $('#homeCarousel').carousel({
-        interval:3000,              // Changement de photos toutes les 3 secondes
+        interval:4000,              // Changement de photos toutes les 4 secondes
         pause: "false"
     });
     $('#playButton').click(function () {
@@ -57,5 +57,14 @@ $(function() {
     // =========================================================
 
     $('.fancybox').fancybox();
+ 
+
+    // ============================================================================
+    //   Affichage du module de sélection d'un golf ou recherche d'un intinéraire
+    // ============================================================================
+
+    google.maps.event.addDomListener(window, 'load', initialisation);
+            
+
 
 });
