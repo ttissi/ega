@@ -1,4 +1,6 @@
+<?php $this->layout('layout', ['title' => ' | Inscription']) ?>
 
+<?php echo $this->start('main_content') ?>
 	<h1>Formulaire d'inscription</h1>
 	
 	<form method="post" action="" id="formInscription">
@@ -72,4 +74,4 @@
 		</fieldset>
 	</form>
 
-
+<?php echo $this->stop('main_content') ?>
