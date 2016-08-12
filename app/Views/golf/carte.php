@@ -34,18 +34,147 @@
 
     <div id="map" class="col_md-6 col-md-offset-2 well"></div>
 
-        <!-- Initialise la Map de Google -->
-        <script>
-            function initialisation(){
-                var optionsCarte = {
-                    zoom: 8,
-                    center: new google.maps.LatLng(48.98546, 2.24043)
+    <!-- Initialise la Map de Google -->
+    <script>
+
+        function initialisation(){
+
+            // Je stocke dans la variable Javascript dataGolfs, la variable PHP $golfs
+            // qui a été passée lors de l'appel de ce programme
+            var dataGolfs = <?php echo json_encode($golfs, JSON_FORCE_OBJECT); ?>;
+
+/*  ************ BLOC de DEBUG pour vérification de valeur (A supprimer à la fin)
+
+            console.log(dataGolfs);
+            var lat_i = parseFloat(dataGolfs[i]['latitude']);
+            console.log(typeof(lat_i));        // vérif. si lat_i est bien un number/float
+            console.log(lat_i);
+            lat_i += 1.1;  // est-ce que       // Vérif. si une opération math. est possible sur lat_i
+            console.log(lat_i);
+
+******** */
+        
+            // Je cherche à déterminer le centre de ma carte en fonction des coordonnées
+            // de toutes adresses de la table golfs
+            
+            // Chemin de mes blasons de golfs
+            var cheminBlasons = '<?= $this->assetUrl('img/golfs/blasons/'); ?>';
+            var cheminMarkers = '<?= $this->assetUrl('img/golfs/markers/'); ?>';
+
+            // Variables nécessaires pour calculer mon centre de carte
+            var maxX = '';
+            var maxY = '';
+            var minX = '';
+            var minY = '';
+            var centreX = '';
+            var centreY = '';
+            var i = 0;                                        // Index pour parcourir mes golfs
+            var lignes  = Object.keys(dataGolfs).length;     // Nb d'adresses dans mon objet dataGolfs
+    
+            // Dans cette boucle, je vais conserver les latitudes et longitudes Max et Min,
+            // pour déterminer ensuite le centre de ma carte
+            // => cela permettra d'afficher toutes les adresses sur une carte bien zoomée
+            while ( i < lignes ) {
+    
+                var lat_i = parseFloat(dataGolfs[i]['latitude']);
+                var lng_i = parseFloat(dataGolfs[i]['longitude']);
+    
+                if (maxX == '') {
+                    maxX = lat_i;
+                    minX = lat_i;
+                } 
+                if (maxY == '') {
+                    maxY = lng_i;
+                    minY = lng_i;
                 }
-                var maCarte = new google.maps.Map(document.getElementById('map'), optionsCarte);
-            }
-            google.maps.event.addDomListener(window, 'load', initialisation);
+                if (lat_i < minX) { minX = lat_i; }
+                if (lat_i > maxX) { maxX = lat_i; }
+                if (lng_i < minY) { minY = lng_i; }
+                if (lng_i > maxY) { maxY = lng_i; }
+                i++;
+            }      // Fin boucle While
+            
+            // console.log('maxX: ', maxX);
+            // console.log('minX: ', minX);
+            // console.log('maxY: ', maxY);
+            // console.log('minY: ', minY);
+    
+            centreX = (maxX + minX) / 2;
+            centreY = (maxY + minY) / 2;        
+            // console.log('centreX: ', centreX);
+            // console.log('centreY: ', centreY);
+            
+            // On stocke les coordonnées du centre de la carte
+            var myLatLng = {lat: centreX, lng: centreY};
+    
+            // Crée un objet carte et demande au Dom de l'afficher au centre
+            var map = new google.maps.Map(document.getElementById('map'), {
+                center: myLatLng,
+                scrollwheel: false,
+                zoom: 10
+            });
+            
+            var i = 0;
+            var lignes  = Object.keys(dataGolfs).length;     // Nb d'adresses dans mon objet dataGolfs
+    
+            while ( i < lignes ) {
+    
+                var lat_i = parseFloat(dataGolfs[i]['latitude']);
+                var lng_i = parseFloat(dataGolfs[i]['longitude']);
+                myLatLng = {lat: lat_i, lng: lng_i};
+        
+                // Crée un marqueur et le positionne
+                var marker = new google.maps.Marker({
+                    map: map,
+                    position: new google.maps.LatLng (myLatLng),
+                    // icon: cheminBlasons + dataGolfs[i]['image_blason'], 
+                    icon: cheminMarkers + 'golf-marker1.png',              
+                    title: dataGolfs[i]['nom'],
+                });
+
+
+                var resumeDetailsGolfs =    '<div id="content">' +
+                                                '<div id="siteNotice">' + '</div>' +
+                                                    '<img id="blasonGolf' + dataGolfs[i]['id_golf'] + '" src="<?= $this->assetUrl("img/golfs/blasons/"); ?>' +  dataGolfs[i]['image_blason'] + '" alt="Blason de ' + dataGolfs[i]['nom'] + '" height="50px">' +
+                                                    '<h1 id="firstHeading" class="firstHeading">' + dataGolfs[i]['nom'] + '</h1>' +
+                                                    '<div id="bodyContent">' +
+                                                        'Adresse: ' + '<br>' + dataGolfs[i]['adresse']  + '<br>' + 
+                                                        dataGolfs[i]['code_postal'] + '  ' + dataGolfs[i]['ville']  + '<br>' + 
+                                                        '<hr>' + 
+                                                        '<span class="glyphicon glyphicon-globe" aria-hidden="true"> </span>' + ' <a href="' + dataGolfs[i]['web'] + '" alt="Accès au site internet: ' + dataGolfs[i]['nom'] + '">' + dataGolfs[i]['web'] + '</a>' +
+                                                    '</div>' +
+                                                '</div>' +
+                                            '</div>'; 
+
+                // Fonction qui affiche l'infobulle correspondante à un marker
+                function ajouteInfobulleMarker (map, marker, info_contenu) {
+                    var infoWindow = new google.maps.InfoWindow ({
+                        content: info_contenu
+                    });
+                    // google.maps.event.addListener (marker, 'click', function() {
+                    google.maps.event.addListener (marker, 'mouseover', function() {
+                        infoWindow.open (map, marker)
+                    });
+                    google.maps.event.addListener (marker, 'mouseout', function() {
+                        infoWindow.close (map, marker)
+                    });
+                }
+
+                // Association de l'infobulle au marker
+                ajouteInfobulleMarker (map, marker, resumeDetailsGolfs);
+
+                i++;
+            }     // Fin boucle While
+
+            marker.addListener('click', function() {
+                map.setZoom(10);
+                map.setCenter(marker.getPosition());
+            });
+
+        }
+        google.maps.event.addDomListener(window, 'load', initialisation);
  
-        </script>
+    </script>
 
     <div id="afffichage_erreurs"></div>
 
