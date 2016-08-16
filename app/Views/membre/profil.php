@@ -26,7 +26,7 @@
 				<input type="text" name="lastname" id="lastname" placeholder="Ex: Durosier" disabled value="<?php echo $w_user['nom'] ?>">
 
 				<label for="dateNaissance"></label>
-				<input type="date" name="dateNaissance" id="dateNaissance" placeholder="20/12/1965" disabled value="<?php echo $w_user['date_naissance'] ?>">
+				<input type="date" name="dateNaissance" id="dateNaissance" placeholder="20/12/1965" disabled value="<?php echo date("d/m/Y", strtotime($w_user['date_naissance'])) ?>">
 
 				<label for="adresse"></label>
 				<input type="text" name="adresse" id="adresse" placeholder="1, allée des Champs" value="<?php echo $w_user['adresse'] ?>">
