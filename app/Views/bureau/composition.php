@@ -2,8 +2,8 @@
 
 <?php $this->start('main_content') ?>
 
-	<div class="col-md-6 col-md-offset-3 well">	
-	<h1>Les membres du bureau</h1>
+	<div class="col-md-8 col-md-offset-2 well">	
+	<h1 class="text-center"><strong>Les membres du bureau</strong></h1>
 	<p style="text-align: center;"><img title="Les Membres du bureau" onmouseover="this.src='<?= $this->assetUrl('img/bureau/bureau_membres2.png') ?>';" onmouseout="this.src='<?= $this->assetUrl('img/bureau/bureau_membres.png') ?>';" src="<?= $this->assetUrl('img/bureau/bureau_membres.png') ?>" alt="Composition du bureau de l\'association" width="115" height="90" /> </p>
 	
 	<table class="table table-condensed table-striped table-hover">
