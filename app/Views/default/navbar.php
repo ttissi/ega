@@ -53,20 +53,13 @@
 		          		<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Espace Membres <span class="caret"></span></a>
 		          	    <ul class="dropdown-menu" role="menu">
 
-							<li><a class="" href="<?= $this->url('membre_seConnecter') ?>" data-toggle="modal" data-target="#connexionModal"><i class="fa fa-toggle-on fa-fw" aria-hidden="true"></i> Se connecter</a></li>
-		                	<!-- <li><a id="connexionLink" class="" href="#" data-toggle="modal" data-target="#connexionModal"><i class="fa fa-toggle-on fa-fw" aria-hidden="true"></i> Se connecter</a></li> -->
-
-		          	   		<li class="divider"></li>
-<<<<<<< HEAD
+							<!-- <li><a class="" href="<?= $this->url('membre_seConnecter') ?>" data-toggle="modal" data-target="#connexionModal"><i class="fa fa-toggle-on fa-fw" aria-hidden="true"></i> Se connecter</a></li> -->
+		                	<li><a id="connexionLink" class="" href="#" data-toggle="modal" data-target="#connexionModal"><i class="fa fa-toggle-on fa-fw" aria-hidden="true"></i> Se connecter</a></li>
 		          	   		<li><a class="" href="<?= $this->url('membre_inscription') ?>"><i class="fa fa-list-alt fa-fw" aria-hidden="true"></i> S'inscrire</a></li>
 		          	   		<li><a class="" href="<?= $this->url('membre_modifierProfil') ?>"><i class="fa fa-user fa-fw" aria-hidden="true"></i> Profil</a></li>
-		          	   		<li><a class="" href="<?= $this->url('membre_modifierProfilIntegration') ?>"><i class="fa fa-user fa-fw" aria-hidden="true"></i> Profil Intégration</a></li>
-		          	   		<li><a href="#"><i class="fa fa-toggle-off fa-fw" aria-hidden="true"></i> Se déconnecter</a></li>
-=======
-		          	   		<li><a class="fancybox fancybox.iframe" href="<?= $this->url('membre_inscription') ?>">S'inscrire</a></li>
-		          	   		<li><a class="fancybox fancybox.iframe" href="<?= $this->url('membre_modifierProfil') ?>">Profil</a></li>
-		          	   		<li><a href="<?= $this->url('membre_seDeconnecter') ?>">Se déconnecter</a></li>
->>>>>>> refs/remotes/origin/master
+		          	   		<li><a class="" href="<?= $this->url('membre_modifierProfilIntegration') ?>"><i class="fa fa-user fa-fw" aria-hidden="true"></i> Profil Intégration</a></li>		          	   		
+		          	   		<li><a href="<?= $this->url('membre_seDeconnecter') ?>"><i class="fa fa-toggle-off fa-fw" aria-hidden="true"></i> Se déconnecter</a></li>
+
 		          	 	</ul>
 		         	</li>
 		        </ul>
