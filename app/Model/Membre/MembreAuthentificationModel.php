@@ -6,5 +6,5 @@ class MembreAuthentificationModel extends \W\Security\AuthentificationModel
 	
 }
 
- 	
+?>	
 	
