@@ -1,12 +1,11 @@
 <?php 
-namespace Model;
-use Modele\;
+namespace Model\Membre;
 /**
 * 
 */
-class Membre
+class MembreModel extends \W\Model\Model
 {
-	private $idMembre;
+/*	private $idMembre;
 	private $genre;
 	private $firstname;
 	private $lastname;
@@ -41,7 +40,7 @@ class Membre
 		$email,
 		$numEga,
 		$numFfg,
-		$photo;
+		$photo,
 		$pwd,
 		$pwdConfirm
 		)
@@ -61,12 +60,12 @@ class Membre
 		
 		$this->numEga        = $numEga;
 		$this->numFfg        = $numFfg;
-		$this->photo;        = $photo;
+		$this->photo         = $photo;
 		
 		$this->pwd           = $pwd;
 		$this->pwdConfirm    = $pwdConfirm;
 	}
-
+*/
 
 }
 

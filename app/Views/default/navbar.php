@@ -56,7 +56,7 @@
 		          	   		<li class="divider"></li>
 		          	   		<li><a class="fancybox fancybox.iframe" href="<?= $this->url('membre_inscription') ?>">S'inscrire</a></li>
 		          	   		<li><a class="fancybox fancybox.iframe" href="<?= $this->url('membre_modifierProfil') ?>">Profil</a></li>
-		          	   		<li><a href="#">Se déconnecter</a></li>
+		          	   		<li><a href="<?= $this->url('membre_seDeconnecter') ?>">Se déconnecter</a></li>
 		          	 	</ul>
 		         	</li>
 		        </ul>

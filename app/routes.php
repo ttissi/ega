@@ -1,8 +1,6 @@
 <?php
 	
 	$w_routes = array(
-
-		// Méthode http - masque URL associé _ NomController#nomMethodeAAppeler - NomRoute
 		['GET', '/', 'Default#home', 'default_home'],
 		['GET', '/accueil', 'Default#home', 'default_accueil'],
 		['GET', '/plan_site', 'Default#planSite', 'default_planSite'],		
@@ -14,9 +12,10 @@
 						
 		['GET|POST', '/inscription', 'Membre#inscription', 'membre_inscription'],
 		['GET|POST', '/connexion', 'Membre#seConnecter', 'membre_seConnecter'],
+		['GET|POST', '/nouveau_password/[:numEgaMembre]', 'Membre#pwdNew', 'membre_pwdNew'],
 		['GET|POST', '/profil', 'Membre#modifierProfil', 'membre_modifierProfil'],
+		['GET|POST', '/deconnexion', 'Membre#seDeconnecter', 'membre_seDeconnecter'],
 		['GET|POST', '/carte', 'Golf#initialiseCarte', 'golf_initialiseCarte'],		
 		['GET', '/produit/affichage', 'Produit#affichage', 'produit_affichage'],
 		['GET|POST', '/produit/creation', 'ProduitCreation#creation', 'produitCreation_creation'],
-		['GET|POST', '/produit/visualisation', 'ProduitVisualisation#visualisation', 'produit_visualisation'],
 	);
