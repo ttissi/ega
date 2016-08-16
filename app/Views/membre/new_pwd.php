@@ -1,4 +1,4 @@
-<?php $this->layout('layout', ['title' => ' || Connexion']) ?>
+<?php $this->layout('layout', ['title' => 'EGA | Nouveau password']) ?>
 
 <?php echo $this->start('main_content') ?>
 	<h2>Création d'un nouveau mot de passe.</h2>
