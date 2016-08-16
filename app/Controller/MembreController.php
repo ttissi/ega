@@ -15,39 +15,6 @@ class MembreController extends Controller
 	/**
 	 * Méthodes pour membres
 	 */
-	// ------------ inscription ------------ 
-/*	public function inscription()
-	{
-		// Vérification des données POST
-		if($_POST)
-		{
-			// Vérifications d'usage des saisies
-			#Code...
-
-			// Insertion en BDD 
-			// J'appelle mon Model chargée de l'inscription de mon membre
-			$db = new MembreModel; // J'instancie un objet.
-			$Membre->setPrimaryKey('id_membre'); // Je précise pour W la clé primaire de ma table
-			$Membre->setTable('membres'); // Je précise également la table
-
-			// Je crée un tableau avec mes données
-			$data = array();
-			
-				// id_membre => null //(mettre à null pour qu'il le fasse automatiquement)
-				// adresse => $_POST['adresse'],
-				// 'password' => password_hash($_POST['pwd'], PASSWORD_DEFAULT);
-			
-
-			// J'appelle la méthode insert du Model
-			$db->insert($data); // Je passe en paramètre mon tableau de données
-
-			// Je fais une redirection en cas de succès.
-			$this->show('default/home');
-		}
-
-		// Envoie à la vue inscription du dossier membre
-		$this->show('membre/inscription');
-	}*/
 
 	// ------------ méthode seConnecter ------------ 
 	public function seConnecter() 
@@ -60,8 +27,8 @@ class MembreController extends Controller
 			
 			// Saisie num_ega et pwd (dans le formulaire)
 			// Mon controlleur récupere les 2 infos
-			$login = $_POST['login'];
-			$pwd   = $_POST['pwd'];
+			$login =  trim(strip_tags($_POST['login']));
+			$pwd   =  trim(strip_tags($_POST['pwd']));
 
 			if(null!==$login && null!==$pwd)
 			{
@@ -125,8 +92,8 @@ class MembreController extends Controller
 			$MembreAuthentificationModel = new MembreAuthentificationModel;
 
 			// Mon controlleur récupere les mots de passe pour les comparer
-			$pwdNew     = $_POST['pwdNew'];
-			$pwdConfirm = $_POST['pwdConfirm'];
+			$pwdNew     =  trim(strip_tags($_POST['pwdNew']));
+			$pwdConfirm =  trim(strip_tags($_POST['pwdConfirm']));
 
 			if(null!==$pwdNew && null!==$pwdConfirm)
 			{									
@@ -154,34 +121,72 @@ class MembreController extends Controller
 			} // End if($pwdNew == $pwdConfirm)
 
 		} // if ($_POST)
-
-		$this->show('membre/pwd_new');
-
+		$this->show('membre/new_pwd');
+							
 	} // End function pwdNew
 
 
 	// -----------  méthode modifierProfil ------------
 	public function modifierProfil() 
 	{
+		if(isset($_POST['btnModifier']))
+		{
+			
+			$MembreModel = new MembreModel;
+			$MembreModel->setTable('membres'); // Précise la table
+			$MembreModel->setPrimaryKey('id_membre'); // Précise clé primaire
+
+			$idMembre = $_SESSION['user']['id_membre'];
+
+			$adresse   = trim(strip_tags($_POST['adresse']));
+			$cp        = trim(strip_tags($_POST['cp']));
+			$ville     = trim(strip_tags($_POST['ville']));
+			$telMobile = trim(strip_tags($_POST['telMobile']));
+			$telFixe   = trim(strip_tags($_POST['telFixe']));
+			$email     = trim(strip_tags($_POST['email']));
+
+			$data = [
+				'adresse'     => $adresse,
+				'code_postal' => $cp,
+				'ville'       => $ville,
+				'mobile'      => $telMobile,
+				'fixe'        => $telFixe,
+				'email'       => $email
+			];
+			
+			// Update
+			if($MembreModel->update($data, $idMembre))
+			{
+				$Membre                      = $MembreModel->find($idMembre);
+				$MembreAuthentificationModel = new MembreAuthentificationModel;
+
+				$MembreAuthentificationModel->logUserIn($Membre);
+				
+				echo "Vos modifications ont bien été enregistrées.";
+			}
+
+			else 
+			{
+				echo "Vos modifications n'ont pas pu être enregistrées";
+			}
+		} // END if(isset($_POST['btnModifier']))
+
 		//$this->allowTo('actif');
 		$this->show('membre/profil');
-	}
+	} // END function modifierProfil() 
 
-	public function modifierProfilIntegration() 
-	{
-		//$this->allowTo('actif');
-		$this->show('membre/profil-ti');
-	}
-
+	
 	// ----------- méthode seDeconnecter -----------
 	public function seDeconnecter()
 	{
+
+		$MembreAuthentificationModel = new MembreAuthentificationModel;
 		$MembreAuthentificationModel->logUserOut();
+
+		echo "Vous avez bien été déconnecté.";
 		$this->show('default/home');
 	}
 
-} // End class
+} // END class
 
-// ===========================================
-// Utilisation de la méthode :
-//$id_membre = $db->isValidLoginInfo($_POST['login'], $_POST['pwd']);
+

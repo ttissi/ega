@@ -64,7 +64,8 @@ class MembreModel extends \W\Model\Model
 		
 		$this->pwd           = $pwd;
 		$this->pwdConfirm    = $pwdConfirm;
-	}*/
+	}
+*/
 
 }
 
