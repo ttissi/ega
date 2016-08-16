@@ -23,11 +23,19 @@ class GolfController extends Controller
 
 		// -- Récupération de la liste de tous les golfs
 		$ListeDeMesGolfs = $dbgolf -> findAll($orderBy = "nom", $orderDir = "ASC", $limit = null, $offset = null);
+		$GolfChoisi = null;
+		
+		if($_GET) {
+			if(null !== $_GET['golf']) {
+				$GolfChoisi = $dbgolf -> find($_GET['golf']);
+			}
+		}
 
 		$this -> show('golf/carte', 
 						[
 							'golfParDefaut' => $MonObjetGolf, 
-							'golfs' 		=> $ListeDeMesGolfs
+							'golfs' 		=> $ListeDeMesGolfs,
+							'golfChoisi'	=> $GolfChoisi
 						]);
 	}
 

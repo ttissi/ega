@@ -19,7 +19,7 @@
                 <div class="form-group">
                     <label for="golfId"></label>
                     <!-- <select name="golfChoisi" id="golfChoisiId" onchange="change(this.value)"> -->
-                    <select name="golfChoisi" id="golfChoisiId" onchange="initialisation(this[this.selectedIndex].value)">
+                    <select name="golfChoisi" id="golfChoisiId" onchange="document.location.href='carte?golf='+this.value">
                         <option disabled selected>Centrer la carte sur...</option>
                         <?php 
                             foreach ($golfs as $golf) { ?>
@@ -37,7 +37,6 @@
 
 <!-- Affichage de la carte Google Map sur la partie centrale -->
 <?php $this->start('main_content') ?>
-    
 
     <div id="map" class="col-md-6 col-md-offset-2 text-center well"></div>
 
@@ -56,6 +55,8 @@
             // qui a été passée lors de l'appel de ce programme
             var dataGolfs   = <?php echo json_encode($golfs, JSON_FORCE_OBJECT); ?>;
             var golfDefaut  = <?php echo json_encode($golfParDefaut, JSON_FORCE_OBJECT); ?>;
+            var golfChoisi  = <?php echo json_encode($golfChoisi, JSON_FORCE_OBJECT); ?>;
+            
 
 /*  ************ BLOC de DEBUG pour vérification de valeur (A supprimer à la fin)
             
@@ -147,15 +148,13 @@
 
                 // console.log(parseFloat(golfSelectionne[id_golf]));
 
-                if (typeof(golfSelectionne) == 'undefined') {
-                    markerIcon = markerGolfStandard;
-                    console.log('markerGolfStandard');
+               
+                if(golfChoisi != null && dataGolfs[i]['id_golf'] == golfChoisi['id_golf']) {
+                        markerIcon = markerGolfChoisi;                        
                 } else if (dataGolfs[i]['id_golf'] == golfDefaut['id_golf']) {
                     markerIcon = markerGolfDefault; 
-                    console.log('markerGolfDefault');
                 } else {
-                    // markerIcon = markerGolfChoisi;
-                    // console.log('markerGolfChoisi');
+                    markerIcon = markerGolfStandard;
                 }
         
                 // Crée un marqueur et le positionne

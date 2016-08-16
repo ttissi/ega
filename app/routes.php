@@ -15,6 +15,7 @@
 		['GET|POST', '/inscription', 'Membre#inscription', 'membre_inscription'],
 		['GET|POST', '/connexion', 'Membre#seConnecter', 'membre_seConnecter'],
 		['GET|POST', '/profil', 'Membre#modifierProfil', 'membre_modifierProfil'],
+		['GET|POST', '/profilIntegration', 'Membre#modifierProfilIntegration', 'membre_modifierProfilIntegration'],		
 		['GET|POST', '/carte', 'Golf#initialiseCarte', 'golf_initialiseCarte'],		
 		['GET', '/produit/affichage', 'Produit#affichage', 'produit_affichage'],
 		['GET|POST', '/produit/creation', 'ProduitCreation#creation', 'produitCreation_creation'],
