@@ -15,6 +15,7 @@ class MembreController extends Controller
 	/**
 	 * Méthodes pour membres
 	 */
+
 	// ------------ méthode seConnecter ------------ 
 	public function seConnecter() 
 	{
@@ -174,10 +175,11 @@ class MembreController extends Controller
 		$this->show('membre/profil');
 	} // END function modifierProfil() 
 
-
+	
 	// ----------- méthode seDeconnecter -----------
 	public function seDeconnecter()
 	{
+
 		$MembreAuthentificationModel = new MembreAuthentificationModel;
 		$MembreAuthentificationModel->logUserOut();
 
@@ -186,4 +188,5 @@ class MembreController extends Controller
 	}
 
 } // END class
+
 

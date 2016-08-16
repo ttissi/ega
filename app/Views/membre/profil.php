@@ -3,6 +3,7 @@
 <?php echo $this->start('main_content') ?>
 
 	<h1>Page profil</h1>
+
 	<h2>Bienvenue <?php echo ucfirst(strtolower($w_user['prenom'])) ?> sur votre page profil.</h2>
 	
 	<?php // print_r($w_user); ?>
@@ -57,6 +58,7 @@
 			</fieldset>
 
 			<fieldset>
+
 				<legend><a href="<?= $this->url('membre_pwdNew'); ?>">Changer de mot de passe</a></legend>
 				<!-- <label for="pwdOld">Mot de passe actuel</label>
 				<input type="password" name="pwdOld" id="pwdOld" placeholder="************">
@@ -66,12 +68,12 @@
 
 				<label for="pwdConfirm">Confirmez votre nouveau mot de passe</label>
 				<input type="password" name="pwdConfirm" id="pwdConfirm" placeholder="************"> -->
+
 			</fieldset>
 
 			<input type="submit" name="btnModifier" value="Enregistrer">
 			<input type="reset" name="btnAnnuler" value="Annuler">
 
-		</fieldset>
 	</form>
 
 <?php echo $this->stop('main_content') ?>

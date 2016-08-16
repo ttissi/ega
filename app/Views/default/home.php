@@ -1,30 +1,74 @@
 <?php $this->layout('layout', ['title' => 'EGA | Accueil']) ?>
 
+<!-- Affichage du contenu de la zone principale centrale -->
 <?php $this->start('main_content') ?>
-	
-	<div class="row">
-  
-	  	<div class="col-md-8 col-md-offset-1">
-	      	<?php include('caroussel.php') ?>
-	  	</div>  <!-- /.col-md-9 -->
-	  
-	    <div id="sidebar_right" class="col-md-2">
-	        <div class="row">
-            	<div class="col-xs-6 text-center">	        
-					<h1 class="police-2em text-center">Favoris</h1>
-	        	</div>
-            	<div class="col-xs-6 text-center">
-	              	<p><a href="http://www.ega.asso.fr"><img src="assets/img/reservations_ega.jpg" style="width:50%" alt="Image-lien vers site de réservations EGA"><br>Réservations</a></p>
-	            </div>
-			</div>
-			<div class="row">
-            	<div class="col-xs-12 text-center well">
-              		<p>Votre météo sur <strong><?php if (isset($_POST['golf'])) { echo $_POST['golf']; } else { echo 'Eaubonne'; } ?><strong></p>
-              		<?php include('meteo.php') ?>
-            	</div>
-          	</div>
-		</div>  <!-- /.col-md-3 -->
 
-	</div>
+	<?php include('caroussel.php') ?>
+
+
+	<div class="container">
+  
+  	<hr>
+  
+  	<div class="row">
+        <div class="col-md-4">
+          <div class="panel panel-default">
+            <div class="panel-heading"><h3>Bonnes vacances à tous</h3></div>
+            <div class="panel-body text-justify">Le practice EGA sera fermé du <strong>dimanche 24 juillet à 12h00 au Lundi 22 août</strong>.<br>Quelques compétitions seront organisées cet été. Vous pouvez vous y inscrire via le module de Réservation.<br>Nous vous retrouverons à la rentrée... en pleine forme.
+            </div>
+          </div>
+        </div>
+      	<div class="col-md-4">
+        	<div class="panel panel-default">
+            <div class="panel-heading"><h3>Compétitions estivales</h3></div>
+            <div class="panel-body text-justify">
+        		<ul>
+        			<li>Golf de Domont - 16 juillet 2016 (formule Stableford)</li>
+        			<li>Golf de Fontainebleau - 3 ou 4 août 2016 (formule Stableford)</li>
+        		</ul>
+        		<hr>
+        		<p>Pensez-y et contactez-les... nos golfs partenaires proposent également de nombreuses compétitions individuelle et en équipe durant tout l'été.</p>
+            </div>
+          </div>
+        </div>
+      	<div class="col-md-4">
+        	<div class="panel panel-default">
+            <div class="panel-heading"><h3>Hello.</h3></div>
+            <div class="panel-body text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. 
+            Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis 
+            dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan. 
+            Aliquam in felis sit amet augue.
+            </div>
+          </div>
+        </div>
+    </div>
 
 <?php $this->stop('main_content') ?>
+
+<!-- Affichage du contenu de la barre latérale droite -->
+<?php $this->start('sidebar_right') ?>	  
+
+	<div class="row">
+
+		<div class="panel panel-default">
+			
+			<div class="panel-heading">
+				<h1 class="panel-title police-1-5em">Favoris</h1>
+			</div>
+			<div class="panel-body text-center">
+				<p><a href="http://www.ega.asso.fr"><img src="<?= $this->assetUrl('img/reservations_ega.jpg') ?>" style="width:25%" alt="Image-lien vers site de réservations EGA"><br>Réservations</a></p>
+			</div>
+
+        	<div class="panel-heading text-center">
+				<p>Votre météo sur <strong><?php if (isset($_POST['golf'])) { echo $_POST['golf']; } else { echo 'Eaubonne'; } ?></strong></p>
+			</div>
+          	<div class="panel-body text-center">
+          		<?php include('meteo.php') ?>
+          	</div>
+
+       	</div>
+       	
+	</div>
+
+<?php $this->stop('sidebar_right') ?>
+

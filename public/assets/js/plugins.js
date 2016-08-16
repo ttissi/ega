@@ -50,21 +50,13 @@ $(function() {
     $('.dropdown-menu').find('form').click(function (e) {
         e.stopPropagation();
     });
-
- 
-    // =========================================================
-    //   Activation de Fancybox (for the forms : CGU...)
-    // =========================================================
-
-    $('.fancybox').fancybox();
- 
+    
 
     // ============================================================================
     //   Affichage du module de sélection d'un golf ou recherche d'un intinéraire
     // ============================================================================
 
     google.maps.event.addDomListener(window, 'load', initialisation);
-            
 
 
 });

@@ -14,7 +14,9 @@
 
 		<p>Nous terminerons en citant Alain MEUNIER, président fondateur d'E.G.A., qui nous rappelle le pourquoi d'E.G.A. :</p>
 
-			<blockquote class="bkg-vert-clair txt-vert"><strong>E.G.A. est une association de la loi 1901, dont l'objet est l'apprentissage et la pratique du golf dans des conditions très avantageuses.</strong></blockquote>
+			<blockquote class="bkg-vert-clair txt-vert">
+				<p><strong>E.G.A. est une association de la loi 1901, dont l'objet est l'apprentissage et la pratique du golf dans des conditions très avantageuses.</strong></p>
+			</blockquote>
 
 		<h2>Le Golf : Sport ou loisir ?</h2>
 
@@ -23,7 +25,10 @@
 		<p>Laissez les esprits chagrins se poser éternellement la question...
 		Un jour vous les retrouverez peut-être, clubs en mains et passionnés, arpentant les fairways ! Ces nouveaux convertis comprennent alors que le Golf est beaucoup plus qu'un sport ou un loisir : c'est un plaisir, une drogue, un sacerdoce, le huitième pêché capital...</p>
 
-			<blockquote class="bkg-vert-clair txt-vert"><strong>"Le golf est une agréable promenade gâchée par une petite balle blanche"</strong><br />aimait à dire Mark Twain.</blockquote> 
+			<blockquote class="bkg-vert-clair txt-vert">
+				<p><strong>"Le golf est une agréable promenade gâchée par une petite balle blanche"</strong></p>
+				<footer>aimait à dire <cite title="Mark Twain">Mark Twain</cite>.</footer>
+			</blockquote> 
 
        	<p>Mais, avant tout le golf est un jeu <strong>"<span class="txt-vert">The game</span>"</strong> comme le définissent nos cousins britanniques que l'on découvre à tout âge et que l'on pratique toute sa vie.</p>
 
