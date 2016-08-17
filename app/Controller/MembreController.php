@@ -175,6 +175,11 @@ class MembreController extends Controller
 		$this->show('membre/profil');
 	} // END function modifierProfil() 
 
+	// -----------  méthode modifierProfil ------------
+	public function modifierProfilIntegration() 
+	{
+		$this->show('membre/profil-ti');
+	}
 	
 	// ----------- méthode seDeconnecter -----------
 	public function seDeconnecter()

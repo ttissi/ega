@@ -1,5 +1,4 @@
 <!-- <?php // include_once("default/init.php"); ?> -->
-<!-- <?php // include_once("default/haut-page.php"); ?> -->
 
 <?php include_once("default/header-start.php"); ?>
 	<title><?= $this->e($title) ?></title>
