@@ -53,11 +53,11 @@
 		          		<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Espace Membres <span class="caret"></span></a>
 		          	    <ul class="dropdown-menu" role="menu">
 
-							<!-- <li><a class="" href="<?= $this->url('membre_seConnecter') ?>" data-toggle="modal" data-target="#connexionModal"><i class="fa fa-toggle-on fa-fw" aria-hidden="true"></i> Se connecter</a></li> -->
-		                	<li><a id="connexionLink" class="" href="#" data-toggle="modal" data-target="#connexionModal"><i class="fa fa-toggle-on fa-fw" aria-hidden="true"></i> Se connecter</a></li>
+							<li><a class="" href="<?= $this->url('membre_seConnecter') ?>"><i class="fa fa-toggle-on fa-fw" aria-hidden="true"></i> Se connecter</a></li>
+		                	<li><a id="connexionLink" class="" href="#" data-toggle="modal" data-target="#connexionModal"><i class="fa fa-toggle-on fa-fw" aria-hidden="true"></i> (Se connecter)</a></li>
 		          	   		<li><a class="" href="<?= $this->url('membre_inscription') ?>"><i class="fa fa-list-alt fa-fw" aria-hidden="true"></i> S'inscrire</a></li>
 		          	   		<li><a class="" href="<?= $this->url('membre_modifierProfil') ?>"><i class="fa fa-user fa-fw" aria-hidden="true"></i> Profil</a></li>
-		          	   		<li><a class="" href="<?= $this->url('membre_modifierProfilIntegration') ?>"><i class="fa fa-user fa-fw" aria-hidden="true"></i> Profil Intégration</a></li>		          	   		
+		          	   		<li><a class="" href="<?= $this->url('membre_modifierProfilIntegration') ?>"><i class="fa fa-user fa-fw" aria-hidden="true"></i> (Profil Intégration)</a></li>		          	   		
 		          	   		<li><a href="<?= $this->url('membre_seDeconnecter') ?>"><i class="fa fa-toggle-off fa-fw" aria-hidden="true"></i> Se déconnecter</a></li>
 
 		          	 	</ul>
@@ -90,6 +90,7 @@
 		                        	<input class="form-control" type="text" id="login" name="login" placeholder="0000" value="3022" autofocus>
 		                      	</div>
 		                    </div>
+		                    <span class="help-block alert-danger text-center"></span>
 
 		                    <label class="control-label" for="pwd"> Mot de passe</label>
 		                  	<div class="form-group">
@@ -98,6 +99,7 @@
 		                        	<input class="form-control" type="password" id="pwd" name="pwd" placeholder="***************" value="517841160">
 		                      	</div>
 		                    </div>
+		                    <span class="help-block alert-danger text-center"></span>
 
 		                  	<div class="row form-group pull-right">
 		                    	<input type="reset" value="Réinitialiser" class="btn btn-primary">

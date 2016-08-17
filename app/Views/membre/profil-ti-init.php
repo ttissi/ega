@@ -247,9 +247,7 @@
 			            	</div>
 			          	</div>
 			        </div>
-			        <div class="row">
-			        	<a class="btn btn-primary" name="btnModifPwd" href="<?= $this->url('membre_pwdNew'); ?>">Changer de mot de passe</a>
-			        </div>
+
 	        	 </div>
         	</div>		<!-- Fin Bloc Coordonnées du membre -->
 
