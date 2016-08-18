@@ -40,10 +40,10 @@
 					<?= $this->section('modal_windows') ?>
 			</section>
 
-
-	<?php include_once("default/footer.php"); ?>
-
 </div>  <!--  FIN div container -->
+
+<?php include_once("default/footer.php"); ?>
+
 
 <?php include_once("default/bas-page.php"); ?>
 
