@@ -49,7 +49,7 @@
                 <p><i class="fa fa-envelope fa-4x" aria-hidden="true"></i>&nbsp; <span class="modal-title police-1-5em" id="contactModalLabel">Nouveau message</span></p>
             </div>
             <div class="modal-body">
-                <form>
+                <form id="contactForm" method="POST" action=">
                     <div class="form-group">
                         <label for="nomDestinataireId" class="control-label">Destinataire:</label>
                         <input type="text" class="form-control" id="nomDestinataireId" placeholder="A renseigner uniquement... si destiné à un membre particulier du bureau">
