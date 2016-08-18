@@ -1,4 +1,5 @@
 <!-- <?php // include_once("default/init.php"); ?> -->
+<!-- <?php // include_once("default/haut-page.php"); ?> -->
 
 <?php include_once("default/header-start.php"); ?>
 	<title><?= $this->e($title) ?></title>
@@ -40,10 +41,10 @@
 					<?= $this->section('modal_windows') ?>
 			</section>
 
+
+	<?php include_once("default/footer.php"); ?>
+
 </div>  <!--  FIN div container -->
-
-<?php include_once("default/footer.php"); ?>
-
 
 <?php include_once("default/bas-page.php"); ?>
 
