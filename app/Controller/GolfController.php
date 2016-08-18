@@ -19,12 +19,24 @@ class GolfController extends Controller
 
 		// -- Pour centrer sur les coordonnées du Practice EGA
 		DEFINE ("LIEUFAVORI", "2");
-		$MonObjetGolf = $dbgolf -> getGolf(LIEUFAVORI);
+		$MonObjetGolf = $dbgolf -> find(LIEUFAVORI);
 
 		// -- Récupération de la liste de tous les golfs
-		$ListeDeMesGolfs = $dbgolf -> findAll();
+		$ListeDeMesGolfs = $dbgolf -> findAll($orderBy = "nom", $orderDir = "ASC", $limit = null, $offset = null);
+		$GolfChoisi = null;
+		
+		if($_GET) {
+			if(null !== $_GET['golf']) {
+				$GolfChoisi = $dbgolf -> find($_GET['golf']);
+			}
+		}
 
-		$this -> show('golf/carte', ['golfParDefaut' => $MonObjetGolf, 'golfs' => $ListeDeMesGolfs]);
+		$this -> show('golf/carte', 
+						[
+							'golfParDefaut' => $MonObjetGolf, 
+							'golfs' 		=> $ListeDeMesGolfs,
+							'golfChoisi'	=> $GolfChoisi
+						]);
 	}
 
 	// Permet de créer un nouveau golf partenaire

@@ -11,11 +11,27 @@ body {
 }
 
 .container {
-	margin-bottom: 50px;
+	/* margin-bottom: 50px; */
 	/* Bordure à désactiver après les tests d'intégration */
-	border:  1px solid #0B610B;	
+	/* border:  1px solid #0B610B;	 */
 	margin: 0 auto;
 	width:  100%;
+}
+
+.no-marge-top {
+	margin-top:  0;
+}
+
+.no-marge-bottom {
+	margin-bottom:  0;
+}
+
+.margin-top-50 {
+	 margin-top: 50px;
+}
+
+.margin-top-20 {
+	 margin-top: 20px;
 }
 
 #logo-site {
@@ -24,9 +40,32 @@ body {
     box-shadow: 6px 6px 6px white;
 }
 
+/* Petit bouton à droite pour remonter en haut de page */
+#scroll-top a {
+/*     width: 16px;
+    height: 16px; */
+    color: #fff;
+    padding: 0 10px 0px 10px;
+    border-radius: 8px;
+    background: #818c90;
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    opacity: 0.89;
+    z-index: 1000;
+}
+
+#map {
+	margin: 0;
+	height: 75vh;
+	width: 60vw;
+}
+
 h1 {
 	font-size: 1.2em;
 }
+
+.souligne { text-decoration: underline; }
 
 .navbar {
 	background: #0B610B;
@@ -55,10 +94,78 @@ h1 {
 	width:25%
 } */
 
+.bkg-vert-clair {
+	background-color: #CCFFCC;
+}
+
+.txt-vert {
+	color: #006600;
+}
+
+.txt-rouge {
+	color: #FF0000;
+}
+
+.font-courrier {
+	font-family: Comic Sans MS, sans-serif;
+}
+
+ p.lettrine::first-letter {
+  font-family: 'Lemonada', cursive;
+  font-size: 3.5em;
+  padding-right: 0.2em;
+  color: #FF0000;
+}
+
+.input-group-addon.primary {
+    /* color: rgb(255, 255, 255); */
+    background-color: rgb(50, 118, 177);
+    border-color: rgb(40, 94, 142);
+}
+.input-group-addon.success {
+    /* color: rgb(255, 255, 255); */
+    background-color: rgb(92, 184, 92);
+    border-color: rgb(76, 174, 76);
+}
+.input-group-addon.info {
+    /* color: rgb(255, 255, 255); */
+    background-color: rgb(57, 179, 215);
+    border-color: rgb(38, 154, 188);
+}
+.input-group-addon.warning {
+    /* color: rgb(255, 255, 255); */
+    background-color: rgb(240, 173, 78);
+    border-color: rgb(238, 162, 54);
+}
+.input-group-addon.danger {
+    /* color: rgb(255, 255, 255); */
+    background-color: rgb(217, 83, 79);
+    border-color: rgb(212, 63, 58);
+}
+
+
 #panel_left {
-	margin-top: 55px;
+	margin-top: 0px;
 	padding-top: 0px;
-	height: 100%;
+}
+
+#rowPanelLeftId {}
+
+.mh600 {
+	min-height: 560px;
+}
+
+.mw200 {
+	max-width: 200px;
+}
+
+#panelGolfs_leftId {
+	background-color: #f5f5f5;
+}
+
+#panelGolfs_leftId .panel-body {
+	padding: 5px;
+	background-color: #f5f5f5;
 }
 
 #rechercheGolfId {
@@ -73,6 +180,18 @@ h1 {
 	font-size: 2em;
 }
 
+.police-1-5em {
+	font-size: 1.5em;
+}
+
+.police-1-2em {
+	font-size: 1.2em;
+}
+
+.police-1-1em {
+	font-size: 1.1em;
+}
+
 #carouselButtons {
     margin: O auto;
     bottom: 0px;
@@ -81,6 +200,59 @@ h1 {
 ul.nobullet {
 	list-style-type: none;
 }
+
+.modal-body {
+	background-color: #EEEEEE;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	color: #333;
+	font-family: "Open Sans", Helvetica, Arial, sans-serif; 
+	font-weight: 300; 
+}
+	
+/* h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { font-weight: inherit; }
+h1 { font-size: 49px; line-height: 51px; margin-bottom: 20px; letter-spacing: -0.06em; }
+h2 { font-size: 35px; line-height: 40px; margin-bottom: 20px; letter-spacing: -0.04em; }
+h3 { font-size: 28px; line-height: 34px; margin-bottom: 14px; }
+h4 { font-size: 21px; line-height: 30px; margin-bottom: 12px; }
+h5 { font-size: 17px; line-height: 24px; margin-bottom: 10px; }
+h6 { font-size: 14px; line-height: 21px; } */
+
+.h4-subtitle {
+	margin: 21px 0 15px 0;
+	color: #c4c6c8;
+    border-bottom: 4px solid #252627;
+    padding-bottom: 6px;
+    font-size: 1.5em;
+    letter-spacing: 0em;
+    font-weight: bold;
+    text-transform: uppercase;
+    line-height: 2em;
+    clear: both;
+}
+
+#footer {
+    width: 100%;
+    padding: 10px 0 0 0;
+    background: #202020;
+    border-top: 5px solid #e5e5e5;
+}
+
+#footer p, address {
+    line-height: 19px;
+    color: #AFB4B7;
+}
+
+.tab-20 {
+	padding-left: 20px;
+}
+
+#footer ul {
+	padding-left: 20px;
+}
+
+/* Gestion des @media queries pour le responsive design */
 
 @media screen and (max-width:300px) {
 	.not_mobile { display:none; }

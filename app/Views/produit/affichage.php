@@ -1,151 +1,272 @@
-<!doctype html>
-<html lang="fr">
-<head>
-	<meta charset="UTF-8">
-	<title>EGA || Produit</title>
-	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
-	<!-- <link rel="stylesheet" href="/resources/demos/style.css"> -->
-	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-	<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
-	<script>
-	$( function() {
-		$( "#slider-range" ).slider({
-			range: true,
-			min: 0,
-			max: 10000,
-			values: [ 10, 300 ],
-			slide: function( event, ui ) {
-				$( "#amount" ).val( "€" + ui.values[ 0 ] + " - €" + ui.values[ 1 ] );
-			}
-		});
-		$( "#amount" ).val( "€" + $( "#slider-range" ).slider( "values", 0 ) +
-			" - €" + $( "#slider-range" ).slider( "values", 1 ) );
-	} );
-	</script>
-</head>
-<body>
+<?php $this->layout('layout', ['title' => ' EGA | Profil']) ?>
+
+<?php echo $this->start('main_content') ?>
+
+<?php 
+	// Fonction qui détermine l'âge d'une personne à la date du jour
+	function age($dateNaissance)  {
+
+		list ($annee, $mois, $jour) = explode('-', $dateNaissance);
+
+		$aujourdhui['jour'] 	= date('d');
+		$aujourdhui['mois'] 	= date('m');
+		$aujourdhui['annee'] 	= date('Y');	
+
+		$monAge = $aujourdhui['annee'] - $annee;
+		
+		if ($aujourdhui['mois'] <= $mois) {
+		  	if ($mois == $aujourdhui['mois']) {
+		    	if ($jour > $aujourdhui['jour'])
+		      		$monAge--;
+		    }
+		  	else
+		    	$monAge--;
+		}
+		return $monAge;
+	}
+?>
 
 
-</head>
-<body>
+<div class="well">
 
+	<p><h1 class=""><strong>Page profil</strong></h1></p>
+	<p>Bienvenue <strong><em><?php echo ucfirst(strtolower($w_user['prenom'])); ?></em></strong>, vous pouvez modifier vos informations sur cette page.</p>
 	
-	<h2>Bienvenue <?php  ?> sur la page produit.</h2>
-	
-	<form method="post" action="" id="formProduit">
-		<fieldset>
-			<legend>ESPACE DE VENTE DU MATERIEL DE GOLF</legend>
+	<form id="formProfil" method="POST" action="">
 
-			<fieldset>
-				<legend>Rechercher un matériel</legend>	
+		<!-- Récupération des n° de carte EGA et n° de licence FFGolf -->
+		<div class="row">
+            <div class="col-md-3 col-md-offset-5 col-sm-4 col-sm-offset-4">
+            	<div class="row">
+            		<div class="col-xs-8 text-right">N° carte EGA:</div>
+            		<div class="col-xs-4"><strong><?php echo $w_user['num_ega']; ?></strong></div>
+            	</div>
+            </div>
+        </div>
 
-				<select class="form-control" >
-					<option><label disabled>Catégorie</label></option>
-					<option value="un">Un</option>
-					<option value="deux">Deux</option>
-					<option value="trois">Trois</option>
-				</select>
+		<div class="row">
+            <div class="col-md-3 col-md-offset-5 col-sm-4 col-sm-offset-4">
+            	<div class="row">
+            		<div class="col-xs-8 text-right">N° licence FFG:</div>
+            		<div class="col-xs-4"><strong><?php echo $w_user['num_ffg']; ?></strong></div>
+            	</div>
+            </div>
+        </div>    <!-- Fin bloc numéros de carte EGA et FFG -->
 
-				<select class="form-control" >
-					<option><label disabled>Etat</label></option>
-					<option value="un">Un</option>
-					<option value="deux">Deux</option>
-					<option value="trois">Trois</option>
-				</select>
+		<!-- Affichage de la civilité du membre connecté -->
+     	<div class="row">
+        	<div class="col-md-4">
+          		<div class="form-group">
+		            <input type="radio" name="genre" value="monsieur" id="monsieur" <?php if($w_user['civilite'] == '') {echo 'checked disabled';} ?>>
+		            <label for="monsieur">Monsieur</label>
 
-				<select class="form-control" >
-					<option ><label disabled>Sexe</label></option>
-					<option value="un">Un</option>
-					<option value="deux">Deux</option>
-					<option value="trois">Trois</option>
-				</select>
+		            <input type="radio" name="genre" value="madame" id="madame" <?php if($w_user['civilite'] == 'f') {echo 'checked disabled';} ?>>
+		            <label for="madame">Madame</label>
+         		 </div>
+        	</div>
+	     </div>		<!-- Fin Bloc civilité -->
 
-				<select class="form-control" >
-					<option ><label disabled>Dextérité</label></option>
-					<option value="un">Un</option>
-					<option value="deux">Deux</option>
-					<option value="trois">Trois</option>
-				</select>
-			<br />
-			<label>Echelle de prix</label><br />
-			<input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
-			<div id="slider-range"></div>
 
-			</fieldset>
-				
-			<fieldset>
-				<legend>MES ANNONCES</legend>
-			
-				<span>
-				<h4>date_publication</h4>
-				<img src="?">Photo1
-				<p>Désignation...</p>
-				<p>état - Prix (€)</p>
-				</span>
+		<!-- Identité du membre -->
+        <div class="row">
 
-				<span>
-				<h4>date_publication</h4>
-				<img src="?">Photo2
-				<p>Désignation...</p>
-				<p>état - Prix (€)</p>
-				</span>
+        	<div class="container">
+        		
+        		<div class="col-md-6">
+        			<div class="container">
+        				
+						<!-- Affiche les nom et prénom du membre -->
+        				<div class="row">
+        					<div class="col-md-8">
+								<div class="form-group">
+	            					<div class="input-group">
+	                					<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+	                					<strong><input type="text" class="form-control" name="nom" id="nom" placeholder="Ex: Durosier" value="<?php echo $w_user['nom']; ?>" disabled></strong>
+	              					</div>
+	            				</div>
+					            <div class="form-group">
+					                <div class="input-group">
+					                  	<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+					                  	<strong><input type="text" class="form-control" name="prenom" id="prenom" placeholder="Ex: Albert" value="<?php echo $w_user['prenom']; ?>" disabled></strong>
+					                </div>
+					            </div> 
+				            </div>          				
+        				</div>
+						<!-- Affiche la date de naissance et l'âge du membre -->
+        				<div class="row">
+        					<div class="col-md-8">
+								<div class="form-group">
+						            <label class="control-label" for="date">Date de naissance</label>
+					                <div class="input-group">
+					                  <input type="date" class="form-control" name="date" id="date" value="<?php echo $w_user['date_naissance']; ?>" disabled>
+					                  <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+					                </div>
+        						</div>
+        					</div>
+        					<div class="col-md-4">
+					          	<div class="form-group">
+					          	<label class="control-label" for="age">Age</label>
+						            <div class="input-group">
+						                <!-- Calculer l'âge du membre en fonction de sa date de naissance et le jour courant -->
+						                <!-- echo age($w_user['date_naissance']) -->
+						                <input type="text" class="form-control" name="age" id="age" value="<?= age($w_user['date_naissance']); ?>" disabled>
+						                <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+						            </div>
+					          	</div>
+        					</div>
+        				</div>
 
-				<span>
-				<h4>date_publication</h4>
-				<img src="?">Photo3
-				<p>Désignation...</p>
-				<p>état - Prix (€)</p>
-				</span>
-			</fieldset>
+        			</div>
+        		</div>
 
-			<fieldset>
-				<legend>Les dernières annonces / Résultat de votre recherche</legend>
-				
-				<span>
-				<h4>date_publication</h4>
-				<img src="?">Photo1
-				<p>Désignation...</p>
-				<p>état - Prix (€)</p>
-				</span>
+        		<div class="col-md-4 col-md-offset-2">
+          			<div class="fileinput fileinput-new" data-provides="fileinput">
+						<div class="fileinput-new thumbnail" style="width: 150px; height: 150px;">
+						    <img src="<?php echo $this->assetUrl('img/membres/'.$w_user['photo']); ?>" alt="Photo du membre" style="max-width: 150px; max-height: 150px;">
+						</div> 
+						<div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 200px;"></div>
+						<div>
+						    <span class="btn btn-default btn-file"><span class="fileinput-new">Choisir une photo</span><span class="fileinput-exists">Changer</span><input type="file" name="photoMembre"></span>
+						    <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Supprimer</a>
+						</div>
+					</div>
+        		</div>
+        	</div>
+        </div>		<!-- Fin Bloc Identité du membre -->
 
-				<span>
-				<h4>date_publication</h4>
-				<img src="?">Photo2
-				<p>Désignation...</p>
-				<p>état - Prix (€)</p>
-				</span>
 
-				<span>
-				<h4>date_publication</h4>
-				<img src="?">Photo3
-				<p>Désignation...</p>
-				<p>état - Prix (€)</p>
-				</span>
+        <div class="row">
 
-				<span>
-				<h4>date_publication</h4>
-				<img src="?">Photo4
-				<p>Désignation...</p>
-				<p>état - Prix (€)</p>
-				</span>
+			<!-- Coordonnées du membre -->
+        	<div class="container">
+      		
+        		<div class="col-md-6">
+        		
+        			<div class="container">
+    			        <div class="row">
+				            <div class="col-md-12">
+				          		<div class="form-group">
+				              		<label for="adresse" class="control-label">Adresse :</label>
+                    				<textarea id="adresse" class="form-control" rows="4" placeholder="1, allée des Champs"> <?php echo $w_user['adresse']; ?> </textarea>
+				            	</div>
+				          	</div>
+				        </div>
 
-				<span>
-				<h4>date_publication</h4>
-				<img src="?">Photo5
-				<p>Désignation...</p>
-				<p>état - Prix (€)</p>
-				</span>
+        				<div class="row">
+        					<div class="col-md-4">
+								<div class="form-group">
+					              	<div class="input-group">
+					                	<span class="input-group-addon"><i class="fa fa-university" aria-hidden="true"></i></span>
+					                	<input type="text" class="form-control" name="cp" id="nom" placeholder="Ex: 95120" value="<?php echo $w_user['code_postal']; ?>">
+					              	</div>
+        						</div>
+        					</div>
+        					<div class="col-md-8">
+					          	<div class="form-group">
+					              	<div class="input-group">
+					                	<span class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></span>
+					                	<input type="text" class="form-control" name="ville" id="nom" placeholder="Ex: Ermont" value="<?php echo $w_user['ville']; ?>">
+					              	</div>
+					            </div>
+        					</div>
+        				</div>
 
-			</fieldset>
+					    <div class="row">
+					        <div class="col-md-6">
+					        	<div class="form-group">
+					            	<div class="input-group">
+						              	<span class="input-group-addon"><i class="fa fa-mobile" aria-hidden="true"></i></span>
+						              	<input type="text" class="form-control" name="telMobile" id="telMobile" placeholder="Ex :0601020304" value="<?php echo $w_user['mobile']; ?>">
+						            </div>
+					        	</div>
+					        </div>
+					        <div class="col-md-6">
+					        	<div class="form-group">
+					            	<div class="input-group">
+						              	<span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+						              	<input type="text" class="form-control" name="telFixe" id="telFixe" placeholder="Ex: 0102030405" value="<?php echo $w_user['fixe']; ?>">
+						            </div>
+					        	</div>
+					        </div>
+					    </div>
+					      
+					    <div class="row">
+						    <div class="col-md-12">
+					        	<div class="form-group">
+						            <div class="input-group">
+							            <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+							            <input type="text" class="form-control" name="email" id="email" placeholder="Ex: adresse@email.com" value="<?php echo $w_user['email']; ?>">
+						            </div>
+						        </div>
+					        </div>
+					    </div>
 
-			<h3>Informations sur la vente</h3>
-			<div>
-				<ul>
-					<li>Seuls les matériels et accessoires de golf des membres EGA sont permis à la vente.</li>
-					<li>EGA ne permet que la relation entre 2 membres souhaitant faire affaire.</li>
-					<li>Ega ne gére en aucune maniére la vente et décline toute responsabilité en cas de problème lors de la transaction.</li>
-				</ul>
+        			</div>
+        		</div>
+
+        		<div class="col-md-6">
+			        <div class="row">
+			        	<p><br></p>
+			        </div>
+			    </div>
+
+				<!-- Bloc Mots de passe -->
+	        	 <div class="col-md-4 col-md-offset-1 well bkg-vert-clair">
+			        <div class="row text-center">
+			        	<p><i class="glyphicon glyphicon-exclamation-triangle"></i><em>Ne renseigner qu'en cas de changement de mot de passe</em></p>
+			        </div>
+			        <div class="row">
+			            <div class="col-md-8 col-md-offset-2">
+			          		<div class="form-group primary">
+			              		<div class="input-group">
+			                		<span class="input-group-addon info"><i class="glyphicon glyphicon-lock"></i></span>
+			                		<input type="text" class="form-control" name="pwdOld" id="pwdOld" placeholder="Ancien mot de passe">
+			              		</div>
+			            	</div>
+			          	</div>
+			        </div>
+
+			        <div class="row">
+			            <div class="col-md-8 col-md-offset-2">
+			          		<div class="form-group">
+			              		<div class="input-group">
+			                		<span class="input-group-addon success"><i class="glyphicon glyphicon-lock"></i></span>
+			                		<input type="text" class="form-control" name="pwdNew" id="pwdNew" placeholder="Nouveau mot de passe">
+			              		</div>
+			            	</div>
+			          	</div>
+			        </div>
+
+			        <div class="row">
+			            <div class="col-md-8 col-md-offset-2">
+			          		<div class="form-group">
+			              		<div class="input-group">
+			                		<span class="input-group-addon success"><i class="glyphicon glyphicon-lock"></i></span>
+			                		<input type="text" class="form-control" name="pwdConfirm" id="pwdConfirm" placeholder="Confirmez votre nouveau mot de passe">
+			              		</div>
+			            	</div>
+			          	</div>
+			        </div>
+			        <div class="row">
+			        	<a class="btn btn-primary" name="btnModifPwd" href="<?= $this->url('membre_pwdNew'); ?>">Changer de mot de passe</a>
+			        </div>
+	        	 </div>
+        	</div>		<!-- Fin Bloc Coordonnées du membre -->
+
+
+       	</div>
+
+		<div class="row">
+			<div class="col-md-2 col-md-offset-3">
+        		<button type="button" class="btn btn-warning" name="btnAnnuler" value="Annuler"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Fermer et revenir à l'accueil</button>
 			</div>
-			
-		</fieldset>
+       		<div class="col-md-2 col-md-offset-2">
+      			<button type="button" class="btn btn-success" name="btnModifier" value="Modifier"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span> Appliquer les changements</button>
+        	</div>
+        </div>
+
 	</form>
+
+</div>
+
+<?php $this->stop('main_content') ?>
