@@ -115,8 +115,12 @@ class MembreController extends Controller
 	{
 		
 		$error = '';
+
 		if ($_POST) 
 		{
+			// Vérification si l'url n'est pas changée pour modifier un autre utilisateur
+			$numEgaTransmis = $numEgaMembre;
+
 			$MembreAuthentificationModel = new MembreAuthentificationModel;
 
 			// Mon controlleur récupere les mots de passe pour les comparer
@@ -141,10 +145,10 @@ class MembreController extends Controller
 					$MembreModel-> setTable('membres'); 		// Précise la table
 					$MembreModel-> setPrimaryKey('num_ega');	// Précise clé primaire
 
-					$Membre            = $MembreModel-> find($numEgaMembre);		// Récupération du membre concerné en BDD
+					$Membre            = $MembreModel-> find($numEgaTransmis);		// Récupération du membre concerné en BDD
 					$PremiereConnexion = $Membre['premiere_connexion'];				// Vérifie en BDD s'il s'agit de la premiere connexion
 
-					$MembreModel-> update($updateNewPwd, $numEgaMembre); // Modifie les données en BDD
+					$MembreModel-> update($updateNewPwd, $numEgaTransmis); // Modifie les données en BDD
 
 					// Si tout est ok, la connexion du membre est validée
 					$MembreAuthentificationModel-> logUserIn($Membre);
