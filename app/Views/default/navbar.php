@@ -10,7 +10,7 @@
 		           <span class="icon-bar"></span>
 		           <span class="icon-bar"></span>
 		        </button>
-		        <a class="navbar-brand" href="#"><img id="logo-site" src="<?= $this->assetUrl('img/logo_EGA.png') ?>" alt="Logo site EGA" height="100px"></a>
+		        <a class="navbar-brand" href="#"><img id="logo-site" src="assets/img/logo_EGA.png" alt="Logo site EGA" height="100px"></a>
 	        </div>	<!-- Fin DIV navbar-header -->
 
 			<div id="navbar-menu" class="navbar-collapse collapse">
@@ -28,7 +28,6 @@
 	        	</ul>
 	   
 		        <ul class="nav navbar-nav navbar-right">
-		        <?php if(isset($w_user)) {?>
 		        	<li class="dropdown">
 		          		<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span> Actualités <span class="caret"></span></a>
 		          	    <ul class="dropdown-menu" role="menu">
@@ -49,23 +48,18 @@
 		          	   		<li><a href="#">[Album Photos]</a></li>
 		          	 	</ul>
 		         	</li>
-		         	<?php } ?>
-		         	<?php if(isset($w_user['admin']) && ($w_user['admin']==1)) {?>	         	
 		          	<li><a href="#"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Admin</a></li>
-		          	<?php } ?>
 		          	<li class="dropdown">
 		          		<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Espace Membres <span class="caret"></span></a>
 		          	    <ul class="dropdown-menu" role="menu">
 
-							<?php if (!isset($w_user)) { ?>
-								<li><a href="<?= $this->url('membre_afficherConnexionModale'); ?>" data-toggle="modal" data-target="#modalNavbar" data-whatever=""><i class="fa fa-toggle-on fa-fw" aria-hidden="true"></i> Se connecter</a></li>
-							<?php } ?>
-  	   			        	<?php if (isset($w_user)) { ?>
-		          	   			<li><a class="" href="<?= $this->url('membre_modifierProfil'); ?>"><i class="fa fa-user fa-fw" aria-hidden="true"></i> Profil</a></li>
-							<?php } ?>
-							<?php if (isset($w_user)) { ?>
-		          	   			<li><a href="<?= $this->url('membre_seDeconnecter') ?>"><i class="fa fa-toggle-off fa-fw" aria-hidden="true"></i> Se déconnecter</a></li>
-		          	   		<?php } ?>
+							<!-- <li><a class="" href="<?= $this->url('membre_seConnecter') ?>" data-toggle="modal" data-target="#connexionModal"><i class="fa fa-toggle-on fa-fw" aria-hidden="true"></i> Se connecter</a></li> -->
+		                	<li><a id="connexionLink" class="" href="#" data-toggle="modal" data-target="#connexionModal"><i class="fa fa-toggle-on fa-fw" aria-hidden="true"></i> Se connecter</a></li>
+		          	   		<li><a class="" href="<?= $this->url('membre_inscription') ?>"><i class="fa fa-list-alt fa-fw" aria-hidden="true"></i> S'inscrire</a></li>
+		          	   		<li><a class="" href="<?= $this->url('membre_modifierProfil') ?>"><i class="fa fa-user fa-fw" aria-hidden="true"></i> Profil</a></li>
+		          	   		<li><a class="" href="<?= $this->url('membre_modifierProfilIntegration') ?>"><i class="fa fa-user fa-fw" aria-hidden="true"></i> Profil Intégration</a></li>		          	   		
+		          	   		<li><a href="<?= $this->url('membre_seDeconnecter') ?>"><i class="fa fa-toggle-off fa-fw" aria-hidden="true"></i> Se déconnecter</a></li>
+
 		          	 	</ul>
 		         	</li>
 		        </ul>
@@ -76,14 +70,50 @@
 
 	</nav>       	<!-- /.nav -->
 
-	<!-- ============================================================= -->
-	<!-- BLOC MODAL pour les appels à partir de la barre de navigation -->
-	<!-- ============================================================= -->
 
-	<div id="modalNavbar" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="connexionModalLabel">
+	<div id="connexionModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="connexionModalLabel">
 	    <div class="modal-dialog" role="document">
-        	<div class="modal-content">
-        		<!-- Ici j'affiche le contenu de ma modale -->
-        	</div>		<!-- /.modal-content -->
-    	</div> 		<!-- /.modal-dialog -->
-    </div>		<!-- /.modal -->
+	        <div class="modal-content">
+	          	<div class="modal-header btn-primary">
+	            	<button type="button" class="close" data-dismiss="modal">x</button>
+	            	<p><i class="fa fa-key fa-3x" aria-hidden="true"></i>&nbsp; <span class="modal-title police-1-5em" id="connexionModalLabel">Connexion au site</span></p>
+	            	<p class="text-right"><em><small><span class="souligne">Rappel</span> : L'espace Membres est exclusivement réservé aux membres actifs d'EGA.</small></em></p>
+	          	</div>
+	          	<div class="modal-body">
+		            <form id="connexionForm" method="POST" action="<?php echo $_SERVER['PHP_SELF']?>">
+
+		              	<div class="container">
+		                  	<label class="control-label" for="login"> N° de membre EGA</label>
+		                  	<div class="form-group">
+		                    	<div class="input-group">
+		                          	<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+		                        	<input class="form-control" type="text" id="login" name="login" placeholder="0000" value="3022" autofocus>
+		                      	</div>
+		                    </div>
+
+		                    <label class="control-label" for="pwd"> Mot de passe</label>
+		                  	<div class="form-group">
+		                    	<div class="input-group">
+		                          	<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+		                        	<input class="form-control" type="password" id="pwd" name="pwd" placeholder="***************" value="517841160">
+		                      	</div>
+		                    </div>
+
+		                  	<div class="row form-group pull-right">
+		                    	<input type="reset" value="Réinitialiser" class="btn btn-primary">
+		                    	<input type="submit" value="Se connecter" class="btn btn-success">
+		                  	</div>
+		                  	<span class="clearfix"></span>
+	    				</div>
+	    				<div class="container">
+	            			<a href="#" class="">Première connexion ?</a>
+	                	</div>
+
+		            </form>
+	          	</div>
+	        </div>
+	    </div>
+	</div>	      
+
+
+

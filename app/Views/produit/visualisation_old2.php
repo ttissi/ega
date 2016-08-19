@@ -32,7 +32,7 @@
 	<p><h1 class=""><strong>Page profil</strong></h1></p>
 	<p>Bienvenue <strong><em><?php echo ucfirst(strtolower($w_user['prenom'])); ?></em></strong>, vous pouvez modifier vos informations sur cette page.</p>
 	
-	<form id="formProfil" method="POST" action="">
+	<form id="formCreation" method="POST" action="">
 
 		<!-- Récupération des n° de carte EGA et n° de licence FFGolf -->
 		<div class="row">
