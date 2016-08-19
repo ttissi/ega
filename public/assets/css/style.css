@@ -34,6 +34,19 @@ body {
 	 margin-top: 20px;
 }
 
+.margin-tb-20 {
+	margin-top: 20px;
+	margin-bottom: 20px;	
+}
+
+.no-padding-top {
+	padding-top: 0;
+}
+
+.no-padding-bottom {
+	padding-bottom: 0;
+}
+
 #logo-site {
 	/* opacity: 0.5; */
     border-radius: 0px 20px 20px 20px;
