@@ -3,6 +3,13 @@
 <!-- Affichage du contenu de la zone principale centrale -->
 <?php $this->start('main_content') ?>
 
+  <div class="container">
+      <div class="row no-marge-top no-padding-top no-padding-bottom well">
+          <h1>Bienvenue sur le <strong>site d'Ermont Golf Association</strong></h1>
+          <p class="text-right"><small><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span><em> L'accès à l'espace privé nécessite une connexion des membres.</em></small></p>
+      </div>
+  </div>
+
 	<?php include('caroussel.php') ?>
 
 
@@ -23,8 +30,8 @@
             <div class="panel-heading"><h3>Compétitions estivales</h3></div>
             <div class="panel-body text-justify">
         		<ul>
-        			<li>Golf de Domont - 16 juillet 2016 (formule Stableford)</li>
-        			<li>Golf de Fontainebleau - 3 ou 4 août 2016 (formule Stableford)</li>
+        			<li>Golf de Domont - 16 juillet 2016<br>(formule Stableford)</li>
+        			<li>Golf de Fontainebleau - 3 ou 4 août 2016<br>(formule Stableford)</li>
         		</ul>
         		<hr>
         		<p>Pensez-y et contactez-les... nos golfs partenaires proposent également de nombreuses compétitions individuelle et en équipe durant tout l'été.</p>
