@@ -21,5 +21,7 @@
 		['GET|POST', '/carte', 'Golf#initialiseCarte', 'golf_initialiseCarte'],	
 
 		['GET', '/produit/affichage', 'Produit#affichage', 'produit_affichage'],
-		['GET|POST', '/produit/creation', 'ProduitCreation#creation', 'produitCreation_creation'],
+		['GET|POST', '/produit/creation', 'Produit#creation', 'produit_creation'],
+		['GET|POST', '/produit/visualisation/[:id]', 'Produit#visualisation', 'produit_visualisation'],
+		['GET|POST', '/assets/img/ventes/', 'Produit#creation', 'produit_images'],
 	);
