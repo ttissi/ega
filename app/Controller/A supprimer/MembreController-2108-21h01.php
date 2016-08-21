@@ -56,10 +56,8 @@ class MembreController extends Controller
 					//On vérifie le mot de passe en clair
 					if ($pwd == $Membre['password'])
 					{
-						$success = 'Votre première connexion est validée, mais pour des raisons de sécurité, vous devez désormais changer le mot de passe actuel.';
-						if (!isset($error)) { $error = ''; }
-						// $this-> redirectToRoute('membre_pwdNew', ['numEgaMembre' => $numEgaMembre, 'error' => $error, 'success' => $success]);
-						$this->show('membre/new_pwd', ['numEgaMembre' => $numEgaMembre, 'error' => $error, 'success' => $success]);
+						$success = 'Votre première connexion est validée, mais vous devez désormais changer ce mot de passe temporaire.';
+						$this-> redirectToRoute('membre_pwdNew', ['numEgaMembre' => $numEgaMembre]);
 
 					} // End if($pwd == $Membre['password'])
 					else {
@@ -130,17 +128,14 @@ class MembreController extends Controller
 	// -----------  méthode newPwd ------------
 	public function pwdNew($numEgaMembre) 
 	{	
-
-		// Par mesure de sécurité, je stocke le n° de membre récupéré à ce moment, avant qu'il ne soit éventuellement intercepté et modifié par une personne mal intentionnée
-		$numEgaTransmis 				= $numEgaMembre;
-
-		if (!isset($error)) { $error = '';}
-		if (!isset($success)) { $success = '';}
-
-		// Vérification des données POST
-		if (isset($_POST) && !empty($_POST['pwdNew']))
-		{	
+		$success='';
+		$error='';
+		if ($_POST) 
+		{
+			// Par mesure de sécurité, je stocke le n° de membre récupéré à ce moment, avant qu'il ne soit éventuellement intercepté et modifié par une personne mal intentionnée
+			$numEgaTransmis 				= $numEgaMembre;	// 
 			$MembreAuthentificationModel 	= new MembreAuthentificationModel;
+
 
 			// Mon controlleur récupere les mots de passe pour les comparer
 			$pwdNew     =  trim(strip_tags($_POST['pwdNew']));
@@ -153,7 +148,7 @@ class MembreController extends Controller
 					// Hashage du nouveau de mot de passe pour ne pas être envoyé en clair
 					$pwdNew = password_hash($pwdNew, PASSWORD_DEFAULT);
 
-					// Préparation des données à mettre à jour en BDD
+					// Prépartion des données à mettre à jour en BDD
 					$updateNewPwd = [
 						'password'           => $pwdNew,
 						'premiere_connexion' => 0
@@ -168,22 +163,17 @@ class MembreController extends Controller
 
 					$MembreModel->update($updateNewPwd, $numEgaTransmis); 	// Modifie données dans BDD
 					
-					if (!isset($_SESSION)) {	// Evitons de déconnecter un administrateur qui aurait initié le changement de mot de passe
-						$MembreAuthentificationModel-> logUserIn($Membre);		// Je connecte le membre et ouvre sa session
+					$MembreAuthentificationModel-> logUserIn($Membre);		// Je connecte le membre et ouvre sa session
 
-						if($PremiereConnexion == 1)		// Si 1ère connexion, le membre doit vérifier ses informations de profil
-						{
-							$success = 'Votre mot de passe a bien été changé.<br>Veuillez SVP vérifier vos informations personnelles.';
-							$this	-> redirectToRoute('membre_modifierProfil', ['idMembre' => $Membre['id_membre'], 'success' => $success, 'error' => $error]);
-						}
-						else
-						{		// Sinon on le renvoie sur la page d'accueil du site
-							$this-> redirectToRoute('default_home');
-						}
-					}
-					else 		// Pour l'administrateur, j'affiche le panneau de gestion des membres
+					if($PremiereConnexion == 1)		// Si 1ère connexion, le membre doit vérifier ses informations de profil
 					{
-						$this-> redirectToRoute('membre_admin');
+						$success = 'Votre mot de passe a bien été changé.';
+						$this	-> redirectToRoute('membre_modifierProfil', ['success' => $success]);
+					}
+
+					else
+					{		// Sinon on le renvoie sur la page d'accueil du site
+						$this-> redirectToRoute('default_home');
 					}
 
 				} // END if($pwdNew == $pwdConfirm)
@@ -201,7 +191,6 @@ class MembreController extends Controller
 		} // if ($_POST)
 		
 		// $this->show('membre/new_pwd', ['error' => $error]);
-		$this->show('membre/new_pwd', ['numEgaMembre' => $numEgaMembre, 'error' => $error, 'success' => $success]);
 							
 	} // End function pwdNew
 
@@ -209,8 +198,8 @@ class MembreController extends Controller
 	// -----------  méthode modifierProfil ------------
 	public function modifierProfil($idMembre) 
 	{
-		if (!isset($error)) { $error = '';}
-		if (!isset($success)) { $success = '';}
+		$success 	= '';
+		$error 		= '';
 
 		$MembreModel = new MembreModel;
 		$MembreModel-> setTable('membres'); 			// Précise la table
@@ -283,42 +272,55 @@ class MembreController extends Controller
 		$ListeMembres = $MembreModel->findAll();
 
 		$this->show('membre/admin', ['ListeMembres' => $ListeMembres]);
-	}
+}
 
-
-	// -----------  méthode changeActivite ------------
-	public function changeActivite($idMembre)
+	// -----------  méthode adminModifieProfil ------------
+	public function adminModifieProfil($idMembre)
 	{
-		if (!isset($error)) { $error = '';}
-		if (!isset($success)) { $success = '';}
+		/*if(isset($w_user['admin']) && ($w_user['admin']=1)) // Condition d'être connecté en admin
+		{
+		}*/
 
 		$MembreModel = new MembreModel;
 		$MembreModel->setTable('membres'); 				// Précise la table
 		$MembreModel->setPrimaryKey('id_membre'); 		// Précise clé primaire
 
-		$Membre = $MembreModel-> find($idMembre);	
+		$Membre = $MembreModel->find($idMembre);	
 
 		if(isset($_POST['btnModifier']))
 		{
+			$adresse   = trim(strip_tags($_POST['adresse']));
+			$cp        = trim(strip_tags($_POST['cp']));
+			$ville     = trim(strip_tags($_POST['ville']));
+			$telMobile = trim(strip_tags($_POST['telMobile']));
+			$telFixe   = trim(strip_tags($_POST['telFixe']));
+			$email     = trim(strip_tags($_POST['email']));
 
-			if ($Membre['actif'] == 1) { $actif = 0; } else { $actif = 1; }
-
-			$data = ['actif' => $actif];
+			$data = [
+				'adresse'     => $adresse,
+				'code_postal' => $cp,
+				'ville'       => $ville,
+				'mobile'      => $telMobile,
+				'fixe'        => $telFixe,
+				'email'       => $email
+			];
 			
-			// Mise à jour en BDD pour le membre concerné
+			$success 	= '';
+			$error 		= '';
+
+			// Update
 			if($MembreModel->update($data, $idMembre))
 			{
-				$success = "Le statut du membre a été correctement modifié.";
+				$success = "Vos modifications ont bien été enregistrées.";
 			}
 
 			else 
 			{
-				$error = "Le statut du membre n'a pu correctement être effectué !";
+				$error = "Vos modifications n'ont pas pu être enregistrées";
 			}
-
 		} // END if(isset($_POST['btnModifier']))
 
+		$this->show('membre/profil_pour_admin', ['membreChoisi' => $Membre]);
 	}
-
 } // END class
 

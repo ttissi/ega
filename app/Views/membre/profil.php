@@ -230,7 +230,7 @@
 			          		<div class="form-group">
 			              		<div class="input-group">
 			                		<span class="input-group-addon info"><i class="glyphicon glyphicon-lock"></i></span>
-			                		<input type="text" class="form-control" name="pwdNew" id="pwdNew" placeholder="Nouveau mot de passe">
+			                		<input type="password" class="form-control" name="pwdNew" id="pwdNew" placeholder="Nouveau mot de passe">
 			              		</div>
 			            	</div>
 			          	</div>
@@ -241,7 +241,7 @@
 			          		<div class="form-group">
 			              		<div class="input-group">
 			                		<span class="input-group-addon success"><i class="glyphicon glyphicon-lock"></i></span>
-			                		<input type="text" class="form-control" name="pwdConfirm" id="pwdConfirm" placeholder="Resaisir mot de passe">
+			                		<input type="password" class="form-control" name="pwdConfirm" id="pwdConfirm" placeholder="Resaisir mot de passe">
 			              		</div>
 			            	</div>
 			          	</div>
@@ -249,7 +249,7 @@
 
 			        <div class="row">
 			            <div class="col-md-8 col-md-offset-1">
-			        		<a class="btn btn-primary" name="btnModifPwd" href="<?= $this->url('membre_pwdNew'); ?>">Changer de mot de passe</a>
+			        		<a class="btn btn-primary" name="btnModifPwd" href="<?= $this->url('membre_pwdNew', ['numEgaMembre' => $membreChoisi['num_ega']]); ?>">Changer de mot de passe</a>
 			        	</div>
 			        </div>
 	        	 </div>

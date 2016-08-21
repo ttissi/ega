@@ -4,15 +4,15 @@
 
 <h2>Back office</h2>
 <ul class="nav nav-pills nav nav-tabs">
-	<li class="active"><a data-toggle="pill" href="#membre">Membres</a></li>
-	<li><a data-toggle="pill" href="#vente">Ventes</a></li>
-	<li><a data-toggle="pill" href="#location">Locations</a></li>
-	<li><a data-toggle="pill" href="#competition">Compétitions</a></li>
+	<li class="active"><a data-toggle="pill" href="#panelMembre">Membres</a></li>
+	<li><a data-toggle="pill" href="#panelVente">Ventes</a></li>
+	<li><a data-toggle="pill" href="#panelLocation">Locations</a></li>
+	<li><a data-toggle="pill" href="#panelCompetition">Compétitions</a></li>
 </ul>
 
 <div class="tab-content">
 	
-	<div id=membre class="tab-pane fade in active">
+	<div id="panelMembre" class="tab-pane fade in active">
 		<div class="row">
 			<div class="col-md-6">
 				<h3>Membre</h3>
@@ -69,7 +69,7 @@
 							<td>';
 							if($value['premiere_connexion']==1){echo 'Non';} else{echo 'Oui';}
 							echo '</td>
-							<td><a class="glyphicon glyphicon-edit" href="'.$this->url('membre_modifierProfil', ['idMembre'=>$value['id_membre']]).'" title="Modifier le profil de ce membre"></a>&nbsp;&nbsp;&nbsp;&nbsp;<a class="glyphicon glyphicon-remove" href="?action=desactiver&'.$value['id_membre'].'" title="Modifier le statut actif"></a></td>
+							<td><a class="glyphicon glyphicon-edit" href="'.$this->url('membre_modifierProfil', ['idMembre' => $value['id_membre']]).'" title="Modifier le profil de ce membre"></a>&nbsp;&nbsp;&nbsp;&nbsp;<a class="glyphicon glyphicon-remove" href="'.$this->url('membre_changeActivite', ['idMembre' => $value['id_membre']]).'" title="Modifier le statut actif"></a></td>
 
 						</tr>';
 					}
@@ -86,32 +86,67 @@
 			
 	</div>	
 
-	<div id=vente class="tab-pane fade">
-		<h3>Vente</h3>
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-		consequat.</p>
-	</div>	
-
-	<div id=location class="tab-pane fade">
-		<h3>Location</h3>
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-		consequat.</p>
+	<div id="panelVente" class="tab-pane fade">
+		<div class="row">
+			<div class="col-md-6">
+				<h3>Vente Produits</h3>
+			</div>
+			<div class="col-md-6">
+				<form class="navbar-form navbar-right inline-form">
+			      	<div class="form-group">
+			        	<input type="search" class="input-sm form-control" placeholder="N° de membre">
+			        	<button type="submit" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-search"></span></button>
+			      	</div>
+			      	<div class="form-group">
+			        	<input type="search" class="input-sm form-control" placeholder="Nom du membre">
+			        	<button type="submit" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-user"></span></button>
+			      	</div>
+			    </form>
+			</div>			
+		</div>
 	</div>
 
-	<div id=competition class="tab-pane fade">
-		<h3>Compétition</h3>
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-		consequat.</p>
+	<div id="panelLocation" class="tab-pane fade">
+		<div class="row">
+			<div class="col-md-6">
+				<h3>Locations Biens Immobilier</h3>
+			</div>
+			<div class="col-md-6">
+				<form class="navbar-form navbar-right inline-form">
+			      	<div class="form-group">
+			        	<input type="search" class="input-sm form-control" placeholder="N° de membre">
+			        	<button type="submit" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-search"></span></button>
+			      	</div>
+			      	<div class="form-group">
+			        	<input type="search" class="input-sm form-control" placeholder="Nom du membre">
+			        	<button type="submit" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-user"></span></button>
+			      	</div>
+			    </form>
+			</div>			
+		</div>
+	</div>
+
+	<div id="panelCompetitions" class="tab-pane fade">
+		<div class="row">
+			<div class="col-md-6">
+				<h3>Compétitions</h3>
+			</div>
+			<div class="col-md-6">
+				<form class="navbar-form navbar-right inline-form">
+			      	<div class="form-group">
+			        	<input type="search" class="input-sm form-control" placeholder="Mois">
+			        	<button type="submit" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-search"></span></button>
+			      	</div>
+			      	<div class="form-group">
+			        	<input type="search" class="input-sm form-control" placeholder="Type compétitions">
+			        	<button type="submit" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-search"></span></button>
+			      	</div>
+			    </form>
+			</div>			
+		</div>
 	</div>
 
 </div>
-
 
 
 <?php echo $this->stop('main_content') ?>

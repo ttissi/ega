@@ -50,8 +50,16 @@
             </div>
             <div class="modal-body">
 
-                <div class="alert alert-success form-feedback">Merci ! Nous revenons vers vous très rapidement.</div>
-                <div class="alert alert-danger"></div>
+                <!-- Zone d'affichage pour le message de validation ou non -->
+                <?php if (!empty($error)) 
+                    {
+                      echo '<div class="alert alert-danger form-feedback">ERREUR : ' . $error . '</div>';
+                    } else if (!empty($success))
+                    {
+                      echo '<div class="alert alert-success ">
+                            <strong>Bravo !</strong><br>Merci ! Nous revenons vers vous très rapidement.</div>';
+                    } 
+                ?>
 
                 <form id="contactModalForm" method="POST">
                     <div class="form-group">

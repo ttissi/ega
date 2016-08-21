@@ -18,11 +18,13 @@
 		//['GET|POST', 	'/profil/[:idMembre]', 	'Membre#adminModifieProfil', 'membre_adminModifieProfil'],		
 		['GET|POST', 	'/deconnexion', 		'Membre#seDeconnecter', 'membre_seDeconnecter'],
 		// ['GET|POST', 	'/reset', 				'Membre#resetMotDePasse', 'membre_resetMotDePasse'],
+		['GET|POST', 	'/change/activite', 	'Membre#changeActivite', 'membre_changeActivite'],
 
-		['GET|POST', 	'/admin/membre', 		'Membre#admin', 'membre_admin'],
-		['GET|POST', 	'/admin/vente', 		'Membre#admin', 'vente_admin'],
-		['GET|POST', 	'/admin/location', 		'Membre#admin', 'location_admin'],
-		['GET|POST', 	'/admin/competition', 	'Membre#admin', 'competition_admin'],						
+		['GET|POST', 	'/membre/admin', 		'Membre#admin', 'membre_admin'],
+		['GET|POST', 	'/admin/membre', 		'Admin#panneauMembresAdmin', 'gestion_membres'],
+		['GET|POST', 	'/admin/vente', 		'Admin#panneauVenteAdmin', 'gestion_vente'],
+		// ['GET|POST', 	'/admin/location', 		'Location#admin', 'location_admin'],
+		// ['GET|POST', 	'/admin/competition', 	'Competition#admin', 'competition_admin'],						
 
 		// Routes dédiées à la gestion de la carte Goole
 		['GET|POST', 	'/carte', 				'Golf#initialiseCarte', 'golf_initialiseCarte'],
