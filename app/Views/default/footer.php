@@ -4,7 +4,7 @@
         
         <div id="adressePostaleId" class="col-md-2 col-md-offset-3">
             <p class="h4-subtitle">Coordonnées</p>
-            <p>
+            <!-- <p> -->
                 <address>
                     <span class="tab-20"><strong>E.G.A</strong><br></span>
                     <span class="tab-20">Allée Jean de Florette<br></span>
@@ -16,13 +16,13 @@
                         <i class="fa fa-envelope-square fa-lg"></i><a href="mailto:#"> contact@ega.asso.fr</a>
                     </span>
                 </address>
-            </p>
+            <!-- </p> -->
             <p><small>&copy; 2016 Ermont Golf Association</small></p>
-        </div>      <!-- FIn DIV #adressePostaleId -->
+        </div>      <!-- FIN DIV #adressePostaleId -->
 
         <div id="liensInformationsId" class="col-md-2 col-md-offset-3 text-left">
             <p class="h4-subtitle">Informations</p>            
-            <p>
+            <!-- <p> -->
             <ul class="nobullet">
                 <li><a href="<?= $this->url('bureau_about') ?>">Qui sommes-nous ?</a></li>
                 <!-- <li><a href="<?= $this->url('bureau_contact') ?>">Contact</a></li> -->
@@ -31,8 +31,8 @@
                 <li><a href="<?= $this->url('default_planSite') ?>">Plan de site</a></li>
                 <li><a href="<?= $this->url('bureau_mentionsLegales') ?>">Mentions légales</a></li>
             </ul>
-            </p>
-        </div>      <!-- FIn DIV #liensInformationsId -->
+            <!-- </p> -->
+        </div>      <!-- FIN DIV #liensInformationsId -->
 
     </div>
     
@@ -49,20 +49,33 @@
                 <p><i class="fa fa-envelope fa-4x" aria-hidden="true"></i>&nbsp; <span class="modal-title police-1-5em" id="contactModalLabel">Nouveau message</span></p>
             </div>
             <div class="modal-body">
-                <form>
+
+                <div class="alert alert-success form-feedback">Merci ! Nous revenons vers vous très rapidement.</div>
+                <div class="alert alert-danger"></div>
+
+                <form id="contactModalForm" method="POST">
+                    <div class="form-group">
+                        <label for="nomEmetteurId" class="control-label">Emetteur:</label>
+                        <input type="text" class="form-control" id="nomEmetteurId" placeholder="Votre adresse email">
+                    </div>
                     <div class="form-group">
                         <label for="nomDestinataireId" class="control-label">Destinataire:</label>
                         <input type="text" class="form-control" id="nomDestinataireId" placeholder="A renseigner uniquement... si destiné à un membre particulier du bureau">
                     </div>
                     <div class="form-group">
+                        <label for="ObjetId" class="control-label">Objet:</label>
+                        <input type="text" class="form-control" id="ObjetId" placeholder="Objet de votre message">
+                    </div>
+                    <div class="form-group">
                         <label for="messageId" class="control-label">Message:</label>
                         <textarea id="messageId" class="form-control" rows="5"></textarea>
                     </div>
+
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
-                <button type="button" class="btn btn-primary">Envoi message</button>
+                <button type="reset" class="btn btn-default" data-dismiss="modal">Annuler</button>
+                <button type="submit" class="btn btn-primary">Envoi message</button>
             </div>
         </div>
     </div>

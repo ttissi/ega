@@ -1,4 +1,4 @@
-<?php $this->layout('layout', ['title' => 'EGA | Cartographie']) ?>
+<?php $this->layout('layout', ['title' => 'Cartographie | EGA']) ?>
 
 <!-- Affichage des modules de sélection de golf sur le panel gauche -->
 
@@ -45,12 +45,6 @@
 
         function initialisation(golfSelectionne){
 
-
-            // console.log(typeof(golfSelectionne));
-            // console.log(JSON.parse(JSON.stringify(golfSelectionne)));
-
-
-
             // Je stocke dans la variable Javascript dataGolfs, la variable PHP $golfs
             // qui a été passée lors de l'appel de ce programme
             var dataGolfs   = <?php echo json_encode($golfs, JSON_FORCE_OBJECT); ?>;
@@ -65,8 +59,6 @@
             console.log(dataGolfs);
             var lat_i = parseFloat(dataGolfs[i]['latitude']);
             console.log(typeof(lat_i));        // vérif. si lat_i est bien un number/float
-            console.log(lat_i);
-            lat_i += 1.1;  // est-ce que       // Vérif. si une opération math. est possible sur lat_i
             console.log(lat_i);
 
 ******** */

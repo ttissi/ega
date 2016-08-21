@@ -1,7 +1,7 @@
 	    <!-- <link rel="apple-touch-icon" href="apple-touch-icon.png"> -->
-	    <link rel="apple-touch-icon" href="shorticon.jpg">
-		<link rel="shortcut icon" type="image/x-icon" href="shorticon.ico">
-		<link rel="icon" type="image/jpeg" href="shorticon.jpg">
+	    <link rel="apple-touch-icon" href="<?= $this->assetUrl('img/shorticon.jpg') ?>">
+		<link rel="shortcut icon" type="image/x-icon" href="<?= $this->assetUrl('img/shorticon.ico') ?>">
+		<link rel="icon" type="image/jpeg" href="<?= $this->assetUrl('img/shorticon.jpg') ?>">
 
 
 		<!-- CHargement des feuilles de style -->

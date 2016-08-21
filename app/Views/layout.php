@@ -1,7 +1,7 @@
-<!-- <?php // include_once("default/init.php"); ?> -->
-
 <?php include_once("default/header-start.php"); ?>
+
 	<title><?= $this->e($title) ?></title>
+
 <?php include_once("default/header-end.php"); ?>
 
 <?php include_once("default/navbar.php"); ?>
@@ -22,9 +22,9 @@
 
 	  	<div class="col-md-8">		
 			<section id="mainContentId" class="container">
-				<!-- <div class="row no-marge-top"> -->
+				<div class="row margin-top-20">
 					<?= $this->section('main_content') ?>
-				<!-- </div> -->
+				</div>
 			</section>
 	  	</div>  <!-- /.col-md-8 -->
 
@@ -36,9 +36,9 @@
 
 	</div>
 
-			<section id="modalWindowsId" class="container">
+<!-- 			<section id="modalWindowsId" class="container">
 					<?= $this->section('modal_windows') ?>
-			</section>
+			</section> -->
 
 
 	<?php include_once("default/footer.php"); ?>

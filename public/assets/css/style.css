@@ -34,6 +34,31 @@ body {
 	 margin-top: 20px;
 }
 
+.margin-tb-20 {
+	margin-top: 20px;
+	margin-bottom: 20px;	
+}
+
+.no-padding-top {
+	padding-top: 0;
+}
+
+.no-padding-bottom {
+	padding-bottom: 0;
+}
+
+.table>thead>tr>th.vtop {
+	vertical-align: top;
+}
+
+.table>thead>tr>th.vbottom {
+	vertical-align: bottom;
+}
+
+.table>thead>tr>th.vmiddle {
+	vertical-align: middle;
+}
+
 #logo-site {
 	/* opacity: 0.5; */
     border-radius: 0px 20px 20px 20px;
@@ -55,6 +80,12 @@ body {
     z-index: 1000;
 }
 
+.avatar {
+	height:28px;
+	width: 28px;
+	vertical-align:middle;
+}
+
 #map {
 	margin: 0;
 	height: 75vh;
@@ -62,7 +93,7 @@ body {
 }
 
 h1 {
-	font-size: 1.2em;
+	/* font-size: 1.2em; */
 }
 
 .souligne { text-decoration: underline; }

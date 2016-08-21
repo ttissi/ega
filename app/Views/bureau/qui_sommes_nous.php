@@ -1,4 +1,4 @@
-<?php $this->layout('layout', ['title' => 'EGA | Qui sommes nous']) ?>
+<?php $this->layout('layout', ['title' => 'Qui sommes nous | EGA']) ?>
 
 <?php $this->start('main_content') ?>
 

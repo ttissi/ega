@@ -14,7 +14,7 @@ $w_config = [
 	'security_username_property' => 'num_ega',		//nom de la colonne pour le "pseudo"
 	'security_email_property'    => 'email',			//nom de la colonne pour l'"email"
 	'security_password_property' => 'password',		//nom de la colonne pour le "mot de passe"
-	'security_role_property'     => 'actif',				//nom de la colonne pour le "role"
+	'security_role_property'     => 'admin',				//nom de la colonne pour le "role"
 	
 	'security_login_route_name'  => 'membre_seConnecter',			//nom de la route affichant le formulaire de connexion
 	

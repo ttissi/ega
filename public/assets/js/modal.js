@@ -15,10 +15,17 @@ $(document).ready(function(){
 	  	// modal.find('.modal-body input').val(destinataire)
 	});
 
-/*	$('#connexionLink').click(function(){
-        $("#connexionModal").modal();
-    });*/
+	$('#contactModalForm').submit(function(e){
+        e.preventDefault();
 
+        $form = $(this);
+        $.post(document.location.url, $(this).serialize(), function(data) {
+        	$feedback = $("<div").html(data).find(".form-feedback").hide();
+
+        	$form.prepend($feedback)[0].reset();
+        	$feedback.fadeIn(1500);
+        });
+    });
 
 	console.log('Document (modal.js) chargé .');
 

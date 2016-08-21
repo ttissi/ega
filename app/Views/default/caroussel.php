@@ -19,47 +19,47 @@
         
       <!-- Item 1 -->
       <div class="item active">
-          <img src="assets/img/caroussel/golf_bkg_1.jpg"/>
+          <img src="<?= $this->assetUrl('img/caroussel/golf_bkg_1.jpg'); ?>" alt="Paysage golfique 1" />
       </div>
         
       <!-- Item 2 -->
       <div class="item">
-          <img src="assets/img/caroussel/golf_bkg_2.jpg"/>
+          <img src="<?= $this->assetUrl('img/caroussel/golf_bkg_2.jpg'); ?>" alt="Paysage golfique 2" />
       </div>
         
       <!-- Item 3 -->
       <div class="item">
-          <img src="assets/img/caroussel/golf_bkg_3.jpg"/>
+          <img src="<?= $this->assetUrl('img/caroussel/golf_bkg_3.jpg'); ?>" alt="Paysage golfique 3" />
       </div>
        
       <!-- Item 4 -->
       <div class="item">
-          <img src="assets/img/caroussel/golf_bkg_4.jpg"/>
+          <img src="<?= $this->assetUrl('img/caroussel/golf_bkg_4.jpg'); ?>" alt="Paysage golfique 4" />
       </div>
         
       <!-- Item 5 -->
       <div class="item">
-          <img src="assets/img/caroussel/golf_bkg_5.jpg"/>
+          <img src="<?= $this->assetUrl('img/caroussel/golf_bkg_5.jpg'); ?>" alt="Paysage golfique 5" />
       </div>
         
       <!-- Item 6 -->
       <div class="item">
-          <img src="assets/img/caroussel/golf_bkg_6.jpg"/>
+          <img src="<?= $this->assetUrl('img/caroussel/golf_bkg_6.jpg'); ?>" alt="Paysage golfique 6" />
       </div>
         
       <!-- Item 7 -->
       <div class="item">
-          <img src="assets/img/caroussel/golf_bkg_7.jpg"/>
+          <img src="<?= $this->assetUrl('img/caroussel/golf_bkg_7.jpg'); ?>" alt="Paysage golfique 7" />
       </div>
         
       <!-- Item 8 -->
       <div class="item">
-          <img src="assets/img/caroussel/golf_bkg_8.jpg"/>
+          <img src="<?= $this->assetUrl('img/caroussel/golf_bkg_8.jpg'); ?>" alt="Paysage golfique 8" />
       </div>
         
       <!-- Item 9 -->
       <div class="item">
-          <img src="assets/img/caroussel/golf_bkg_9.jpg"/>
+          <img src="<?= $this->assetUrl('img/caroussel/golf_bkg_9.jpg'); ?>" alt="Paysage golfique 9" />
       </div>
     </div>   <!-- /.carousel-inner -->
 

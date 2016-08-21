@@ -56,7 +56,8 @@ $(function() {
     //   Affichage du module de sélection d'un golf ou recherche d'un intinéraire
     // ============================================================================
 
-    google.maps.event.addDomListener(window, 'load', initialisation);
+    // Le chargement dessous est effectuée dans le fichier carte.php
+    // google.maps.event.addDomListener(window, 'load', initialisation);
 
 
 });
