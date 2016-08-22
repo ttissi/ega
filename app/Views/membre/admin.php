@@ -19,13 +19,31 @@
 			</div>
 			<div class="col-md-6">
 				<form class="navbar-form navbar-right inline-form">
+					<label class="control-label"  for="numEgaChoisiId"></label>
 			      	<div class="form-group">
-			        	<input type="search" class="input-sm form-control" placeholder="N° de membre">
+			        	<select name="numEgaChoisi" id="numEgaChoisiId" onchange="document.location.href='membre?id='+this.value" class="form-control">
+                        	<option class="text-hide" disabled selected>N° de carte</option>
+	                        <?php 
+	                            foreach ($ListeMembres as $membre) { ?>
+	                                <option value="<?= $membre['id_membre']; ?>"><?= $membre['num_ega']; ?></option>
+	                            <?php } //Fin boucle foreach membres ?>   
+	                        ?>
+                    	</select>
 			        	<button type="submit" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-search"></span></button>
 			      	</div>
+			      	
+			      	<label class="control-label"  for="nomId"></label>
 			      	<div class="form-group">
-			        	<input type="search" class="input-sm form-control" placeholder="Nom du membre">
-			        	<button type="submit" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-user"></span></button>
+			      		<select name="nomChoisi" id="nomId" onchange="document.location.href='<?php $this->url('membre_modifierProfil', ['idMembre' => $value['id_membre']]); ?>'" class="form-control">
+                        	<option class="text-hide" disabled selected>Nom du membre</option>
+	                        <?php 
+	                            foreach ($ListeMembres as $membre) { ?>
+	                                <option value="<?= $membre['id_membre']; ?>"><?= $membre['nom'].' '.$membre['prenom'].' - '.$membre['num_ega']; ?></option>
+	                            <?php } //Fin boucle foreach membres ?>   
+	                        ?>
+                    	</select>
+                    	<button type="submit" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-user"></span></button>
+			        	<!-- <input type="search" class="input-sm form-control" placeholder="Nom du membre"> -->
 			      	</div>
 			    </form>
 			</div>			

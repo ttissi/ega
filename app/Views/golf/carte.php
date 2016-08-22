@@ -17,14 +17,13 @@
             
             <form name="choixGolf" method="POST" action="">
                 <div class="form-group">
-                    <label for="golfId"></label>
-                    <!-- <select name="golfChoisi" id="golfChoisiId" onchange="change(this.value)"> -->
-                    <select name="golfChoisi" id="golfChoisiId" onchange="document.location.href='carte?golf='+this.value">
-                        <option disabled selected>Centrer la carte sur...</option>
+                    <label for="golfChoisiId"></label>
+                    <select name="golfChoisi" id="golfChoisiId" onchange="document.location.href='carte?golf='+this.value" class="form-control">
+                        <option class="text-hide" disabled selected>Centrer la carte sur...</option>
                         <?php 
                             foreach ($golfs as $golf) { ?>
                                 <option value="<?= $golf['id_golf']; ?>"><?= $golf['nom']; ?></option>
-                            <?php } //Fin boucle golfs ?>   
+                            <?php } //Fin boucle foreach golfs ?>   
                         ?>
                     </select>
                 </div>

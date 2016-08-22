@@ -285,7 +285,6 @@ class MembreController extends Controller
 		$this->show('membre/admin', ['ListeMembres' => $ListeMembres]);
 	}
 
-
 	// -----------  méthode changeActivite ------------
 	public function changeActivite($idMembre)
 	{
