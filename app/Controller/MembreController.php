@@ -170,20 +170,20 @@ class MembreController extends Controller
 					
 					if (!isset($_SESSION)) {	// Evitons de déconnecter un administrateur qui aurait initié le changement de mot de passe
 						$MembreAuthentificationModel-> logUserIn($Membre);		// Je connecte le membre et ouvre sa session
-
-						if($PremiereConnexion == 1)		// Si 1ère connexion, le membre doit vérifier ses informations de profil
-						{
-							$success = 'Votre mot de passe a bien été changé.<br>Veuillez SVP vérifier vos informations personnelles.';
-							$this	-> redirectToRoute('membre_modifierProfil', ['idMembre' => $Membre['id_membre'], 'success' => $success, 'error' => $error]);
-						}
-						else
-						{		// Sinon on le renvoie sur la page d'accueil du site
-							$this-> redirectToRoute('default_home');
-						}
 					}
-					else 		// Pour l'administrateur, j'affiche le panneau de gestion des membres
+
+					if($PremiereConnexion == 1)		// Si 1ère connexion, le membre doit vérifier ses informations de profil
 					{
+						$success = 'Votre mot de passe a bien été changé.<br>Veuillez SVP vérifier vos informations personnelles.';
+						$this	-> redirectToRoute('membre_modifierProfil', ['idMembre' => $Membre['id_membre'], 'success' => $success, 'error' => $error]);
+					}
+					else if ($Membre['admin'] == 1)
+					{	// Pour l'administrateur, j'affiche le panneau de gestion des membres
 						$this-> redirectToRoute('membre_admin');
+					}
+					else 		
+					{		// Sinon on renvoie le membre sur la page d'accueil du site
+						$this-> redirectToRoute('default_home');
 					}
 
 				} // END if($pwdNew == $pwdConfirm)
@@ -280,9 +280,11 @@ class MembreController extends Controller
 		$MembreModel->setTable('membres'); 				// Précise la table
 		$MembreModel->setPrimaryKey('id_membre'); 		// Précise clé primaire
 
-		$ListeMembres = $MembreModel->findAll();
+		$ListeMembresTriNom = $MembreModel->findAll($orderBy = "nom", $orderDir = "ASC", $limit = null, $offset = null);
+		$ListeMembresTriNumEga = $MembreModel->findAll($orderBy = "num_ega", $orderDir = "ASC", $limit = null, $offset = null);
 
-		$this->show('membre/admin', ['ListeMembres' => $ListeMembres]);
+
+		$this->show('membre/admin', ['ListeMembresTriNom' => $ListeMembresTriNom, 'ListeMembresTriNumEga' => $ListeMembresTriNumEga]);
 	}
 
 	// -----------  méthode changeActivite ------------

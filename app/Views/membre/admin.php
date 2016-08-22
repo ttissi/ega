@@ -24,7 +24,7 @@
 			        	<select name="numEgaChoisi" id="numEgaChoisiId" onchange="document.location.href='membre?id='+this.value" class="form-control">
                         	<option class="text-hide" disabled selected>N° de carte</option>
 	                        <?php 
-	                            foreach ($ListeMembres as $membre) { ?>
+	                            foreach ($ListeMembresTriNumEga as $membre) { ?>
 	                                <option value="<?= $membre['id_membre']; ?>"><?= $membre['num_ega']; ?></option>
 	                            <?php } //Fin boucle foreach membres ?>   
 	                        ?>
@@ -37,7 +37,7 @@
 			      		<select name="nomChoisi" id="nomId" onchange="document.location.href='<?php $this->url('membre_modifierProfil', ['idMembre' => $value['id_membre']]); ?>'" class="form-control">
                         	<option class="text-hide" disabled selected>Nom du membre</option>
 	                        <?php 
-	                            foreach ($ListeMembres as $membre) { ?>
+	                            foreach ($ListeMembresTriNom as $membre) { ?>
 	                                <option value="<?= $membre['id_membre']; ?>"><?= $membre['nom'].' '.$membre['prenom'].' - '.$membre['num_ega']; ?></option>
 	                            <?php } //Fin boucle foreach membres ?>   
 	                        ?>
@@ -71,7 +71,7 @@
 				</thead>
 				<?php 
 					$i = 1; // Variable pour numéroter chaque ligne.
-					foreach ($ListeMembres as $value) 
+					foreach ($ListeMembresTriNom as $value) 
 					{
 						echo '<tr>
 							<td>'.$i++.'</td>

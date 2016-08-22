@@ -42,7 +42,8 @@
 		          	<li class="dropdown">
 		          		<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-tags" aria-hidden="true"></span> Echanges <span class="caret"></span></a>
 		          	    <ul class="dropdown-menu" role="menu">
-		                	<li><a href="#">Vente Matériel</a></li>
+		          	    	<li><a href="<?= $this->url('produit_creation'); ?>">Création Annonce</a></li>
+		                	<li><a href="<?= $this->url('produit_affichage'); ?>">Vente Matériel</a></li>
 		                	<li class="divider"></li>
 		          	   		<li><a href="#">[Locations appartements]</a></li>
 		          	   		<li><a href="#">[Album Photos]</a></li>
