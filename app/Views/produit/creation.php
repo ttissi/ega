@@ -4,6 +4,7 @@
 
 <div class="container well">
 	<p><h1 class=""><strong>ESPACE DE VENTE CREATION</strong></h1></p>
+
 	<form id="formCreation" method="POST" enctype="multipart/form-data" >
 		<div class="row">
 			<div class="col-md-7">
@@ -39,10 +40,15 @@
         					<div class="input-group">
             					<span class="input-group-addon"><i class="glyphicon glyphicon-folder-open"></i></span>
             					<select name="categorie" class="form-control" >
-						          <option selected disabled>Categorie</option>
-						          <option value="Chaussure">Chaussure</option>
-						          <option value="Accessoire de Golf">Accessoire de Golf</option>
-						          <option value="Voiture de Golf">Voiture de Golf</option>
+						          <option class="text-hide" selected disabled>Categorie</option>
+						          <option value="Accessoire">Accessoire</option>
+						          <option value="Chariot">Chariot</option>
+						          <option value="Chariot">Chaussures</option>
+						          <option value="Club à l'unité">Club à l'unité</option>
+						          <option value="Sac de golf">Sac de golf</option>
+						          <option value="Série de fers">Série de fers</option>
+						          <option value="Vêtement">Vêtement</option>
+						          <option value="Voiturette">Voiturette</option>
 						        </select>
           					</div>
         				</div>

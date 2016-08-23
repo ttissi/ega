@@ -2,7 +2,7 @@
 
 <?php echo $this->start('main_content') ?>
 
-<div class="container well">
+<div class="container">
 	<p><h1 class=""><strong>VISUALISATION DE VOTRE ANNONCE</strong></h1></p>
 
     <!-- Zone d'affichage pour le message de validation ou non -->
@@ -32,7 +32,7 @@
 						<div class="form-group">
         					<div class="input-group">
             					<span class="input-group-addon"><i class="glyphicon glyphicon-question-sign"></i></span>
-            					<strong><input type="text" class="form-control" name="etat" value="<?= $produit->getETAT(); ?>" id="etat" disabled></strong>
+            					<input type="text" class="form-control" name="etat" value="<?= $produit->getETAT(); ?>" id="etat" disabled>
           					</div>
         				</div>		
 					</div>
@@ -42,7 +42,7 @@
 					<div class="form-group">
 	            					<div class="input-group">
 	                					<span class="input-group-addon"><i class="glyphicon glyphicon-folder-open"></i></span>
-	                					<strong><input type="text" class="form-control" name="categorie" value="<?= $produit->getCATEGORIE(); ?>" id="categorie"  disabled></strong>
+	                					<input type="text" class="form-control" name="categorie" value="<?= $produit->getCATEGORIE(); ?>" id="categorie"  disabled>
 	              					</div>
 	            				</div>
 					</div>
@@ -50,7 +50,7 @@
 					<div class="form-group">
 	            					<div class="input-group">
 	                					<span class="input-group-addon"><i class="fa fa-hand-paper-o"></i></span>
-	                					<strong><input type="text" class="form-control" name="dexterite" value="<?= $produit->getDEXTERITE(); ?>" id="dexterite"  disabled></strong>
+	                					<input type="text" class="form-control" name="dexterite" value="<?= $produit->getDEXTERITE(); ?>" id="dexterite"  disabled>
 	              					</div>
 	            				</div>	
 					</div>
@@ -58,7 +58,7 @@
 					<div class="form-group">
 	            					<div class="input-group">
 	                					<span class="input-group-addon"><i class="fa fa-transgender"></i></span>
-	                					<strong><input type="text" class="form-control" name="sexe" value="<?= $produit->getSEXE(); ?>" id="sexe"  disabled></strong>
+	                					<input type="text" class="form-control" name="sexe" value="<?= $produit->getSEXE(); ?>" id="sexe"  disabled>
 	              					</div>
 	            				</div>
 					</div>
@@ -67,7 +67,7 @@
 					<div class="col-md-offset-8 col-md-4">
 					<div class="form-group">
 				                <div class="input-group">
-				                  <strong><input value="<?= $produit->getPRIX(); ?>" id="prix" name="prix" class="form-control" disabled></strong>
+				                  <input value="<?= $produit->getPRIX(); ?>" id="prix" name="prix" class="form-control" disabled>
 				                  <span class="input-group-addon"><i class="glyphicon glyphicon-euro"></i></span>
 				                </div>
     						</div>
@@ -77,28 +77,24 @@
 				<div class="col-md-12">
 					<div class="form-group">
 			            <label for="description" class="control-label">Description :</label>
-                		<strong><textarea type="text"  name="description" rows="5" class="form-control"  disabled><?= $produit->getDESCRIPTION(); ?></textarea></strong>
+                		<textarea type="text"  name="description" rows="5" class="form-control"  disabled><?= $produit->getDESCRIPTION(); ?></textarea>
 			        </div>
 				</div>
 			</div>
 			<div class="row">
 					<div class="col-md-12">
-						<p>N° Membre : <?php echo $w_user['num_ega']; ?></p>
+						<p>Nom Complet : <strong><?php echo $w_user['prenom']; ?> - <?php echo $w_user['nom']; ?></strong></p>
 					</div>
 					<div class="col-md-12">
-						<p>Nom Complet : <?php echo $w_user['prenom']; ?> - <?php echo $w_user['nom']; ?></p>
-					</div>
-
-					<div class="col-md-12">
-					<div class="form-group primary">
+						<div class="form-group">
 		              		<div class="input-group">
-		                		<span class="input-group-addon info"><i class="glyphicon glyphicon-earphone"></i></span>
+		                		<span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
 		                		<input type="text" class="form-control" name="tel_contact" id="tel_contact" value="<?= $produit->getTEL_CONTACT() ?>" disabled>
 		              		</div>
 		            	</div>
 		            	<div class="form-group">
 		              		<div class="input-group">
-		                		<span class="input-group-addon success"><i class="glyphicon glyphicon-envelope"></i></span>
+		                		<span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
 		                		<input type="text" class="form-control" name="email_contact" id="email_contact" value="<?= $produit->getEMAIL_CONTACT() ?>" disabled>
 		              		</div>
 		            	</div>
@@ -109,45 +105,41 @@
 			<div class="row">
 				<div class="col-md-12">
 					<!-- Passer au format français -->
-					<p>Parue le : <?= $produit->getDATE_PUBLICATION(); ?></p>
-					<p>Annonce N° : <?= $produit->getID_PRODUIT(); ?></p>
+
+					<p>Parue le : <?= date('d/m/Y H:i', strtotime($produit->getDATE_PUBLICATION())); ?></p>
+					<p>Annonce N° : <strong><?= $produit->getID_PRODUIT(); ?></strong></p>
 				</div>
 			</div>
 
-			<div class="row">
-				<div class="col-md-offset-2 col-md-10" >
+			<div class="row text-center">
+				<div class="col-md-offset-1 col-md-10" >
 					<div>
-						<?php if (!empty($produit->getIMAGE_PRODUIT1())) {
-							echo '<img class="img-thumbnail text-center" src="' . $this->assetUrl('img/ventes/') . $produit->getIMAGE_PRODUIT1() . '" width="200" height="200"></img>' .
-							'<div class="text-center"><span>Photo 1</span></div>'; } 
+						<?php 
+						if (!empty($produit->getIMAGE_PRODUIT1())) {
+							// echo '<img class="img-thumbnail text-center" src="' . $this->assetUrl('img/ventes/') . $produit->getIMAGE_PRODUIT1() . '" width="200" height="200"></img>' .
+							echo '<a class="fancybox-thumb" rel="produit_gallery1" href="' . $this->assetUrl('img/ventes/') . $produit->getIMAGE_PRODUIT1() . '" title="Photo 1 - produit de golf en vente"><img class="img-thumbnail text-center" src="' . $this->assetUrl('img/ventes/') . $produit->getIMAGE_PRODUIT1() . '" width="200" height="200" alt="Photo 1 - produit de golf en vente" /><br>Cliquer sur les photos pour les agrandir<br>';	
+							// '<div class="text-center"><span>Photo 1</span></div>';
+						}
+						if (!empty($produit->getIMAGE_PRODUIT2())) {
+							// echo '<img class="img-thumbnail" src="' . $this->assetUrl('img/ventes/') . $produit->getIMAGE_PRODUIT2() . '" width="150" height="150"></img>' .
+							echo '<a class="fancybox-thumb" rel="produit_gallery1" href="' . $this->assetUrl('img/ventes/') . $produit->getIMAGE_PRODUIT2() . '" title="Photo 2 - produit de golf en vente"><img class="img-thumbnail text-center" src="' . $this->assetUrl('img/ventes/') . $produit->getIMAGE_PRODUIT2() . '" width="150" height="150" alt="Photo 2 - produit de golf en vente" />';
+							// '<div class="text-center"><span>Photo 2</span></div>'; } 
+						}
+						if (!empty($produit->getIMAGE_PRODUIT3())) {
+							// echo '<img class="img-thumbnail" src="' . $this->assetUrl('img/ventes/') . $produit->getIMAGE_PRODUIT3() . '" width="150" height="150"></img>' .*
+							echo '<a class="fancybox-thumb" rel="produit_gallery1" href="' . $this->assetUrl('img/ventes/') . $produit->getIMAGE_PRODUIT3() . '" title="Photo 3 - produit de golf en vente"><img class="img-thumbnail text-center" src="' . $this->assetUrl('img/ventes/') . $produit->getIMAGE_PRODUIT3() . '" width="150" height="150" alt="Photo 3 - produit de golf en vente" />';
+							// '<div class="text-center"><span>Photo 3</span></div>'; }
+						}
 						?>
 					</div>
 				</div>
 			</div>
-			<div class="row">
-				<div class="col-md-6">
-					<div>
-						<?php if (!empty($produit->getIMAGE_PRODUIT2())) {
-							echo '<img class="img-thumbnail" src="' . $this->assetUrl('img/ventes/') . $produit->getIMAGE_PRODUIT2() . '" width="150" height="150"></img>' .
-							'<div class="text-center"><span>Photo 2</span></div>'; } 
-						?>
-					</div>
-				</div>
-				<div class="col-md-6">
-					<div>
-						<?php if (!empty($produit->getIMAGE_PRODUIT3())) {
-							echo '<img class="img-thumbnail" src="' . $this->assetUrl('img/ventes/') . $produit->getIMAGE_PRODUIT3() . '" width="150" height="150"></img>' .
-							'<div class="text-center"><span>Photo 3</span></div>'; } 
-						?>
-					</div>
-				</div>
-				
-			</div>
+
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-md-12">
-			<h3>Informations sur la vente</h3>
+		<div class="col-md-12 bkg-vert-clair well">
+			<strong>Informations sur la vente</strong>
       	        <ul>
 		          <li>Seuls les matériels et accessoires de golf des membres EGA sont permis à la vente.</li>
 		          <li>EGA ne permet que la relation entre 2 membres souhaitant faire affaire.</li>
@@ -155,5 +147,11 @@
 		        </ul>
 		</div>
 	</div>
+	<div class="row text-center">
+		<div class="form-group">
+				<a type="button" class="btn btn-primary" name="btnRevenir" value="Retour page précédente" onclick="history.back()"><i class="glyphicon glyphicon-backward"></i>&nbsp;&nbsp;Retour page précédente</a>
+		</div>
+	</div>
 </div>
+
 <?php echo $this->stop('main_content') ?>

@@ -23,6 +23,11 @@
 		<!-- <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/css/jasny-bootstrap.min.css"> -->
 		<link rel="stylesheet" href="<?= $this->assetUrl('css/vendor/jasny-bootstrap-3.1.3.min.css') ?>">
 
+		<!-- CSS pour FancyBox -->
+		<link rel="stylesheet" href="<?= $this->assetUrl('css/vendor/jquery.fancybox-2.1.5.css') ?>" type="text/css" media="screen">
+		<link rel="stylesheet" href="<?= $this->assetUrl('css/vendor/jquery.fancybox-buttons-2.1.5.css?v=1.0.5') ?>" type="text/css" media="screen">
+		<link rel="stylesheet" href="<?= $this->assetUrl('css/vendor/jquery.fancybox-thumbs-2.1.5.css?v=1.0.7') ?>" type="text/css" media="screen">		
+
 		<!-- Chargement des polices Google Fonts sélectionnées -->
 		<!-- A copier en local -->
 		<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Lemonada:700' type='text/css'>

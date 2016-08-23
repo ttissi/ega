@@ -23,10 +23,26 @@ class ProduitController extends Controller
 		$db = new ProduitModel;
 		$db-> setTable('produits');
 		$db-> setPrimaryKey('id_membre');
-			
-		$ObjetAllProduit = $db-> findAll($orderBy = "date_publication", $orderDir = "DESC", $limit = 6, $offset = Null);
 		
-		$this-> show('produit/affichage', ['ObjetAllProduit' => $ObjetAllProduit]);
+		$BaseProduitComplete = $db-> findAll();
+		// echo '<pre>';print_r($BaseProduitComplete);echo '</pre>';
+
+		// Je veux récupérer les 6 dernières annonces, non clôturées et par ordre de parution.
+		// 1- Je trie la liste des produits par ordre de parution
+		$TousLesProduitsParus = $db-> findAll($orderBy = "date_publication", $orderDir = "DESC", $limit = Null, $offset = Null);
+		// 2- Je ne conserve que les produits n'ayant pas été clôturés, en conservant le même ordre
+		$data = ['date_cloture' => '0000-00-00 00:00:00'];
+		// ///// $ProduitsEnVente = $TousLesProduitsParus-> search($data, $operator = 'OR');
+		//echo '<pre>';print_r($DerniersProduits);echo '</pre>';
+
+		$DerniersProduits = $db-> findAll($orderBy = "date_publication", $orderDir = "DESC", $limit = 6, $offset = Null);
+
+		$data = ['id_membre' => $_SESSION['user']['id_membre'], 'date_cloture' => '0000-00-00 00:00:00'];
+		$MesProduitsEnVente = $db-> search($data, $operator = 'AND');
+		// ///// $MesDerniersProduits = $MesProduitsEnVente-> findAll($orderBy = "date_publication", $orderDir = "DESC", $limit = 3, $offset = Null);
+		$MesDerniersProduits = $db-> findAll($orderBy = "date_publication", $orderDir = "DESC", $limit = 3, $offset = Null);			
+		
+		$this-> show('produit/affichage', ['DerniersProduits' => $DerniersProduits, 'MesDerniersProduits' => $MesDerniersProduits]);
 	}
 
 
@@ -74,8 +90,10 @@ class ProduitController extends Controller
 					$db-> setPrimaryKey('id_produit');
 
 					$LastProduit 	= $db-> findAll($orderBy = 'id_produit', $orderDir = 'DESC', $limit = 1, $offset = null);
-					$numProduit 	= $LastProduit['id_produit'] + 1;
-
+					$numProduit 	= $LastProduit[0]['id_produit'] + 1;
+					echo '<pre>';print_r($LastProduit);echo '</pre>';
+					echo '<br>'.$numProduit;
+					echo $var;
 					// $app = getApp();
         			// $imgpath = $app-> getBasePath() . '/assets/img/ventes/'; 
         			$imgpath = 'assets/img/ventes/';
@@ -151,12 +169,11 @@ class ProduitController extends Controller
 					// Insertion des caractéristiques du produit  en BDD
 					if ($resultat = $db-> insert($data))
 					{
-						//$resultat 		= $db-> lastInsertId();
 						$ProduitCree 	= $db-> find($resultat['id_produit']);
-						$ProduitCree 	= json_encode($ProduitCree, JSON_FORCE_OBJECT); 
+						// $ProduitCree 	= json_encode($ProduitCree, JSON_FORCE_OBJECT); 
 						// $idProduit = $produit['id_produit'];
 						// 
-						$success = "Votre annonce de vente d'un produit a bien été créée.";
+						$success = 'Votre annonce de vente d\'un produit a bien été créée.';
 						$this-> redirectToRoute('produit_visualisation', ['id' => $resultat['id_produit'], 'produit' => $ProduitCree, 'success' => $success]);
 					}
 					else 

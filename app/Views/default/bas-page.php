@@ -3,6 +3,11 @@
 	<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
     <script>window.jQuery || document.write('<script src="<?= $this->assetUrl('js/vendor/jquery-1.12.4.min.js') ?>"><\/script>')</script>
 
+    <!-- FancyBox - Need jQuery -->
+    <script type="text/javascript" src="<?= $this->assetUrl('js/vendor/jquery.fancybox.pack-2.1.5.js') ?>"></script>
+    <script type="text/javascript" src="<?= $this->assetUrl('js/vendor/jquery.fancybox-buttons-2.1.5.js?v=1.0.5') ?>"></script>
+    <script type="text/javascript" src="<?= $this->assetUrl('js/vendor/jquery.fancybox-media-2.1.5.js?v=1.0.6') ?>"></script>
+
     <!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script> $.fn.modal || document.write('<script src="<?= $this->assetUrl('js/vendor/bootstrap-3.3.7.min.js') ?>"><\/script>')</script>
