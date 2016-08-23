@@ -12,8 +12,8 @@
                     <span class="tab-20">FRANCE<br></span>
                 
                     <span>
-                        <abbr title="Telephone Contact"></abbr><i class="fa fa-phone-square fa-lg"></i> 01.34.37.09.36<br>
-                        <i class="fa fa-envelope-square fa-lg"></i><a href="mailto:#"> contact@ega.asso.fr</a>
+                        <abbr title="Telephone Contact"></abbr><i class="fa fa-phone-square fa-lg"></i> +33 (0)1.34.37.09.36<br>
+                        <i class="fa fa-envelope-square fa-lg"></i><a href="mailto:contact@ega.asso.fr"> contact@ega.asso.fr</a>
                     </span>
                 </address>
             <!-- </p> -->

@@ -9,6 +9,7 @@ use \W\Model\ConnectionModel;
 use \W\Model\Model;
 use \W\Model\UsersModel;
 use \W\Security\AuthentificationModel;
+use \W\Security\AuthorizationModel;
 
 class MembreController extends Controller
 {
@@ -209,6 +210,14 @@ class MembreController extends Controller
 	// -----------  méthode modifierProfil ------------
 	public function modifierProfil($idMembre) 
 	{
+
+		$AllowAccess = new AuthorizationModel;
+		$AllowAccess-> isGranted(0);
+
+		$Membre = $this->getUser();
+
+		if ($idMembre != $Membre['id_membre'] AND $Membre['admin'] == 0) { $this-> redirectToRoute('membre_modifierProfil', ['idMembre' => $Membre['id_membre']]); }
+
 		if (!isset($error)) { $error = '';}
 		if (!isset($success)) { $success = '';}
 
@@ -256,6 +265,7 @@ class MembreController extends Controller
 
 		} // END if(isset($_POST['btnModifier']))
 
+
 		$this-> show('membre/profil', ['idMembre'=> $idMembre, 'membreChoisi' => $MembreChoisi, 'success' => $success, 'error' => $error]);
 
 	} // END function modifierProfil() 
@@ -275,7 +285,8 @@ class MembreController extends Controller
 	// -----------  méthode admin ------------
 	public function admin()
 	{
-
+		$AllowAccess = new AuthorizationModel;
+		$AllowAccess-> isGranted(1);
 		$MembreModel = new MembreModel;
 		$MembreModel->setTable('membres'); 				// Précise la table
 		$MembreModel->setPrimaryKey('id_membre'); 		// Précise clé primaire
@@ -290,6 +301,8 @@ class MembreController extends Controller
 	// -----------  méthode changeActivite ------------
 	public function changeActivite($idMembre)
 	{
+		$AllowAccess = new AuthorizationModel;
+		$AllowAccess-> isGranted(1);
 		if (!isset($error)) { $error = '';}
 		if (!isset($success)) { $success = '';}
 

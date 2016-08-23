@@ -1,43 +1,42 @@
-<?php $this->layout('layout', ['title' => 'Cartographie | EGA']) ?>
+<?php $this->layout('layout', ['title' => 'Cartographie | EGA', 'titleSidebarRight' => 'Favoris', 'titlePanelLeft' => 'Module de recherche']) ?>
 
 <!-- Affichage des modules de sélection de golf sur le panel gauche -->
-
-<div id="rowPanelLeftId" class="row">
-
 <?php $this->start('panel_left') ?>
+    <div id="rowPanelLeftId" class="row">
+        <div class="text-right">
+            <button id="rechercheGolfId" type="button" class="btn btn-primary" data-toggle="collapse" data-target="#panelGolfs_leftId">
+                <span class="glyphicon glyphicon glyphicon-search"></span> Sélection golf
+            </button>
+        </div>
+        <div id="panelGolfs_leftId" class="panel collapse">
+            <div class="panel-body mh600 mw200">        
+                <h1 class="police-1-1em"><strong>Golfs Partenaires</strong></h1>
+                
+                <form name="choixGolf" method="POST">
+                    <div class="form-group">
+                        <label for="golfChoisiId"></label>
+                        <select name="golfChoisi" id="golfChoisiId" onchange="document.location.href='carte?golf='+this.value" class="form-control">
+                            <option class="text-hide" disabled selected>Centrer la carte sur...</option>
+                            <?php 
+                                foreach ($golfs as $golf) : ?>
+                                    <option value="<?= $golf['id_golf']; ?>"><?= $golf['nom']; ?></option>
+                                <?php endforeach;  ?>   <!-- Fin boucle foreach golfs -->
+                        </select>
+                    </div>
+                </form>
 
-    <div class="text-right">
-    <button id="rechercheGolfId" type="button" class="btn btn-primary" data-toggle="collapse" data-target="#panelGolfs_leftId">
-        <span class="glyphicon glyphicon glyphicon-search"></span> Sélection golf
-    </button>
-    </div>
-    <div id="panelGolfs_leftId" class="panel collapse">
-        <div class="panel-body mh600 mw200">        
-            <h1 class="police-1-1em"><strong>Golfs Partenaires</strong></h1>
-            
-            <form name="choixGolf" method="POST" action="">
-                <div class="form-group">
-                    <label for="golfChoisiId"></label>
-                    <select name="golfChoisi" id="golfChoisiId" onchange="document.location.href='carte?golf='+this.value" class="form-control">
-                        <option class="text-hide" disabled selected>Centrer la carte sur...</option>
-                        <?php 
-                            foreach ($golfs as $golf) { ?>
-                                <option value="<?= $golf['id_golf']; ?>"><?= $golf['nom']; ?></option>
-                            <?php } //Fin boucle foreach golfs ?>   
-                        ?>
-                    </select>
-                </div>
-            </form>
-
+            </div>
         </div>
     </div>
-
 <?php $this->stop('panel_left') ?>
+
 
 <!-- Affichage de la carte Google Map sur la partie centrale -->
 <?php $this->start('main_content') ?>
-
-    <div id="map" class="col-md-6 col-md-offset-2 text-center well"></div>
+    
+    <h1 class="visuallyhidden">Cartographie des golfs partenaires</h1>
+    <div id="map" class="col-md-6 col-md-offset-2 text-center well">
+    </div>
 
     <!-- Initialise la Map de Google -->
     <script>
@@ -49,23 +48,11 @@
             var dataGolfs   = <?php echo json_encode($golfs, JSON_FORCE_OBJECT); ?>;
             var golfDefaut  = <?php echo json_encode($golfParDefaut, JSON_FORCE_OBJECT); ?>;
             var golfChoisi  = <?php echo json_encode($golfChoisi, JSON_FORCE_OBJECT); ?>;
-            
-
-/*  ************ BLOC de DEBUG pour vérification de valeur (A supprimer à la fin)
-            
-            console.log(typeof(golfDefaut));
-            console.log(JSON.parse(JSON.stringify(golfDefaut)));
-            console.log(dataGolfs);
-            var lat_i = parseFloat(dataGolfs[i]['latitude']);
-            console.log(typeof(lat_i));        // vérif. si lat_i est bien un number/float
-            console.log(lat_i);
-
-******** */
-        
+    
             // Je cherche à déterminer le centre de ma carte en fonction des coordonnées
             // de toutes adresses de la table golfs
     
-            // Variables nécessaires pour calculer mon centre de carte
+            // Variables utiles pour calculer mon centre de carte
             var maxX = '';
             var maxY = '';
             var minX = '';
@@ -159,9 +146,9 @@
 
                 var resumeDetailsGolfs =    '<div id="content">' +
                                                 '<div id="siteNotice">' + '</div>' +
-                                                    '<img id="blasonGolf' + dataGolfs[i]['id_golf'] + '" src="<?= $this->assetUrl("img/golfs/blasons/"); ?>' +  dataGolfs[i]['image_blason'] + '" alt="Blason de ' + dataGolfs[i]['nom'] + '" height="50px">' +
-                                                    '<h1 id="firstHeading" class="firstHeading"><strong>' + dataGolfs[i]['nom'] + '</strong></h1>' +
-                                                    '<div id="bodyContent">' +
+                                                    '<img id="blasonGolf' + dataGolfs[i]['id_golf'] + '" src="<?= $this->assetUrl("img/golfs/blasons/"); ?>' +  dataGolfs[i]['image_blason'] + '" alt="Blason de ' + dataGolfs[i]['nom'] + '" height="50">' +
+                                                    '<h1 id="firstHeading' + dataGolfs[i]['id_golf'] + '" class="firstHeading"><strong>' + dataGolfs[i]['nom'] + '</strong></h1>' +
+                                                    '<div id="bodyContent' + dataGolfs[i]['id_golf'] + '">' +
                                                         '<br>' + dataGolfs[i]['adresse']  + '<br>' + 
                                                         dataGolfs[i]['code_postal'] + '  ' + dataGolfs[i]['ville']  + '<br>' + 
                                                         '<hr>' + 
@@ -194,15 +181,23 @@
                 map.setZoom(10);
                 map.setCenter(marker.getPosition());
             });
+        }    // Fin function initialisation 
 
-        }
         google.maps.event.addDomListener(window, 'load', initialisation);
- 
+        
     </script>
 
-    <div id="afffichage_erreurs"></div>
-
-</div>
-
+    <div id="afffichage_erreurs">
+    </div>
 
 <?php $this->stop('main_content') ?>
+
+<!-- Affichage du contenu de la barre latérale droite -->
+<?php $this->start('sidebar_right') ?>    
+  <div class="row">
+    <div class="panel panel-default">     
+      <?php include('favoris.php') ?>
+      <?php include('meteo.php') ?>
+    </div>    
+  </div>
+<?php $this->stop('sidebar_right') ?>

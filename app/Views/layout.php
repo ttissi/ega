@@ -13,12 +13,17 @@
 	<div class="row">
 
 	  	<div class="col-md-2">
-			<section id="panelLeftId" class="container">
-				<div class="row no-marge-top">
-					<?= $this->section('panel_left') ?>
-				</div>
-			</section>
-		</div>
+	  		<?php 
+	  			if (isset($titlePanelLeft)) {
+	  				echo 	'<h2 class="visuallyhidden">'.$this->e($titlePanelLeft).'</h2>'.
+							'<section id="panelLeftId" class="container">'.
+								'<div class="row no-marge-top">'.
+									$this->section('panel_left').
+								'</div>'.
+							'</section>';
+				}
+			?>
+		</div>    <!-- /.col-md-2 -->
 
 	  	<div class="col-md-8">		
 			<section id="mainContentId" class="container">
@@ -29,17 +34,17 @@
 	  	</div>  <!-- /.col-md-8 -->
 
 	    <div class="col-md-2 margin-top-20">
-			<section id="sidebarRightId" class="container">
-					<?= $this->section('sidebar_right') ?>
-			</section>
+	    	<?php 
+	    		if (isset($titleSidebarRight)) {
+	    			echo 	'<h2 class="text-right">'.$this->e($titleSidebarRight).'</h2>'.
+							'<section id="sidebarRightId" class="container">'.
+								$this->section('sidebar_right').
+							'</section>';
+				} 
+			?>
 		</div>  <!-- /.col-md-2 -->			
 
 	</div>
-
-<!-- 			<section id="modalWindowsId" class="container">
-					<?= $this->section('modal_windows') ?>
-			</section> -->
-
 
 	<?php include_once("default/footer.php"); ?>
 

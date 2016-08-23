@@ -20,4 +20,12 @@ class DefaultController extends Controller
 		$this->show('default/plan_site');
 	}		
 
+	/** Page avec plan de site **/
+	public function contactEga()
+	{
+		// Du code
+
+		$this->show('default/contactEga', ['success' => $success, 'error' => $error]);
+	}	
+
 }

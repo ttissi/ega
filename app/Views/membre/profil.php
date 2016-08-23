@@ -29,7 +29,7 @@
 
 <div class="well">
 
-	<p><h1 class=""><strong>Page profil</strong></h1></p>
+	<h1 class=""><strong>Page profil</strong></h1>
 	<p>Bienvenue <strong><em><?php echo ucfirst(strtolower($membreChoisi['prenom'])); ?></em></strong>, vous pouvez modifier vos informations sur cette page.</p>
 
 	<!-- Zone d'affichage de message en cas de succès -->
@@ -41,7 +41,7 @@
   				<strong>Erreur ! </strong>' . $error . '</div>';
   	} ?>
 	
-	<form id="formProfil" method="POST" action="">
+	<form id="formProfil" method="POST">
 
 		<!-- Récupération des n° de carte EGA et n° de licence FFGolf -->
 		<div class="row">
@@ -166,7 +166,7 @@
 								<div class="form-group">
 					              	<div class="input-group">
 					                	<span class="input-group-addon"><i class="fa fa-university" aria-hidden="true"></i></span>
-					                	<input type="text" class="form-control" name="cp" id="nom" placeholder="Ex: 95120" value="<?php echo $membreChoisi['code_postal']; ?>">
+					                	<input type="text" class="form-control" name="cp" id="cp" placeholder="Ex: 95120" value="<?php echo $membreChoisi['code_postal']; ?>">
 					              	</div>
         						</div>
         					</div>
@@ -174,7 +174,7 @@
 					          	<div class="form-group">
 					              	<div class="input-group">
 					                	<span class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></span>
-					                	<input type="text" class="form-control" name="ville" id="nom" placeholder="Ex: Ermont" value="<?php echo $membreChoisi['ville']; ?>">
+					                	<input type="text" class="form-control" name="ville" id="ville" placeholder="Ex: Ermont" value="<?php echo $membreChoisi['ville']; ?>">
 					              	</div>
 					            </div>
         					</div>
@@ -230,7 +230,7 @@
 			          		<div class="form-group">
 			              		<div class="input-group">
 			                		<span class="input-group-addon info"><i class="glyphicon glyphicon-lock"></i></span>
-			                		<input type="password" class="form-control" name="pwdNew" id="pwdNew" placeholder="Nouveau mot de passe">
+			                		<input type="password" class="form-control" name="pwdNew" id="pwdNew" placeholder="Nouveau mot de passe" disabled>
 			              		</div>
 			            	</div>
 			          	</div>
@@ -241,7 +241,7 @@
 			          		<div class="form-group">
 			              		<div class="input-group">
 			                		<span class="input-group-addon success"><i class="glyphicon glyphicon-lock"></i></span>
-			                		<input type="password" class="form-control" name="pwdConfirm" id="pwdConfirm" placeholder="Resaisir mot de passe">
+			                		<input type="password" class="form-control" name="pwdConfirm" id="pwdConfirm" placeholder="Resaisir mot de passe" disabled>
 			              		</div>
 			            	</div>
 			          	</div>
@@ -249,7 +249,7 @@
 
 			        <div class="row">
 			            <div class="col-md-8 col-md-offset-1">
-			        		<a class="btn btn-primary" name="btnModifPwd" href="<?= $this->url('membre_pwdNew', ['numEgaMembre' => $membreChoisi['num_ega']]); ?>">Changer de mot de passe</a>
+			        		<a class="btn btn-primary" id="btnModifPwd" href="<?= $this->url('membre_pwdNew', ['numEgaMembre' => $membreChoisi['num_ega']]); ?>">Changer de mot de passe</a>
 			        	</div>
 			        </div>
 	        	 </div>

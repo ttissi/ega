@@ -1,25 +1,25 @@
-<?php $this->layout('layout', ['title' => 'Affichage annonce | EGA' ]) ?>
+<?php $this->layout('layout', ['title' => 'Espace Vente | EGA']) ?>
 
 <?php echo $this->start('main_content') ?>
 
-<form method="post" action="" id="formAffichageProduit">
+<form method="POST" id="formAffichageProduit">
 
 	<div class="container-fluid">
 
 		<div class="row">
 
-			<h1><legend>ESPACE DE VENTE - MATERIEL DE GOLF</legend></h1>
+			<h1 class="legend">ESPACE DE VENTE - MATERIEL DE GOLF</h1>
 
 			<!-- Bloc de recherche de matériel de golf -->
 			<div class="col-md-6">
 				<div class="row">
-					<h2><legend>Rechercher un matériel</legend></h2>
+					<h2 class="legend">Rechercher un matériel</h2>
 					<div class="col-md-6">
 						<div class="form-group">
 							<label for="categorie"></label>
 	    					<div class="input-group">
 	        					<span class="input-group-addon"><i class="glyphicon glyphicon-folder-open"></i></span>
-	        					<select name="categorie" class="form-control" >
+	        					<select id="categorie" name="categorie" class="form-control" >
 						          <option class="text-hide" selected disabled>Categorie</option>
 						          <option value="Accessoire">Accessoire</option>
 						          <option value="Chariot">Chariot</option>
@@ -38,7 +38,7 @@
 							<label for="etat"></label>
 	    					<div class="input-group">
 	        					<span class="input-group-addon"><i class="glyphicon glyphicon-question-sign"></i></span>
-	        					<select name="etat" class="form-control" >
+	        					<select id="etat" name="etat" class="form-control" >
 						          <option class="text-hide" selected disabled>Etat</option>
 						          <option value="Neuf">Neuf</option>
 						          <option value="Bon état">Bon état</option>
@@ -55,7 +55,7 @@
 							<label for="sexe"></label>
 	    					<div class="input-group">
 	        					<span class="input-group-addon"><i class="fa fa-transgender"></i></span>
-	        					<select name="sexe" class="form-control" >
+	        					<select id="sexe" name="sexe" class="form-control" >
 						          <option class="text-hide" selected disabled>Sexe</option>
 						          <option value="Homme">Homme</option>
 						          <option value="Femme">Femme</option>
@@ -69,7 +69,7 @@
 							<label for="dexterite"></label>
 	    					<div class="input-group">
 	        					<span class="input-group-addon"><i class="fa fa-hand-paper-o"></i></span>
-	        					<select name="dexterite" class="form-control" >
+	        					<select id="dexterite" name="dexterite" class="form-control" >
 						          <option class="text-hide" selected disabled>Dextérité</option>
 						          <option value="Droitier">Droitier</option>
 						          <option value="Gaucher">Gaucher</option>
@@ -84,92 +84,121 @@
 						<button class="btn btn-primary" type="submit" name="btnrecherche">Lancer la recherche&nbsp;&nbsp;<span class="glyphicon glyphicon-search"></span></button>
 					</div>
 				</div>
+				<div class="row">
+					<h2 class="legend">Autres actions</h2>
+					<div>
+						<div class="col-md-12 text-left">
+							<a class="btn btn-success" href="<?= $this->url('produit_creation'); ?>"><span class="glyphicon glyphicon-plus-sign"></span>&nbsp;&nbsp;Créer une annonce</a>
+						</div>
+					</div>
+				</div>
 			</div>
 
 			<!-- Bloc d'affichage de mes 3 dernières annonces -->
 			<div class="col-md-6">
-				<h2><legend>MES ANNONCES</legend></h2>
+				<h2 class="legend">MES ANNONCES</h2>
 				<div class="row text-center well">
-					<p><strong><em>Les 3 dernières publiées</em></strong></p>
-					<?php
-						foreach ($MesDerniersProduits as $key => $value) {
-							echo '<div class="col-md-4">'.
-									'<p><em>Parue le :<br>'. date('d/m/Y H:i', strtotime($MesDerniersProduits[$key]['date_publication'])) . '</em></p>';
-							echo	'<a href="' . $this-> assetUrl('img/ventes/' . $MesDerniersProduits[$key]['image_produit1']) . '">' .
-									'<img alt="Photo produit de golf en vente" src="' . $this-> assetUrl('img/ventes/' . $MesDerniersProduits[$key]['image_produit1']) . '" class="img-thumbnail">' . '</a>';
-							echo	'<p><strong>'. $MesDerniersProduits[$key]['intitule'] . '</strong><br>' . $MesDerniersProduits[$key]['etat'] . ' - ' . $MesDerniersProduits[$key]['prix'] . ' €' . '</p>';
-							echo '</div>';
-						}			
-					?>
-					<ul class="pagination">
-						<li>
-							<a href="#">Prev</a>
-						</li>
-						<li>
-							<a href="#">1</a>
-						</li>
-						<li>
-							<a href="#">2</a>
-						</li>
-						<li>
-							<a href="#">3</a>
-						</li>
-						<li>
-							<a href="#">4</a>
-						</li>
-						<li>
-							<a href="#">5</a>
-						</li>
-						<li>
-							<a href="#">Next</a>
-						</li>
+					<!-- Les 3 dernières annonces publiées -->
+					<ul class="nav nav-pills nav nav-tabs">
+						<li class="active"><a data-toggle="pill" href="#3DernieresAnnonces">Dernières publiées</a></li>
+						<li><a data-toggle="pill" href="#toutesMesAnnonces">Toutes mes annonces</a></li>
 					</ul>
+
+					<div class="tab-content">
+						<div id="3DernieresAnnonces" class="tab-pane fade in active">
+							<div class="row">
+								<div class="col-md-12">
+								<h4>Mes trois dernières annonces</h4>
+								<?php
+									$nbLignes = count($MesDerniersProduits);
+									$arret = $nbLignes-1;
+									while ($arret > $nbLignes-4) {
+										echo '<div class="col-md-4">'.
+												'<p><em>Parue le :<br>'. date('d/m/Y H:i', strtotime($MesDerniersProduits[$arret]['date_publication'])). '</em></p>';
+										echo	'<a href="' . $this-> url('produit_visualisation', ['id' => $MesDerniersProduits[$arret]['id_produit']]) . '">' .
+												'<img alt="Photo produit de golf en vente" src="' . $this-> assetUrl('img/ventes/' . $MesDerniersProduits[$arret]['image_produit1']) . '" class="img-thumbnail" width="150" height="150">' . '</a>';
+										echo	'<p><strong>'. $MesDerniersProduits[$arret]['intitule'] . '</strong><br>' . $MesDerniersProduits[$arret]['etat'] . ' - ' . $MesDerniersProduits[$arret]['prix'] . ' €' . '</p>';
+										echo '</div>';
+										$arret--;
+									}
+								?>
+								</div>
+							</div>
+						</div>
+
+						<div id="toutesMesAnnonces" class="tab-pane fade">
+							<div class="row">
+								<!-- <div class="col-md-6"> -->
+									<h4>Toutes mes annonces</h4>
+									<?php
+									$nbLignes = count($MesDerniersProduits);
+									$arret = $nbLignes-1;
+
+									while ($arret > -1) {
+										echo '<div class="col-md-4">'.
+												'<p><em>Parue le :<br>'. date('d/m/Y H:i', strtotime($MesDerniersProduits[$arret]['date_publication'])) . '</em></p>';
+										echo	'<a href="' . $this-> url('produit_visualisation', ['id' => $MesDerniersProduits[$arret]['id_produit']]) . '">' .
+												'<img alt="Photo produit de golf en vente" src="' . $this-> assetUrl('img/ventes/' . $MesDerniersProduits[$arret]['image_produit1']) . '" class="img-thumbnail" width="150" height="150">' . '</a>';
+										echo	'<p><strong>'. $MesDerniersProduits[$arret]['intitule'] . '</strong><br>' . $MesDerniersProduits[$arret]['etat'] . ' - ' . $MesDerniersProduits[$arret]['prix'] . ' €' . '</p>';
+										echo '</div>';
+										$arret--;
+									}			
+								?>
+								<!-- </div> -->
+							</div>
+						</div>
+					</div>	
+
 				</div>
 			</div>
 		</div>
 
 		<!-- Bloc d'affichage du résultat de ma rercherche ou à défaut les 6 dernières annonces publiées -->
 		<div id="lastPosts" class="row">
-			<h2><legend >LES DERNIERES ANNONCES / Résultat de votre recherche</legend></h2>
+			<h2 class="legend">LES DERNIERES ANNONCES / Résultat de votre recherche></h2>
 			
-			<div class="col-md-12 well">
-				<div class="row text-center">	
-					<?php 
-						foreach ($DerniersProduits as $key => $value) {
-							echo '<div class="col-md-2">'.
-									'<p><em>Parue le :<br>'. date('d/m/Y H:i', strtotime($DerniersProduits[$key]['date_publication'])) . '</em></p>';
-							echo	'<a href="' . $this-> assetUrl('img/ventes/' . $DerniersProduits[$key]['image_produit1']) . '">' .
-									'<img alt="Photo produit de golf en vente" src="' . $this-> assetUrl('img/ventes/' . $DerniersProduits[$key]['image_produit1']) . '" class="img-thumbnail" width="150">' . '</a>';
-							echo	'<p><strong>'. $DerniersProduits[$key]['intitule'] . '</strong><br>' . $DerniersProduits[$key]['etat'] . ' - ' . $DerniersProduits[$key]['prix'] . ' €' . '</p>';
-							echo '</div>';
-						}
-					?>
-				</div>
-				<div class="row text-center">
-					<ul class="pagination">
-						<li>
-							<a href="#lastPosts">Prev</a>
-						</li>
-						<li>
-							<a href="#lastPosts">1</a>
-						</li>
-						<li>
-							<a href="#lastPosts">2</a>
-						</li>
-						<li>
-							<a href="#lastPosts">3</a>
-						</li>
-						<li>
-							<a href="#lastPosts">4</a>
-						</li>
-						<li>
-							<a href="#lastPosts">5</a>
-						</li>
-						<li>
-							<a href="#lastPosts">Next</a>
-						</li>
-					</ul>
-				</div>
+			<div class="row text-center">	
+				<?php 
+					// foreach ($DerniersProduits as $key => $value) {
+					// for ($i=0; $i<=5; $i++) {
+						$nbLignes = count($DerniersProduits);
+						$arret = $nbLignes-1;
+
+						while ($arret > $nbLignes-7) {
+						echo '<div class="col-md-2">'.
+								'<p><em>Parue le :<br>'. date('d/m/Y H:i', strtotime($DerniersProduits[$arret]['date_publication'])) . '</em></p>';
+						echo	'<a href="' . $this-> url('produit_visualisation', ['id' => $DerniersProduits[$arret]['id_produit']]) . '">' .
+								'<img alt="Photo produit de golf en vente" src="' . $this-> assetUrl('img/ventes/' . $DerniersProduits[$arret]['image_produit1']) . '" class="img-thumbnail" width="150" height="150">' . '</a>';
+						echo	'<p><strong>'. $DerniersProduits[$arret]['intitule'] . '</strong><br>' . $DerniersProduits[$arret]['etat'] . ' - ' . $DerniersProduits[$arret]['prix'] . ' €' . '</p>';
+						echo '</div>';
+						$arret--;
+					}
+				?>
+			</div>
+			<div class="row text-center">
+				<ul class="pagination">
+					<li>
+						<a href="#lastPosts">Prev</a>
+					</li>
+					<li>
+						<a href="#lastPosts">1</a>
+					</li>
+					<li>
+						<a href="#lastPosts">2</a>
+					</li>
+					<li>
+						<a href="#lastPosts">3</a>
+					</li>
+					<li>
+						<a href="#lastPosts">4</a>
+					</li>
+					<li>
+						<a href="#lastPosts">5</a>
+					</li>
+					<li>
+						<a href="#lastPosts">Next</a>
+					</li>
+				</ul>
 			</div>
 		</div>
 

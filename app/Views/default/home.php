@@ -1,22 +1,15 @@
-<?php $this->layout('layout', ['title' => 'Accueil | EGA']) ?>
-
-<?php $this->start('panel_left') ?>
-  <h1 class="hidden">Module de recherche</h1>
-  <!-- Code à insérer pour éventuellement utiliser ici le panneau de gauche -->
-<?php $this->stop('main_content') ?>
+<?php $this->layout('layout', ['title' => 'Accueil | EGA', 'titleSidebarRight' => 'Favoris', 'titlePanelLeft' => 'Module de recherche']) ?>
 
 <!-- Affichage du contenu de la zone principale centrale -->
 <?php $this->start('main_content') ?>
-
   <div class="container">
       <div class="row no-marge-top no-padding-top no-padding-bottom well">
-          <h1>Bienvenue sur le site d'<strong>Ermont Golf Association</strong></h1>
+          <h2>Bienvenue sur le site d'<strong>Ermont Golf Association</strong></h2>
           <p class="text-right"><small><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span><em> L'accès à l'espace privé nécessite une connexion des membres.</em></small></p>
       </div>
   </div>
 
   <?php include('caroussel.php') ?>
-
 
   <div class="container">
   
@@ -55,32 +48,19 @@
         </div>
     </div>
   </div>
-
 <?php $this->stop('main_content') ?>
+
+<?php $this->start('panel_left') ?>
+  <!-- Code à insérer pour éventuellement utiliser ici le panneau de gauche -->
+<?php $this->stop('panel_left') ?>
+
 
 <!-- Affichage du contenu de la barre latérale droite -->
 <?php $this->start('sidebar_right') ?>    
-
   <div class="row">
-
-    <div class="panel panel-default">
-      
-      <div class="panel-heading">
-        <h1 class="panel-title police-1-5em">Favoris</h1>
-      </div>
-      <div class="panel-body text-center">
-        <p><a href="http://www.ega.asso.fr"><img src="<?= $this->assetUrl('img/reservations_ega.jpg') ?>" style="width:25%" alt="Image-lien vers site de réservations EGA"><br>Réservations</a></p>
-      </div>
-
-          <div class="panel-heading text-center">
-        <p>Votre météo sur <strong><?php if (isset($_POST['golf'])) { echo $_POST['golf']; } else { echo 'Eaubonne'; } ?></strong></p>
-      </div>
-            <div class="panel-body text-center">
-              <?php include('meteo.php') ?>
-            </div>
-
-        </div>
-        
+    <div class="panel panel-default">     
+      <?php include('favoris.php') ?>
+      <?php include('meteo.php') ?>
+    </div>    
   </div>
-
 <?php $this->stop('sidebar_right') ?>

@@ -101,41 +101,41 @@
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-md-4">
-					<div class="fileinput fileinput-new" data-provides="fileinput">
-						<div class="fileinput-new thumbnail" style="width: 125px; height: 125px;">
-						    <img src="<?php echo $this->assetUrl('img/ventes/default.jpg'); ?>" alt="Photo 1" style="max-width: 150px; max-height: 150px;">
-						</div> 
-						<div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 150px; max-height: 150px;"></div>
-						<div>
-						    <span class="btn btn-default btn-file"><span class="fileinput-new"><small>Choisir une photo</small></span><span class="fileinput-exists"><small>Changer</small></span><input type="file" name="image1"></span>
-						    <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput"><small>Supprimer</small></a>
+					<div class="col-md-4 text-center">
+						<div class="fileinput fileinput-new" data-provides="fileinput">
+							<div class="fileinput-new thumbnail" style="width: 125px; height: 125px;">
+							    <img  alt="Produit Golf 1" style="max-width: 150px; max-height: 150px;">
+							</div> 
+							<div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 150px; max-height: 150px;"></div>
+							<div>
+							    <span class="btn btn-default btn-file"><span class="fileinput-new"><small>Choisir une photo</small></span><span class="fileinput-exists"><small>Changer</small></span><input type="file" name="image1"></span>
+							    <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput"><small>Supprimer</small></a>
+							</div>
 						</div>
 					</div>
-					</div>
-					<div class="col-md-4">
-					<div class="fileinput fileinput-new" data-provides="fileinput">
-						<div class="fileinput-new thumbnail" style="width: 125px; height: 125px;">
-						    <img src="<?php echo $this->assetUrl('img/ventes/default.jpg'); ?>" alt="Photo 2" style="max-width: 150px; max-height: 150px;">
-						</div> 
-						<div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 150px; max-height: 150px;"></div>
-						<div>
-						   <span class="btn btn-default btn-file"><span class="fileinput-new"> <small>Choisir une photo</small></span><span class="fileinput-exists"> <small>Changer</small></span><input type="file" name="image2"></span>
-						    <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput"> <small>Supprimer</small></a>
+					<div class="col-md-4 text-center">
+						<div class="fileinput fileinput-new" data-provides="fileinput">
+							<div class="fileinput-new thumbnail" style="width: 125px; height: 125px;">
+							    <img  alt="Produit Golf 2" style="max-width: 150px; max-height: 150px;">
+							</div> 
+							<div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 150px; max-height: 150px;"></div>
+							<div>
+							   <span class="btn btn-default btn-file"><span class="fileinput-new"> <small>Choisir une photo</small></span><span class="fileinput-exists"> <small>Changer</small></span><input type="file" name="image2"></span>
+							    <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput"> <small>Supprimer</small></a>
+							</div>
 						</div>
 					</div>
-					</div>
-					<div class="col-md-4">
-					<div class="fileinput fileinput-new" data-provides="fileinput">
-						<div class="fileinput-new thumbnail" style="width: 125px; height: 125px;">
-						    <img src="<?php echo $this->assetUrl('img/ventes/default.jpg'); ?>" alt="Photo 3" style="max-width: 150px; max-height: 150px;">
-						</div> 
-						<div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 150px; max-height: 150px;"></div>
-						<div>
-						    <span class="btn btn-default btn-file"><span class="fileinput-new"><small>Choisir une photo</small></span><span class="fileinput-exists"><small>Changer</small></span><input type="file" name="image3"></span>
-						    <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput"><small>Supprimer</small></a>
+					<div class="col-md-4 text-center">
+						<div class="fileinput fileinput-new" data-provides="fileinput">
+							<div class="fileinput-new thumbnail" style="width: 125px; height: 125px;">
+							    <img src="" alt="Produit Golf 3" style="max-width: 150px; max-height: 150px;">
+							</div> 
+							<div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 150px; max-height: 150px;"></div>
+							<div>
+							    <span class="btn btn-default btn-file"><span class="fileinput-new"><small>Choisir une photo</small></span><span class="fileinput-exists"><small>Changer</small></span><input type="file" name="image3"></span>
+							    <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput"><small>Supprimer</small></a>
+							</div>
 						</div>
-					</div>
 					</div>
 				</div>
 			</div>
@@ -183,22 +183,20 @@
     				</div>
 				</div>
 			</div>
+		</div>
+		<br>
+		<div class="row">
+<!-- 			<div class="col-md-2">
+				<button type="submit" class="btn btn-default" name="btnVisualiser" value="visualiser"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Visualiser</button>
+			</div> -->
+			<div class="col-md-3 col-md-offset-5">
+				<button type="reset" class="btn btn-warning" name="btnAnnuler" value="Annuler vos modifications" onclick="document.location.href='<?= $this->url('default_home'); ?>';" ><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Annuler vos modifications</button>
 			</div>
-			<br>
-			<div class="row">
-				<div class="col-md-2 col-md-offset-1">
-					<button type="submit" class="btn btn-danger" name="btnSupprimer" value="supprimer"><span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span> Supprimer</button>
-				</div>
-				<div class="col-md-2">
-					<button type="submit" class="btn btn-default" name="btnVisualiser" value="visualiser"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Visualiser</button>
-				</div>
-				<div class="col-md-3">
-					<button type="reset" class="btn btn-warning" name="btnAnnuler" value="Annuler vos modifications" onclick="document.location.href='<?= $this->url('default_home'); ?>';" ><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Annuler vos modifications</button>
-				</div>
-				<div class="col-md-3 col-md-offset-1">
-					<button type="submit" class="btn btn-primary" name="btnValider" value="Valider l'annonce" onclick="document.location.href='<?= $this->url('default_home'); ?>';" ><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Valider l'annonce</button>
-				</div>
+			<div class="col-md-3">
+				<button type="submit" class="btn btn-success" name="btnValider" value="Enregistrer l'annonce"><span class="glyphicon glyphicon-plus-sign"></span>&nbsp;&nbsp; Enregistrer l'annonce</button>
 			</div>
-		</form>
+		</div>
+	</form>
 </div>
+
 <?php $this->stop('main_content') ?>

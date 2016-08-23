@@ -32,17 +32,16 @@ class ProduitController extends Controller
 		$TousLesProduitsParus = $db-> findAll($orderBy = "date_publication", $orderDir = "DESC", $limit = Null, $offset = Null);
 		// 2- Je ne conserve que les produits n'ayant pas été clôturés, en conservant le même ordre
 		$data = ['date_cloture' => '0000-00-00 00:00:00'];
-		// ///// $ProduitsEnVente = $TousLesProduitsParus-> search($data, $operator = 'OR');
-		//echo '<pre>';print_r($DerniersProduits);echo '</pre>';
+		$ProduitsEnVente = $db-> search($data, $operator = 'OR');
+		// echo '<pre>';print_r($DerniersProduits);echo '</pre>';
 
-		$DerniersProduits = $db-> findAll($orderBy = "date_publication", $orderDir = "DESC", $limit = 6, $offset = Null);
+		// $DerniersProduits = $db-> findAll($orderBy = "date_publication", $orderDir = "DESC", $limit = 6, $offset = Null);
 
 		$data = ['id_membre' => $_SESSION['user']['id_membre'], 'date_cloture' => '0000-00-00 00:00:00'];
 		$MesProduitsEnVente = $db-> search($data, $operator = 'AND');
-		// ///// $MesDerniersProduits = $MesProduitsEnVente-> findAll($orderBy = "date_publication", $orderDir = "DESC", $limit = 3, $offset = Null);
-		$MesDerniersProduits = $db-> findAll($orderBy = "date_publication", $orderDir = "DESC", $limit = 3, $offset = Null);			
-		
-		$this-> show('produit/affichage', ['DerniersProduits' => $DerniersProduits, 'MesDerniersProduits' => $MesDerniersProduits]);
+
+		// $MesDerniersProduits = $db-> findAll($orderBy = "date_publication", $orderDir = "DESC", $limit = 3, $offset = Null);			
+		$this-> show('produit/affichage', ['DerniersProduits' => $ProduitsEnVente, 'MesDerniersProduits' => $MesProduitsEnVente]);
 	}
 
 

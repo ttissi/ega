@@ -21,7 +21,7 @@
 				<form class="navbar-form navbar-right inline-form">
 					<label class="control-label"  for="numEgaChoisiId"></label>
 			      	<div class="form-group">
-			        	<select name="numEgaChoisi" id="numEgaChoisiId" onchange="document.location.href='membre?id='+this.value" class="form-control">
+			        	<select name="numEgaChoisi" id="numEgaChoisiId" onchange="document.location.href='../profil/'+this.value" class="form-control">
                         	<option class="text-hide" disabled selected>N° de carte</option>
 	                        <?php 
 	                            foreach ($ListeMembresTriNumEga as $membre) { ?>
@@ -34,13 +34,11 @@
 			      	
 			      	<label class="control-label"  for="nomId"></label>
 			      	<div class="form-group">
-			      		<select name="nomChoisi" id="nomId" onchange="document.location.href='<?php $this->url('membre_modifierProfil', ['idMembre' => $value['id_membre']]); ?>'" class="form-control">
+			      		<select name="nomChoisi" id="nomId" onchange="document.location.href='../profil/'+this.value" class="form-control">
                         	<option class="text-hide" disabled selected>Nom du membre</option>
-	                        <?php 
-	                            foreach ($ListeMembresTriNom as $membre) { ?>
+	                        <?php foreach ($ListeMembresTriNom as $membre) : ?>
 	                                <option value="<?= $membre['id_membre']; ?>"><?= $membre['nom'].' '.$membre['prenom'].' - '.$membre['num_ega']; ?></option>
-	                            <?php } //Fin boucle foreach membres ?>   
-	                        ?>
+	                        <?php endforeach; ?>   //Fin boucle foreach membres
                     	</select>
                     	<button type="submit" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-user"></span></button>
 			        	<!-- <input type="search" class="input-sm form-control" placeholder="Nom du membre"> -->
@@ -50,25 +48,27 @@
 		</div>
 	
 		<table id="tableListeMembre" class="table table-condensed table-striped table-hover">
+			<thead class="bkg-vert-clair">
+				<tr>
+					<th class="vmiddle">N°</th>
+					<th class="vmiddle">N° EGA</th>
+					<th class="vmiddle">N° FFG</th>
+					<th class="vmiddle">Nom</th>
+					<th class="vmiddle">Prénom</th>
+					<!-- <th>Adresse</th> -->
+					<!-- <th>Code postal</th> -->
+					<!-- <th>Ville</th> -->
+					<th class="vmiddle">Tél. mobile</th>
+					<th class="vmiddle">Tél. fixe</th>
+					<th class="vmiddle">Email</th>
+					<!-- <th>Photo</th> -->
+					<th class="vmiddle">Actif</th>
+					<th class="vmiddle">Admin</th>
+					<th class="vmiddle">Déja connecté</th>
+					<th class="vmiddle">Action</th>
+				<tr>
+			</thead>
 			<tbody>
-				<thead class="bkg-vert-clair">
-						<th class="vmiddle">N°</th>
-						<th class="vmiddle">N° EGA</th>
-						<th class="vmiddle">N° FFG</th>
-						<th class="vmiddle">Nom</th>
-						<th class="vmiddle">Prénom</th>
-						<!-- <th>Adresse</th> -->
-						<!-- <th>Code postal</th> -->
-						<!-- <th>Ville</th> -->
-						<th class="vmiddle">Tél. mobile</th>
-						<th class="vmiddle">Tél. fixe</th>
-						<th class="vmiddle">Email</th>
-						<!-- <th>Photo</th> -->
-						<th class="vmiddle">Actif</th>
-						<th class="vmiddle">Admin</th>
-						<th class="vmiddle">Déja connecté</th>
-						<th class="vmiddle">Action</th>
-				</thead>
 				<?php 
 					$i = 1; // Variable pour numéroter chaque ligne.
 					foreach ($ListeMembresTriNom as $value) 
@@ -87,17 +87,10 @@
 							<td>';
 							if($value['premiere_connexion']==1){echo 'Non';} else{echo 'Oui';}
 							echo '</td>
-							<td><a class="glyphicon glyphicon-edit" href="'.$this->url('membre_modifierProfil', ['idMembre' => $value['id_membre']]).'" title="Modifier le profil de ce membre"></a>&nbsp;&nbsp;&nbsp;&nbsp;<a class="glyphicon glyphicon-remove" href="'.$this->url('membre_changeActivite', ['idMembre' => $value['id_membre']]).'" title="Modifier le statut actif"></a></td>
+							<td><a class="glyphicon glyphicon-edit" href="'.$this->url('membre_modifierProfil', ['idMembre' => $value['id_membre']]).'" title="Modifier le profil de ce membre"></a>&#8239;&#8239;&#8239;&#8239;<a class="glyphicon glyphicon-remove" href="'.$this->url('membre_changeActivite', ['idMembre' => $value['id_membre']]).'" title="Modifier le statut actif"></a></td>
 
 						</tr>';
 					}
-
-						// Affichage adresse, code postal et ville
-						//<td>'.$value['adresse'].'</td>
-						//<td>'.$value['code_postal'].'</td>
-						//<td>'.$value['ville'].'</td>
-						// Affichage image
-						//<td><img src="'.$this->assetUrl('img/membres/'.$value['photo']).'" width="70" heigth="100"></td>
 				?>
 			</tbody>
 		</table>
