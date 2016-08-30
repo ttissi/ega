@@ -88,12 +88,14 @@
         				<div class="row">
         					<div class="col-md-8">
 								<div class="form-group">
+					          		<label class="control-label hidden" for="nom">Nom :</label>
 	            					<div class="input-group">
 	                					<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
 	                					<strong><input type="text" class="form-control" name="nom" id="nom" placeholder="Ex: Durosier" value="<?php echo $membreChoisi['nom']; ?>" disabled></strong>
 	              					</div>
 	            				</div>
 					            <div class="form-group">
+						          	<label class="control-label hidden" for="prenom">Prénom :</label>
 					                <div class="input-group">
 					                  	<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
 					                  	<strong><input type="text" class="form-control" name="prenom" id="prenom" placeholder="Ex: Albert" value="<?php echo $membreChoisi['prenom']; ?>" disabled></strong>
@@ -164,6 +166,7 @@
         				<div class="row">
         					<div class="col-md-4">
 								<div class="form-group">
+						          	<label class="control-label hidden" for="cp">Code postal :</label>
 					              	<div class="input-group">
 					                	<span class="input-group-addon"><i class="fa fa-university" aria-hidden="true"></i></span>
 					                	<input type="text" class="form-control" name="cp" id="cp" placeholder="Ex: 95120" value="<?php echo $membreChoisi['code_postal']; ?>">
@@ -172,6 +175,7 @@
         					</div>
         					<div class="col-md-8">
 					          	<div class="form-group">
+									<label class="control-label hidden" for="ville">Ville :</label>
 					              	<div class="input-group">
 					                	<span class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></span>
 					                	<input type="text" class="form-control" name="ville" id="ville" placeholder="Ex: Ermont" value="<?php echo $membreChoisi['ville']; ?>">
@@ -183,7 +187,8 @@
 					    <div class="row">
 					        <div class="col-md-6">
 					        	<div class="form-group">
-					            	<div class="input-group">
+									<label class="control-label hidden" for="telMobile">Tél. mobile :</label>
+				  					<div class="input-group">
 						              	<span class="input-group-addon"><i class="fa fa-mobile" aria-hidden="true"></i></span>
 						              	<input type="text" class="form-control" name="telMobile" id="telMobile" placeholder="Ex :0601020304" value="<?php echo $membreChoisi['mobile']; ?>">
 						            </div>
@@ -191,6 +196,7 @@
 					        </div>
 					        <div class="col-md-6">
 					        	<div class="form-group">
+									<label class="control-label hidden" for="telFixe">Tél. fixe :</label>
 					            	<div class="input-group">
 						              	<span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
 						              	<input type="text" class="form-control" name="telFixe" id="telFixe" placeholder="Ex: 0102030405" value="<?php echo $membreChoisi['fixe']; ?>">
@@ -202,6 +208,7 @@
 					    <div class="row">
 						    <div class="col-md-12">
 					        	<div class="form-group">
+									<label class="control-label hidden" for="email">Email :</label>
 						            <div class="input-group">
 							            <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
 							            <input type="text" class="form-control" name="email" id="email" placeholder="Ex: adresse@email.com" value="<?php echo $membreChoisi['email']; ?>">
@@ -228,6 +235,7 @@
 			        <div class="row">
 			            <div class="col-md-12">
 			          		<div class="form-group">
+								<label class="control-label hidden" for="pwdNew">Nouveau mot de passe :</label>
 			              		<div class="input-group">
 			                		<span class="input-group-addon info"><i class="glyphicon glyphicon-lock"></i></span>
 			                		<input type="password" class="form-control" name="pwdNew" id="pwdNew" placeholder="Nouveau mot de passe" disabled>
@@ -239,6 +247,7 @@
 			        <div class="row">
 			            <div class="col-md-12">
 			          		<div class="form-group">
+							<label class="control-label hidden" for="pwdConfirm">Confirmation du nouveau mot de passe :</label>
 			              		<div class="input-group">
 			                		<span class="input-group-addon success"><i class="glyphicon glyphicon-lock"></i></span>
 			                		<input type="password" class="form-control" name="pwdConfirm" id="pwdConfirm" placeholder="Resaisir mot de passe" disabled>

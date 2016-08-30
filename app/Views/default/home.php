@@ -1,4 +1,4 @@
-<?php $this->layout('layout', ['title' => 'Accueil | EGA', 'titleSidebarRight' => 'Favoris', 'titlePanelLeft' => 'Module de recherche']) ?>
+<?php $this->layout('layout', ['title' => 'Accueil | EGA', 'titleSidebarRight' => 'Favoris']) ?>
 
 <!-- Affichage du contenu de la zone principale centrale -->
 <?php $this->start('main_content') ?>

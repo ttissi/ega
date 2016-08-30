@@ -47,6 +47,23 @@ body {
 	padding-bottom: 0;
 }
 
+.flex-parent-horiz {
+	display: flex; 				/* contexte sur le parent */
+	flex-direction: row; 		/* direction d'affichage verticale */
+	justify-content: center; 	/* alignement horizontal centre */
+}
+
+.flex-parent-vert {
+	display: flex; 				/* contexte sur le parent */
+	flex-direction: column; 	/* direction d'affichage verticale */
+	justify-content: flex-end; 	/* alignement vertical bas */
+}
+
+.flex-enfant {
+  margin: auto; /* eh oui, tout bêtement */
+}
+
+
 #widget_meteo {
 	margin: auto;
 }
@@ -69,6 +86,12 @@ body {
     box-shadow: 6px 6px 6px white;
 }
 
+.W3CValide {		/* Pour les logos W3C */
+	border:0;
+	width:88px;
+	height:31px
+}
+
 /* Petit bouton à droite pour remonter en haut de page */
 #scroll-top a {
 /*     width: 16px;
@@ -84,7 +107,7 @@ body {
     z-index: 1000;
 }
 
-.avatar {
+.avatar {			/*  Dimensions de l'avatar du meùbre */
 	height:28px;
 	width: 28px;
 	vertical-align:middle;
@@ -102,7 +125,7 @@ body {
     border-bottom: 1px solid #e5e5e5;
 }
 
-#map {
+#map {			/* Place occupée par ma Map (module cartographie) */
 	margin: 0;
 	height: 75vh;
 	width: 60vw;
@@ -240,7 +263,7 @@ h1 {
 }
 
 #carouselButtons {
-    margin: O auto;
+    margin: 0 auto;
     bottom: 0px;
 }
 

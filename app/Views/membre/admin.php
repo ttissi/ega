@@ -87,14 +87,13 @@
 							<td>';
 							if($value['premiere_connexion']==1){echo 'Non';} else{echo 'Oui';}
 							echo '</td>
-							<td><a class="glyphicon glyphicon-edit" href="'.$this->url('membre_modifierProfil', ['idMembre' => $value['id_membre']]).'" title="Modifier le profil de ce membre"></a>&#8239;&#8239;&#8239;&#8239;<a class="glyphicon glyphicon-remove" href="'.$this->url('membre_changeActivite', ['idMembre' => $value['id_membre']]).'" title="Modifier le statut actif"></a></td>
+							<td><a class="glyphicon glyphicon-edit" href="' . $this->url('membre_modifierProfil', ['idMembre' => $value['id_membre']]) . '" title="Modifier le profil de ce membre"></a>&#8239;&#8239;&#8239;&#8239;<a class="glyphicon glyphicon-remove" href="' . $this->url('membre_changeActivite', ['idMembre' => $value['id_membre']]) . '" title="Modifier le statut actif"></a></td>
 
 						</tr>';
-					}
+					}			
 				?>
 			</tbody>
 		</table>
-			
 	</div>	
 
 	<div id="panelVente" class="tab-pane fade">

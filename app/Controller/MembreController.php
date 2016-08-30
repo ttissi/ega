@@ -311,9 +311,10 @@ class MembreController extends Controller
 		$MembreModel->setPrimaryKey('id_membre'); 		// Précise clé primaire
 
 		$Membre = $MembreModel-> find($idMembre);	
+		// echo '<br><br><br><pre>';print_r($Membre);echo '</pre>';
 
-		if(isset($_POST['btnModifier']))
-		{
+		// if(isset($_POST['btnModifier']))
+		// {
 
 			if ($Membre['actif'] == 1) { $actif = 0; } else { $actif = 1; }
 
@@ -330,8 +331,10 @@ class MembreController extends Controller
 				$error = "Le statut du membre n'a pu correctement être effectué !";
 			}
 
-		} // END if(isset($_POST['btnModifier']))
 
+		// } // END if(isset($_POST['btnModifier']))
+
+			$this->redirectToRoute('membre_admin');
 	}
 
 } // END class

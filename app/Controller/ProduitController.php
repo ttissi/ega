@@ -24,6 +24,7 @@ class ProduitController extends Controller
 		$db-> setTable('produits');
 		$db-> setPrimaryKey('id_membre');
 		
+		$ProduitsTrouves = Null;
 		$BaseProduitComplete = $db-> findAll();
 		// echo '<pre>';print_r($BaseProduitComplete);echo '</pre>';
 
@@ -39,9 +40,36 @@ class ProduitController extends Controller
 
 		$data = ['id_membre' => $_SESSION['user']['id_membre'], 'date_cloture' => '0000-00-00 00:00:00'];
 		$MesProduitsEnVente = $db-> search($data, $operator = 'AND');
+		
+		if($_POST) {
 
-		// $MesDerniersProduits = $db-> findAll($orderBy = "date_publication", $orderDir = "DESC", $limit = 3, $offset = Null);			
-		$this-> show('produit/affichage', ['DerniersProduits' => $ProduitsEnVente, 'MesDerniersProduits' => $MesProduitsEnVente]);
+			$db = new ProduitModel;
+			$db-> setTable('produits');
+			$db-> setPrimaryKey('id_produit');
+
+			$criteres = [];
+			if (isset($_POST['categorie'])) { 
+				$criteres['categorie'] = $_POST['categorie'];
+			}
+			if (isset($_POST['etat'])) { 
+				$criteres['etat'] = $_POST['etat'];
+			}
+			if (isset($_POST['sexe'])) { 
+				$criteres['sexe'] = $_POST['sexe'];
+			}
+			if (isset($_POST['dexterite'])) { 
+				$criteres['dexterite'] = $_POST['dexterite'];
+			}
+
+			$ProduitsTrouves = $db-> search($criteres, $operator = 'AND');
+		}
+
+		if (isset($ProduitsTrouves)) {
+		$this->show('produit/affichage', ['DerniersProduits' => $ProduitsEnVente, 'MesDerniersProduits' => $MesProduitsEnVente, 'ProduitsTrouves' => $ProduitsTrouves]);
+		} else
+		{
+			$this->show('produit/affichage', ['DerniersProduits' => $ProduitsEnVente, 'MesDerniersProduits' => $MesProduitsEnVente]);
+		}
 	}
 
 
@@ -90,9 +118,9 @@ class ProduitController extends Controller
 
 					$LastProduit 	= $db-> findAll($orderBy = 'id_produit', $orderDir = 'DESC', $limit = 1, $offset = null);
 					$numProduit 	= $LastProduit[0]['id_produit'] + 1;
-					echo '<pre>';print_r($LastProduit);echo '</pre>';
-					echo '<br>'.$numProduit;
-					echo $var;
+					// echo '<pre>';print_r($LastProduit);echo '</pre>';
+					// echo '<br>'.$numProduit;
+					// echo $var;
 					// $app = getApp();
         			// $imgpath = $app-> getBasePath() . '/assets/img/ventes/'; 
         			$imgpath = 'assets/img/ventes/';
@@ -102,9 +130,16 @@ class ProduitController extends Controller
 						// 	echo "erreur de chargement..."
 					
 					} else {		// sinon stockage de l'image
+
+					// Rajouter un traitement pour n'accepter que des fichiers image
+					// et empêcher ainsi l'envoi de fichiers php, exe... qui pourraient
+					// agir de façon malveillante
+					// De la même façon, limiter la taille des fichiers image à accepter, quite à les redimensionner..
 					
 						$nomImage1 	= $_FILES['image1']['name'];
 						$extension 	= pathinfo($nomImage1, PATHINFO_EXTENSION);
+						//  $extensions_autorisees = array('jpg', 'jpeg', 'gif', 'png');
+                		// if (in_array($extension_upload, $extensions_autorisees)) {traitement}
 						$newName1 	= $_SESSION['user']['num_ega'] . '_' . $numProduit . '_1.' . $extension;
 						// echo $newName1;
 						// $newName1 = resizeImage($name1, '50', '20');
@@ -189,30 +224,33 @@ class ProduitController extends Controller
 		$this-> show('produit/creation');
 	}
 
-	// -----------  méthode suppression ------------
-	public function supprimer ($id) 
+	// -----------  méthode Recherche Multicritères ------------
+	public function rechercheMulti () 
 	{
 
-		if (isset($_POST['btnSupprimer'])) {
-
+		if($_POST) {
 			$db = new ProduitModel;
 			$db-> setTable('produits');
 			$db-> setPrimaryKey('id_produit');
 
-			$ProduitASupprimer = $db-> find($_POST['id_produit']);
-			
-			// Efface le produit en base
-			if ($resultat = $db-> delete($_POST['id_produit'])) {
-				$success = "Votre annonce a bien été supprimée.";
+			$criteres = [];
+			if (isset($_POST['categorie'])) { 
+				$criteres['categorie'] = $_POST['categorie'];
 			}
-			else
-			{
-				$error = "La suppression n'a pu être réalisée !";
+			if (isset($_POST['etat'])) { 
+				$criteres['etat'] = $_POST['etat'];
 			}
-
+			if (isset($_POST['sexe'])) { 
+				$criteres['sexe'] = $_POST['sexe'];
+			}
+			if (isset($_POST['dexterite'])) { 
+				$criteres['dexterite'] = $_POST['dexterite'];
+			}
+			$ProduitsTrouves = $db-> search($criteres, $operator = 'AND');
+				$success = "Recherche effectuée avec succès.<br>Voici les produits concernés.";
+				$this-> show('produit/affichage', ['ProduitsTrouves' => $ProduitsTrouves]);
 		}
-		
-		$this->show('produit/affichage');
+	
 
 	}
 
@@ -225,10 +263,30 @@ class ProduitController extends Controller
 		$db->setPrimaryKey('id_produit');
 		
 		$ObjetProduit = $db->getProduit($id);
+
+		if(($_POST) && (isset($_POST['btnSupprimer'])))
+		{
+			$resultat = $db-> delete($id);
+			$this->redirectToRoute('produit_affichage');	
+		}
 		
-		// var_dump($ObjetProduit);
-		$this->show('produit/visualisation', ['produit'=>$ObjetProduit]);	
+		$this->show('produit/visualisation', ['produit'=> $ObjetProduit]);	
 	}
+
+
+	// -----------  méthode visualisation ------------
+	public function suppression ($idProduit)
+	{
+		$db = new ProduitModel;
+		$db->setTable('produits');
+		$db->setPrimaryKey('id_produit');
+		
+		// $ObjetProduit = $db->getProduit($idProduit);
+
+		$resultat = $db-> delete($idProduit);
+		$this->show('produit/affichage');	
+	}
+
 
 	// -----------  méthode panneauVenteAdmin ------------
 	public function panneauVenteAdmin()

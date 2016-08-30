@@ -13,4 +13,10 @@ class PracticeController extends Controller
 		$this->show('practice/acces_practice');
 	}
 
+	/** Page avec les horaires du practice **/
+	public function horairesPractice()
+	{
+		$this->show('practice/horaires_practice');
+	}
+
 }

@@ -9,6 +9,8 @@
 		['GET|POST', 	'/contact', 			'Bureaut#contact', 'bureau_contact'],
 		['GET', 		'/mentions_legales',	'Bureau#mentionsLegales', 'bureau_mentionsLegales'],			
 		['GET', 		'/acces_practice', 		'Practice#accesPractice', 'practice_accesPractice'],
+		['GET', 		'/horaires_practice', 	'Practice#horairesPractice', 'practice_horairesPractice'],
+		
 
 		// Routes dédiées à la gestion des membres
 		['GET|POST', 	'/connexion', 			'Membre#seConnecter', 'membre_seConnecter'],
@@ -18,7 +20,7 @@
 		//['GET|POST', 	'/profil/[:idMembre]', 	'Membre#adminModifieProfil', 'membre_adminModifieProfil'],		
 		['GET|POST', 	'/deconnexion', 		'Membre#seDeconnecter', 'membre_seDeconnecter'],
 		// ['GET|POST', 	'/reset', 				'Membre#resetMotDePasse', 'membre_resetMotDePasse'],
-		['GET|POST', 	'/change/activite', 	'Membre#changeActivite', 'membre_changeActivite'],
+		['GET|POST', 	'/change/activite/[:idMembre]', 	'Membre#changeActivite', 'membre_changeActivite'],
 
 		['GET|POST', 	'/membre/admin', 		'Membre#admin', 'membre_admin'],
 		['GET|POST', 	'/admin/membre', 		'Admin#panneauMembresAdmin', 'gestion_membres'],
@@ -30,8 +32,8 @@
 		['GET|POST', 	'/carte', 				'Golf#initialiseCarte', 'golf_initialiseCarte'],
 
 		// Routes dédiées à la gestion des ventes de produits
-		['GET', 		'/produit/affichage', 	'Produit#affichage', 'produit_affichage'],
+		['GET|POST',	'/produit/affichage', 	'Produit#affichage', 'produit_affichage'],	
 		['GET|POST', 	'/produit/creation', 	'Produit#creation', 'produit_creation'],
 		['GET|POST', 	'/produit/visualisation/[:id]', 'Produit#visualisation', 'produit_visualisation'],
-		['GET|POST', 	'/produit/supression', 	'Produit#supression', 'produit_suppression']
+		['GET|POST', 	'/produit/supression/[:id]', 	'Produit#suppression', 'produit_suppression']
 	);

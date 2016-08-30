@@ -43,7 +43,7 @@
 						          <option class="text-hide" selected disabled>Categorie</option>
 						          <option value="Accessoire">Accessoire</option>
 						          <option value="Chariot">Chariot</option>
-						          <option value="Chariot">Chaussures</option>
+						          <option value="Chaussures">Chaussures</option>
 						          <option value="Club à l'unité">Club à l'unité</option>
 						          <option value="Sac de golf">Sac de golf</option>
 						          <option value="Série de fers">Série de fers</option>

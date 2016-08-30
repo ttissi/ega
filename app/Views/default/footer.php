@@ -1,8 +1,7 @@
 <footer id="footer">
 
-    <div class="row container">
-        
-        <div id="adressePostaleId" class="col-md-2 col-md-offset-3">
+    <div class="row container">       
+        <div id="adressePostaleId" class="col-md-2 col-md-offset-2 text-left">
             <p class="h4-subtitle">Coordonnées</p>
             <!-- <p> -->
                 <address>
@@ -20,7 +19,7 @@
             <p><small>&copy; 2016 Ermont Golf Association</small></p>
         </div>      <!-- FIN DIV #adressePostaleId -->
 
-        <div id="liensInformationsId" class="col-md-2 col-md-offset-3 text-left">
+        <div id="liensInformationsId" class="col-md-2 col-md-offset-4">
             <p class="h4-subtitle">Informations</p>            
             <!-- <p> -->
             <ul class="nobullet">
@@ -33,7 +32,22 @@
             </ul>
             <!-- </p> -->
         </div>      <!-- FIN DIV #liensInformationsId -->
-
+    </div>
+    <div class="row">
+        <div id="diversInformationsId" class="text-center">
+                <p>
+                    <a href="https://validator.w3.org/">
+                    <img class="w3CValide"
+                    src="<?= $this->assetUrl('img/divers/HTML_W3C_compliant.png') ?>"
+                    alt="HTML Valide W3C!" />
+                    </a>
+                    <a href="http://jigsaw.w3.org/">
+                     <img class="w3CValide"
+                    src="<?= $this->assetUrl('img/divers/CSS_W3C_compliant.png') ?>"
+                    alt="CSS Valide W3C!" />
+                    </a>
+                </p>
+        </div>
     </div>
     
 </footer>

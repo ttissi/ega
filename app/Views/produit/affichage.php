@@ -23,7 +23,7 @@
 						          <option class="text-hide" selected disabled>Categorie</option>
 						          <option value="Accessoire">Accessoire</option>
 						          <option value="Chariot">Chariot</option>
-						          <option value="Chariot">Chaussures</option>
+						          <option value="Chaussures">Chaussures</option>
 						          <option value="Club à l'unité">Club à l'unité</option>
 						          <option value="Sac de golf">Sac de golf</option>
 						          <option value="Série de fers">Série de fers</option>
@@ -82,8 +82,28 @@
 				<div class="row">
 					<div class="col-md-12 text-right">
 						<button class="btn btn-primary" type="submit" name="btnrecherche">Lancer la recherche&nbsp;&nbsp;<span class="glyphicon glyphicon-search"></span></button>
+						<p><br></p>
 					</div>
 				</div>
+					<?php
+						if (isset($ProduitsTrouves)) {
+							echo '<div class="row well bkg-vert-clair">
+							<h3>Résultat de ma recherche</h3>';
+							$nbLignes = count($ProduitsTrouves);
+							$arret = $nbLignes-1;
+
+							while ($arret > -1) {
+								echo '<div class="col-md-4">'.
+										'<p><em>Parue le :<br>'. date('d/m/Y H:i', strtotime($ProduitsTrouves[$arret]['date_publication'])) . '</em></p>';
+								echo	'<a href="' . $this-> url('produit_visualisation', ['id' => $ProduitsTrouves[$arret]['id_produit']]) . '">' .
+										'<img alt="Photo produit de golf en vente" src="' . $this-> assetUrl('img/ventes/' . $ProduitsTrouves[$arret]['image_produit1']) . '" class="img-thumbnail" width="150" height="150">' . '</a>';
+								echo	'<p><strong>'. $ProduitsTrouves[$arret]['intitule'] . '</strong><br>' . $ProduitsTrouves[$arret]['etat'] . ' - ' . $ProduitsTrouves[$arret]['prix'] . ' €' . '</p>';
+								echo '</div>';
+								$arret--;
+							}
+							echo '</div>';
+						}			
+					?>
 				<div class="row">
 					<h2 class="legend">Autres actions</h2>
 					<div>
@@ -108,7 +128,7 @@
 						<div id="3DernieresAnnonces" class="tab-pane fade in active">
 							<div class="row">
 								<div class="col-md-12">
-								<h4>Mes trois dernières annonces</h4>
+								<h3>Mes trois dernières annonces</h3>
 								<?php
 									$nbLignes = count($MesDerniersProduits);
 									$arret = $nbLignes-1;
@@ -129,7 +149,7 @@
 						<div id="toutesMesAnnonces" class="tab-pane fade">
 							<div class="row">
 								<!-- <div class="col-md-6"> -->
-									<h4>Toutes mes annonces</h4>
+									<h3>Toutes mes annonces</h3>
 									<?php
 									$nbLignes = count($MesDerniersProduits);
 									$arret = $nbLignes-1;
@@ -155,7 +175,7 @@
 
 		<!-- Bloc d'affichage du résultat de ma rercherche ou à défaut les 6 dernières annonces publiées -->
 		<div id="lastPosts" class="row">
-			<h2 class="legend">LES DERNIERES ANNONCES / Résultat de votre recherche></h2>
+			<h2 class="legend">LES DERNIERES ANNONCES</h2>
 			
 			<div class="row text-center">	
 				<?php 

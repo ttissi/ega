@@ -143,7 +143,7 @@
 			<div class="col-md-2 col-md-offset-1">
 				<?php if ($produit->getID_MEMBRE() == $w_user['id_membre']) {
 						$idProduit = $produit->getID_PRODUIT();
-						echo '<button type="submit" class="btn btn-danger" name="btnSupprimer" value="supprimer"  onclick="document.location.href="' . $this->url('produit_suppression', ['idProduit' => $idProduit]) .'" value="Supprimer l\'annonce"><span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span> Supprimer l\'annonce</button>';
+						echo '<button type="submit" class="btn btn-danger" name="btnSupprimer"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Supprimer l\'annonce</button>';
 				}
 				?>
 			</div>
